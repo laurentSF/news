@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singular Intelligence — Week of 21 Feb 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:    #ffffff;
+    --black2:   #f8f8f8;
+    --black3:   #f2f2f2;
+    --card-bg:  #f5f5f5;
+    --border:   #e0e0e0;
+    --teal:     #0f9b82;
+    --green:    #2a9d4e;
+    --yellow:   #c8960a;
+    --white:    #111111;
+    --muted:    #888888;
+    --dimmed:   #aaaaaa;
+    --accent:   #3ecfb2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── HEADER ─── */
+  .header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 40px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: #0f9b82;
+    letter-spacing: -0.01em;
+  }
+
+  .header-meta {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+    padding-top: 4px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 40px 0;
+    position: relative;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #0f9b82;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--teal);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: #111111;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #0f9b82 0%, #2a9d4e 60%, #c8960a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── OPENER PARAGRAPH ─── */
+  .opener {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .opener-inner {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .opener-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0f9b82;
+    padding-top: 4px;
+    line-height: 1.6;
+  }
+
+  .opener-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #444444;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    max-width: 860px;
+    margin: 60px auto 0;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── FEATURED CARD ─── */
+  .featured-wrap {
+    max-width: 860px;
+    margin: 20px auto 0;
+    padding: 0 40px;
+  }
+
+  .featured-card {
+    background: #efefef;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle at top right, rgba(15,155,130,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .fc-source {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0f9b82;
+    margin-bottom: 16px;
+  }
+
+  .fc-source a {
+    color: #0f9b82;
+    opacity: 0.7;
+    font-size: 9px;
+    margin-left: 8px;
+  }
+
+  .fc-source a:hover { opacity: 1; }
+
+  .featured-card h2 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #111111;
+    margin-bottom: 16px;
+  }
+
+  .featured-card p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #555555;
+    max-width: 640px;
+  }
+
+  .featured-card p + p { margin-top: 12px; }
+
+  /* ─── CARD GRID ─── */
+  .card-grid {
+    max-width: 860px;
+    margin: 20px auto 0;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 28px 28px 24px;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .card:hover { background: #efefef; }
+
+  .card-full {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border);
+  }
+
+  .card-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-ai     { background: var(--teal); }
+  .dot-fin    { background: #4a9eff; }
+  .dot-invest { background: var(--green); }
+  .dot-geo    { background: #b57bee; }
+  .dot-india  { background: #f5a623; }
+  .dot-crypto { background: #f7931a; }
+
+  .card h3 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: #111111;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #666;
+  }
+
+  .card-byline {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .card-byline a {
+    color: #0f9b82;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+
+  .card-byline a:hover { opacity: 1; }
+
+  /* ─── QUICK HITS ─── */
+  .quick-wrap {
+    max-width: 860px;
+    margin: 20px auto 0;
+    padding: 0 40px;
+  }
+
+  .quick-list {
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .quick-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+
+  .quick-source {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  .quick-source a {
+    display: block;
+    color: #0f9b82;
+    margin-top: 3px;
+    opacity: 0.7;
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    transition: opacity 0.15s;
+  }
+  .quick-source a:hover { opacity: 1; }
+
+  .quick-text {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #555555;
+  }
+
+  .quick-text strong {
+    font-weight: 500;
+    color: #111111;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    max-width: 860px;
+    margin: 60px auto 0;
+    padding: 0 40px 60px;
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0f9b82;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .footer-logo svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer-meta {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header, .hero, .opener, .section-label, .featured-wrap, .card-grid, .quick-wrap, .footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .card-grid { grid-template-columns: 1fr; }
+    .card-full { grid-column: 1; }
+    .opener-inner { grid-template-columns: 1fr; gap: 12px; }
+    .quick-item { grid-template-columns: 1fr; gap: 6px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-wrap">
+    <!-- Fingerprint SVG approximation in teal -->
+    <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="22" r="3" stroke="#0f9b82" stroke-width="1.5"/>
+      <path d="M22 13c4.97 0 9 4.03 9 9s-4.03 9-9 9" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 13c-4.97 0-9 4.03-9 9 0 2.76.62 5.37 1.72 7.7" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 8c7.73 0 14 6.27 14 14s-6.27 14-14 14" stroke="#0f9b82" stroke-width="1.2" stroke-linecap="round" opacity="0.7" fill="none"/>
+      <path d="M22 8C14.27 8 8 14.27 8 22c0 4.25 1.9 8.06 4.9 10.67" stroke="#0f9b82" stroke-width="1.2" stroke-linecap="round" opacity="0.7" fill="none"/>
+      <path d="M22 3c10.49 0 19 8.51 19 19S32.49 41 22 41" stroke="#0f9b82" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none"/>
+      <path d="M22 3C11.51 3 3 11.51 3 22c0 5.83 2.64 11.05 6.8 14.56" stroke="#0f9b82" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none"/>
+      <path d="M17 22c0-2.76 2.24-5 5-5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" opacity="0.9" fill="none"/>
+    </svg>
+    <span class="logo-text">Singular</span>
+  </div>
+  <div class="header-meta">
+    Singular Intelligence<br>
+    Week of 21 February 2026 &nbsp;·&nbsp; Issue #1
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">weekly intelligence briefing</div>
+  <h1>the signal<br><em>&amp; the noise</em></h1>
+</section>
+
+<!-- OPENER -->
+<div class="opener">
+  <div class="opener-inner">
+    <div class="opener-label">This week<br>in brief</div>
+    <p class="opener-text">SCOTUS struck down Trump's tariff regime, lifting markets. ARK claims AI infrastructure is the largest technology build in history. JPMorgan processed $10 trillion in payments in a single day. Coinbase forked Base off Optimism, erasing 8,000 ETH from its treasury. India is going all-in on AI — from Adani's $100bn data centres to the Infosys-Anthropic partnership — while its legacy IT sector faces an existential reckoning.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION: COVER -->
+<!-- ══════════════════════════════════════ -->
+<div class="section-label"><span>cover story</span></div>
+
+<div class="featured-wrap">
+  <div class="featured-card">
+    <div class="fc-source">
+      ARK Invest · February 2026
+      <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+    </div>
+    <h2>the largest technology build in history</h2>
+    <p>ARK's research team argues that AI deployment, healthcare breakthroughs, autonomous systems, and digital financial infrastructure are converging to create what they call "exponential growth opportunities." Their 2026 outlook questions whether innovation portfolios are positioned for this shift — and warns that 2025's "wall of worry" may have been a distraction from the deeper structural transformation taking place beneath equities' surface.</p>
+    <p>Simultaneously, ARK's Venture Fund thesis is evolving: the firm argues that companies like SpaceX, Epic Games, and Anthropic are experiencing their greatest value creation before IPO — and that access to this phase should not be restricted to accredited investors alone.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION: AI -->
+<!-- ══════════════════════════════════════ -->
+<div class="section-label"><span>artificial intelligence</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>Autonomous Investing</div>
+    <h3>Machines Are Becoming Better Investors Than Humans</h3>
+    <p>Chamath Palihapitiya argues the investment game is over for human discretion. Public and private information are instantly priced in. He points to Renaissance Medallion's 39% annual returns since the 1980s as proof that tiny statistical edges, captured at machine speed across thousands of instruments simultaneously, compound to something no human can replicate.</p>
+    <div class="card-byline">
+      <span>Chamath / Social Capital · Substack</span>
+      <a href="https://chamath.substack.com/p/autonomous-investing" target="_blank">↗ chamath.substack.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>AI Race</div>
+    <h3>Goldman Sachs: A Shift in the Economic Narrative</h3>
+    <p>Goldman's Briefings newsletter examines a potential inflection in how the AI race is perceived — from a US-dominated sprint to a contested, globally distributed competition. Chinese AI models are reportedly just "months" behind Western rivals, per Google DeepMind CEO Demis Hassabis, as Alibaba, ByteDance, and Kuaishou unveil new models in robotics and video generation.</p>
+    <div class="card-byline">
+      <span>Goldman Sachs Briefings</span>
+      <a href="https://www.goldmansachs.com/intelligence/briefings" target="_blank">↗ goldmansachs.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>Robotics</div>
+    <h3>Robots That Learn Like Babies</h3>
+    <p>A new wave of embodied AI research focuses on curiosity-driven, unsupervised learning in robots — similar to how infants develop motor skills before they can speak. This approach suggests robots could acquire generalizable skills from unstructured environments with far less labeled training data than previously assumed.</p>
+    <div class="card-byline">
+      <span>The Ken · India Tech Dispatch</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>Employment</div>
+    <h3>Don't Panic: AI Won't Take Your Job (Yet)</h3>
+    <p>As Anthropic opens a Bengaluru office and India becomes Claude's second-largest global market — driven by coding, system modernisation, and Air India using Claude Code for custom software — the nuanced story is that AI is reshaping job roles rather than eliminating them. Cognizant is deploying Claude to 350,000 employees as augmentation, not replacement.</p>
+    <div class="card-byline">
+      <span>The Ken · Anthropic dispatch</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card card-full">
+    <div class="card-tag"><span class="tag-dot dot-invest"></span>Portfolio Strategy</div>
+    <h3>AI as a Foundational Portfolio Driver, Not Just a Thematic Satellite</h3>
+    <p>ARK's research revisits AI's role in portfolio construction, arguing it should no longer be treated as a tactical overlay. The firm contends AI has matured into a structural growth engine capable of improving long-term portfolio efficiency — shifting the framing from "exposure to an AI trend" toward "AI as infrastructure for alpha generation." The thesis aligns with broader institutional re-ratings of AI's risk-adjusted return profile heading into 2026.</p>
+    <div class="card-byline">
+      <span>ARK Invest Research</span>
+      <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION: FINTECH -->
+<!-- ══════════════════════════════════════ -->
+<div class="section-label"><span>fintech &amp; payments</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Banking Infrastructure</div>
+    <h3>JPMorgan's Quiet Payments Empire</h3>
+    <p>A systems-level breakdown reveals JPMorgan processes over $10 trillion in payments per day — the largest USD clearing share globally. All 20 of the world's largest companies are JPM Payments clients. The bank has integrated treasury services, embedded finance, merchant acquiring, and FX into a unified infrastructure that fintech firms are finding increasingly difficult to disintermediate.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up · Deep Dive</span>
+      <a href="https://www.fintechwrapup.com/p/deep-dive-jpmorgans-payments-strategy" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Visa</div>
+    <h3>Visa Q1 FY26 Results &amp; the Onchain Bank Architecture</h3>
+    <p>Visa's Q1 FY26 results came alongside a notable framing shift: the network is positioning itself at the intersection of traditional card rails and onchain financial infrastructure. Visa is not viewing stablecoins and crypto payments as threats, but as new verticals to orchestrate. Also covered: the stablecoin toolkit, Airwallex's non-payments identity, and next-generation treasury.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up · Weekly Roundup</span>
+      <a href="https://www.fintechwrapup.com/p/visa-q1-fy26-results-the-architecture" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Europe</div>
+    <h3>EPI: Europe's Answer to Visa &amp; Mastercard Goes Live</h3>
+    <p>The European Payments Initiative has moved from concept to operational reality, with tens of millions of users on the books. If EPI succeeds, it restructures who owns European payment rails and who captures checkout economics. A banking chief has called Visa/Mastercard alternatives "urgently" needed — political pressure intensifies even as active usage penetration remains unproven at scale.</p>
+    <div class="card-byline">
+      <span>Payments Strategy Breakdown · Dwayne Gefferie</span>
+      <a href="https://dwaynegefferie.substack.com/p/epi-european-payments-initiative" target="_blank">↗ dwaynegefferie.substack.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Agentic Commerce</div>
+    <h3>What "Agentic Commerce" Actually Means in 2026</h3>
+    <p>Ruston Miles (Bluefin founder, PCI Board) unpacks why most "agentic payments" today are still glorified browser automation — not true agency. Genuine agentic commerce requires AI that can handle authorization, compliance, fraud scoring, and post-purchase flows autonomously. The fragmentation of standards here is creating both risk and opportunity for infrastructure players.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up Podcast</span>
+      <a href="https://www.fintechwrapup.com/p/ruston-miles-what-agentic-commerce" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+  <div class="card card-full">
+    <div class="card-tag"><span class="tag-dot dot-crypto"></span>Crypto / DeFi</div>
+    <h3>Base Forks from Optimism, Morpho Surges on Apollo Deal</h3>
+    <p>The week's defining crypto moment: Coinbase announced Base is forking away from the OP Stack to build its own in-house codebase — taking 8,000+ ETH in sequencer revenue with it. Optimism's treasury and token repriced instantly, with OP losing 32.78% on the week. On the upside, MORPHO climbed 31.69% on news of a deal with Apollo, suggesting institutional appetite for on-chain credit infrastructure is maturing beyond pilot-phase experimentation. Artemis begins tracking Crypto ETFs as a formal data category — a signal of mainstreaming.</p>
+    <div class="card-byline">
+      <span>Artemis Analytics · 20 Feb 2026</span>
+      <a href="https://research.artemisanalytics.com/p/artemis-weekly-digital-finance-fundamentals-59e" target="_blank">↗ artemisanalytics.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION: INDIA & GEO -->
+<!-- ══════════════════════════════════════ -->
+<div class="section-label"><span>india &amp; emerging markets</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-india"></span>India · AI</div>
+    <h3>India's IT Services Industry in Peril — or Transformation?</h3>
+    <p>Infosys and Anthropic are building an AI Centre of Excellence targeting telco, financial services, manufacturing, and software development. Adani Enterprises plans $100bn in renewable-powered AI data centres by 2035. India's government frames this as capturing the full AI stack — from energy and chips to applications — ahead of the Global AI Impact Summit convened by PM Modi.</p>
+    <div class="card-byline">
+      <span>The Ken · India Tech Dispatch</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-india"></span>India · AI</div>
+    <h3>Sarvam AI Targets More Than Languages</h3>
+    <p>India's AI startup Sarvam, which built India's first foundational language models for domestic scripts, is now targeting a broader AI platform ambition beyond multilingual NLP. The week also brought clarity on tariffs: the US Supreme Court struck down Trump's sweeping reciprocal tariff structure, bringing relief to markets. India joins a US-led coalition to protect critical mineral supply chains.</p>
+    <div class="card-byline">
+      <span>The Ken · 21 February 2026</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-india"></span>Asia · Tech</div>
+    <h3>SoftBank Rides the AI Surge</h3>
+    <p>SoftBank's portfolio is benefiting from the sustained AI capital cycle, with Vision Fund assets repricing on AI exposure. Chinese tech giants — Alibaba, ByteDance, Kuaishou — are accelerating with new AI models in robotics and video generation. DeepMind's Demis Hassabis estimates Chinese labs are "months" behind the frontier — closing faster than Western incumbents anticipated a year ago.</p>
+    <div class="card-byline">
+      <span>The Ken · 15 February 2026</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-geo"></span>Geopolitics · Resources</div>
+    <h3>Special Issue: Metals and Geopolitics</h3>
+    <p>Goldman Sachs Briefings dedicates a special issue to the intersection of hard assets, critical minerals, and the new geopolitical order. As the energy transition and AI buildout both demand surging volumes of copper, lithium, and rare earths, investors are reassessing commodity exposure — not as an inflation hedge, but as a structural position in the infrastructure of the next economy.</p>
+    <div class="card-byline">
+      <span>Goldman Sachs Briefings</span>
+      <a href="https://www.goldmansachs.com/intelligence/briefings" target="_blank">↗ goldmansachs.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SECTION: QUICK HITS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section-label"><span>quick hits</span></div>
+
+<div class="quick-wrap">
+  <ul class="quick-list">
+
+    <li class="quick-item">
+      <div class="quick-source">
+        SpaceX / ARK
+        <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+      </div>
+      <div class="quick-text"><strong>SpaceX pivots to the Moon.</strong> ARK's weekly digest highlights SpaceX's lunar mission intensification, positioning Starship as the backbone of NASA's Artemis programme and a multi-decade government contract platform.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        Chamath
+        <a href="https://chamath.substack.com/p/30-years" target="_blank">↗ chamath.substack.com</a>
+      </div>
+      <div class="quick-text"><strong>30 years of investing in 13 minutes.</strong> Chamath launches a YouTube channel sharing lessons from his investment journey — starting with a Groq deep-dive from founding to the $20bn NVIDIA deal. Targeting 1 video per Friday.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        ARK Venture
+        <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+      </div>
+      <div class="quick-text"><strong>Democratizing venture capital.</strong> ARK's Venture Fund opens exposure to SpaceX, Anthropic, and Epic Games to non-accredited investors — arguing that the most significant value creation in tech now happens before IPO, not after.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        SCOTUS
+        <a href="https://www.reuters.com" target="_blank">↗ reuters.com</a>
+      </div>
+      <div class="quick-text"><strong>Tariffs struck down.</strong> The US Supreme Court ruled Trump's global reciprocal tariffs exceeded presidential authority under federal emergency-powers law, delivering a significant market catalyst mid-week.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        Coinbase / Base
+        <a href="https://www.theblock.co" target="_blank">↗ theblock.co</a>
+      </div>
+      <div class="quick-text"><strong>Base goes independent.</strong> Coinbase is forking Base off the Optimism OP Stack to build a proprietary codebase — retaining over 8,000 ETH in sequencer revenue that previously flowed to Optimism's treasury.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        Morpho / Apollo
+        <a href="https://defillama.com" target="_blank">↗ defillama.com</a>
+      </div>
+      <div class="quick-text"><strong>DeFi meets institutional capital.</strong> MORPHO surged 31.69% on news of a deal with Apollo, suggesting institutional appetite for on-chain credit infrastructure is maturing beyond pilot-phase experimentation.</div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="22" r="3" stroke="#0f9b82" stroke-width="1.5"/>
+      <path d="M22 13c4.97 0 9 4.03 9 9s-4.03 9-9 9" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 13c-4.97 0-9 4.03-9 9 0 2.76.62 5.37 1.72 7.7" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 8c7.73 0 14 6.27 14 14s-6.27 14-14 14" stroke="#0f9b82" stroke-width="1.2" stroke-linecap="round" opacity="0.7" fill="none"/>
+      <path d="M22 8C14.27 8 8 14.27 8 22c0 4.25 1.9 8.06 4.9 10.67" stroke="#0f9b82" stroke-width="1.2" stroke-linecap="round" opacity="0.7" fill="none"/>
+      <path d="M22 3c10.49 0 19 8.51 19 19S32.49 41 22 41" stroke="#0f9b82" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none"/>
+      <path d="M22 3C11.51 3 3 11.51 3 22c0 5.83 2.64 11.05 6.8 14.56" stroke="#0f9b82" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none"/>
+    </svg>
+    Singular Intelligence
+  </div>
+  <div class="footer-meta">
+    singularfinance.com &nbsp;·&nbsp; Issue #1 &nbsp;·&nbsp; 21 Feb 2026<br>
+    Curated by Laurent Le Moal
+  </div>
+</footer>
+
+</body>
+</html>
