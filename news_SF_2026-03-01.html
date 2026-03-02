@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singular Intelligence — Week of 1 Mar 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --black:    #ffffff;
+    --black2:   #f8f8f8;
+    --black3:   #f2f2f2;
+    --card-bg:  #f5f5f5;
+    --border:   #e0e0e0;
+    --teal:     #0f9b82;
+    --green:    #2a9d4e;
+    --yellow:   #c8960a;
+    --white:    #111111;
+    --muted:    #888888;
+    --dimmed:   #aaaaaa;
+    --accent:   #3ecfb2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* HEADER */
+  .header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 40px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo-icon { width: 44px; height: 44px; flex-shrink: 0; }
+  .logo-text { font-size: 20px; font-weight: 500; color: #0f9b82; letter-spacing: -0.01em; }
+  .header-meta {
+    font-size: 11px; font-weight: 400; color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-align: right; line-height: 1.8; padding-top: 4px;
+  }
+
+  /* HERO */
+  .hero { max-width: 860px; margin: 0 auto; padding: 64px 40px 0; position: relative; }
+  .hero-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #0f9b82; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-label::after {
+    content: ''; display: block; width: 40px; height: 1px;
+    background: var(--teal); opacity: 0.5;
+  }
+  .hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 300; line-height: 1.0;
+    letter-spacing: -0.03em; color: #111111; margin-bottom: 32px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #0f9b82 0%, #2a9d4e 60%, #c8960a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  /* OPENER */
+  .opener { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+  .opener-inner {
+    border-top: 1px solid var(--border); padding-top: 32px;
+    display: grid; grid-template-columns: 120px 1fr; gap: 40px; align-items: start;
+  }
+  .opener-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); line-height: 1.6;
+  }
+  .opener-text { font-size: 14.5px; font-weight: 300; line-height: 1.75; color: #444444; }
+
+  /* SECTION LABEL */
+  .section-label {
+    max-width: 860px; margin: 48px auto 0; padding: 0 40px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-label span {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* FEATURED CARD */
+  .featured-wrap { max-width: 860px; margin: 20px auto 0; padding: 0 40px; }
+  .featured-card {
+    background: #efefef; border: 1px solid var(--border);
+    border-left: 3px solid var(--teal); padding: 36px 40px;
+    position: relative; overflow: hidden;
+  }
+  .featured-card::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle at top right, rgba(15,155,130,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .fc-source {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #0f9b82; margin-bottom: 16px;
+  }
+  .fc-source a { color: #0f9b82; opacity: 0.7; font-size: 9px; margin-left: 8px; }
+  .fc-source a:hover { opacity: 1; }
+  .featured-card h2 {
+    font-size: 24px; font-weight: 400; line-height: 1.3;
+    letter-spacing: -0.02em; color: #111111; margin-bottom: 16px;
+  }
+  .featured-card p {
+    font-size: 14px; font-weight: 300; line-height: 1.75; color: #555555; max-width: 640px;
+  }
+  .featured-card p + p { margin-top: 12px; }
+
+  /* CARD GRID */
+  .card-grid {
+    max-width: 860px; margin: 20px auto 0; padding: 0 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border);
+  }
+  .card { background: #ffffff; padding: 28px 28px 24px; transition: background 0.2s; position: relative; }
+  .card:hover { background: #efefef; }
+  .card-full { grid-column: 1 / -1; border-top: 1px solid var(--border); }
+  .card-tag {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tag-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+  .dot-ai     { background: var(--teal); }
+  .dot-fin    { background: #4a9eff; }
+  .dot-invest { background: var(--green); }
+  .dot-geo    { background: #b57bee; }
+  .dot-india  { background: #f5a623; }
+  .dot-crypto { background: #f7931a; }
+  .dot-macro  { background: #e55b4d; }
+  .dot-health { background: #2a9d4e; }
+  .card h3 {
+    font-size: 16px; font-weight: 500; line-height: 1.35;
+    letter-spacing: -0.01em; color: #111111; margin-bottom: 10px;
+  }
+  .card p { font-size: 13px; font-weight: 300; line-height: 1.7; color: #666; }
+  .card-byline {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
+    font-size: 9px; font-weight: 400; letter-spacing: 0.08em; color: var(--muted);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-byline a { color: #0f9b82; opacity: 0.7; transition: opacity 0.15s; }
+  .card-byline a:hover { opacity: 1; }
+
+  /* QUICK HITS */
+  .quick-wrap { max-width: 860px; margin: 20px auto 0; padding: 0 40px; }
+  .quick-list { list-style: none; }
+  .quick-item {
+    display: grid; grid-template-columns: 140px 1fr; gap: 24px;
+    padding: 18px 0; border-bottom: 1px solid var(--border); align-items: baseline;
+  }
+  .quick-source { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.6; }
+  .quick-source a {
+    display: block; color: #0f9b82; margin-top: 3px; opacity: 0.7;
+    font-size: 8.5px; letter-spacing: 0.08em; transition: opacity 0.15s;
+  }
+  .quick-source a:hover { opacity: 1; }
+  .quick-text { font-size: 13.5px; font-weight: 300; line-height: 1.6; color: #555555; }
+  .quick-text strong { font-weight: 500; color: #111111; }
+
+  /* FOOTER */
+  .footer {
+    max-width: 860px; margin: 60px auto 0; padding: 32px 40px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-brand { font-size: 14px; font-weight: 500; color: #0f9b82; letter-spacing: -0.01em; }
+  .footer-meta { font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.06em; text-align: right; line-height: 1.8; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .header, .hero, .opener, .section-label, .featured-wrap, .card-grid, .quick-wrap, .footer { padding-left: 20px; padding-right: 20px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .card-full { grid-column: 1; }
+    .opener-inner { grid-template-columns: 1fr; gap: 12px; }
+    .quick-item { grid-template-columns: 1fr; gap: 6px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-meta { text-align: left; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-wrap">
+    <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="22" r="3" stroke="#0f9b82" stroke-width="1.5"/>
+      <path d="M22 13c4.97 0 9 4.03 9 9s-4.03 9-9 9" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 13c-4.97 0-9 4.03-9 9 0 2.76.62 5.37 1.72 7.7" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 8c7.73 0 14 6.27 14 14s-6.27 14-14 14" stroke="#0f9b82" stroke-width="1.2" stroke-linecap="round" opacity="0.7" fill="none"/>
+      <path d="M22 8C14.27 8 8 14.27 8 22c0 4.25 1.9 8.06 4.9 10.67" stroke="#0f9b82" stroke-width="1.2" stroke-linecap="round" opacity="0.7" fill="none"/>
+      <path d="M22 3c10.49 0 19 8.51 19 19S32.49 41 22 41" stroke="#0f9b82" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none"/>
+      <path d="M22 3C11.51 3 3 11.51 3 22c0 5.83 2.64 11.05 6.8 14.56" stroke="#0f9b82" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none"/>
+      <path d="M17 22c0-2.76 2.24-5 5-5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" opacity="0.9" fill="none"/>
+    </svg>
+    <div class="logo-text">Singular</div>
+  </div>
+  <div class="header-meta">
+    Singular Intelligence<br>
+    Week of 1 March 2026 &nbsp;·&nbsp; Issue #2
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Weekly intelligence briefing</div>
+  <h1>payments<br>get<br><em>rewired.</em></h1>
+</section>
+
+<!-- OPENER -->
+<div class="opener">
+  <div class="opener-inner">
+    <div class="opener-label">This week<br>in brief</div>
+    <p class="opener-text">The largest merchant-acquiring deal in history just closed, and five of the eight biggest acquirers have simultaneously positioned for agentic commerce. OpenAI clears $730bn pre-money on a $110bn raise led by Amazon. The Supreme Court strikes down Trump's IEEPA tariffs; Section 122 fills the gap with a blunter 10–15% global levy. Grail's NHS cancer-detection trial misses its primary endpoint. And the US electric grid — rated D+ by engineers — emerges as the real bottleneck behind every AI capex thesis.</p>
+  </div>
+</div>
+
+<!-- ══ COVER STORY ══ -->
+<div class="section-label"><span>Cover Story</span></div>
+
+<div class="featured-wrap">
+  <div class="featured-card">
+    <div class="fc-source">
+      Payments Strategy Breakdown · Dwayne Gefferie
+      <a href="https://dwaynegefferie.substack.com" target="_blank">↗ dwaynegefferie.substack.com</a>
+    </div>
+    <h2>The three bets reshaping global acquiring</h2>
+    <p>The largest merchant-acquiring deal in history just closed. A stablecoin launched on Solana is integrating across 150 million merchant locations. Worldline — once at €80 — is now worth less than many Series C fintechs. Five of the eight largest acquirers have announced positions in agentic commerce within the past six months, most of them within the same few weeks. None of that is a coincidence.</p>
+    <p>Step back from the earnings calls and a clear pattern emerges across JPMorgan, Global Payments, Worldpay, Fiserv, Adyen, Nexi, and Getnet. Three strategic bets are converging simultaneously: embedding AI and agentic commerce into payment flows; aggressive platform consolidation to lock in merchants; and a geographic reshuffling where US players push into Europe while European players retreat to defend home turf. Global Payments is a founding member of both OpenAI's and Google's Agent Payments Protocol. Adyen joined the Agentic AI Foundation alongside Visa, Mastercard, and Cloudflare. By early 2026, "agentic commerce" has moved from CEO talking points to capital allocation decisions. That shift in verb tense is the whole story.</p>
+  </div>
+</div>
+
+<!-- ══ FINTECH & PAYMENTS ══ -->
+<div class="section-label"><span>Fintech &amp; Payments</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Charters</div>
+    <h3>Why fintechs are buying a different physics model</h3>
+    <p>Getting a bank charter is not branding — it is permissioning, funding, and durable control over dependencies. Fintechs pursue US charters for three hard reasons: cheaper, stickier funding via insured deposits; federal preemption replacing fragile sponsor-bank arrangements; and direct rail access. Crypto firms target national trust bank variants to sit inside the regulated custody and stablecoin issuance perimeter. The trade is explicit: sovereignty for speed, lower unit funding costs for examiner-driven operating cadence.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up</span>
+      <a href="https://www.fintechwrapup.com" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Infrastructure</div>
+    <h3>Multi-rail payments: compliance ownership shifts up the stack</h3>
+    <p>Modern Treasury evolved from an API-first bank payments layer into a full-stack, multi-rail provider — ACH, wires, RTP, FedNow, and stablecoins under a single unified ledger. The key insight: compliance ownership is moving back to infrastructure providers, away from sponsor banks. The Synapse failure accelerated this structural shift. Immutable double-entry ledgers are now table stakes for institutional trust. Companies can now launch multi-rail capabilities in days rather than quarters.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up · Matt Marcus &amp; Sam Aarons</span>
+      <a href="https://www.fintechwrapup.com" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Zelle · Scale</div>
+    <h3>$1.2 trillion: Zelle's quiet dominance of US real-time payments</h3>
+    <p>Early Warning Services processed over $1.2 trillion on the Zelle network in 2025 — 20% growth — across 4.2 billion transactions, far outpacing the 3–4% pace of US consumer spending. Around 30% of volume involves small businesses. The next move: a stablecoin-based cross-border initiative offered on equal terms to all 2,300+ member financial institutions. Integration deepens; consumer protection gaps (CFPB cited ~$870m in scam losses since 2017) remain the liability overhang that regulators will eventually force to a reckoning.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up</span>
+      <a href="https://www.fintechwrapup.com" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-fin"></span>Valuations · UK</div>
+    <h3>What UK fintech unicorn multiples are actually signalling</h3>
+    <p>Valuation multiples for UK fintech unicorns are diverging sharply. Regulated, revenue-generating players with defensible unit economics are holding or expanding multiples. Pre-revenue and thin-margin platforms that relied on growth-at-all-costs narratives are repricing toward Series C comparables. Mastercard's Q4 FY2025 results reinforced the bifurcation: established network economics remain durable; point solutions without moats do not. The divergence looks structural, not cyclical.</p>
+    <div class="card-byline">
+      <span>Fintech Wrap Up</span>
+      <a href="https://www.fintechwrapup.com" target="_blank">↗ fintechwrapup.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ ARTIFICIAL INTELLIGENCE ══ -->
+<div class="section-label"><span>Artificial Intelligence</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>AI Funding</div>
+    <h3>OpenAI at $730bn: the agentic inflection is being priced in</h3>
+    <p>OpenAI raised $110bn, pushing its pre-money valuation to $730bn. Amazon led with $50bn; SoftBank and NVIDIA contributed $30bn each. Amazon's tranche starts at $15bn upfront with $35bn tied to milestones — alignment without fully front-loading risk. The raise coincides with OpenAI deploying models on US Department of War classified networks. NVIDIA's FY2026 revenue reached $215.9bn, up 65% year-on-year. Jensen Huang: "The agentic AI inflection point has arrived." The capex consensus is forming around that premise.</p>
+    <div class="card-byline">
+      <span>The Ken · ARK Invest</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>Model Strategy</div>
+    <h3>Rethinking the one-size AI model</h3>
+    <p>Google's Nano Banana 2 — the latest Gemini image generation model — accelerates creation while tapping real-time web data. The broader signal: specialised, smaller models are proving more cost-efficient for defined tasks than universal frontier models. India's Nasscom Annual Strategic Review 2026 calls FY26 "a decisive inflection point" where AI moved from experimentation to operational transformation. India's tech sector revenue reached $315bn; headcount grew just 2.3%. Compute is replacing headcount, structurally and at scale.</p>
+    <div class="card-byline">
+      <span>The Ken · Nasscom</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-ai"></span>Physical AI · Robotics</div>
+    <h3>Humanoid robots: $5 trillion market — the timing question remains</h3>
+    <p>Morgan Stanley forecasts the humanoid robot market exceeding $5 trillion by 2050. The broader robotics space attracted $21bn in VC in 2025. Figure 02 contributed to 30,000+ BMW X3 vehicles in November 2025. The real question is timing: bipedal robots require the same convergence that enabled ChatGPT — sensor cost curves, foundation model generalisation, reliable actuation at scale. Patent activity is rising sharply. Factory floors are the immediate beachhead; consumer applications remain years out.</p>
+    <div class="card-byline">
+      <span>Chamath / Social Capital</span>
+      <a href="https://chamath.substack.com" target="_blank">↗ chamath.substack.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-health"></span>Healthcare AI</div>
+    <h3>Grail's NHS trial: a setback that doesn't kill the thesis</h3>
+    <p>Grail's multi-cancer early detection trial in the NHS failed to meet its primary endpoint — the largest real-world test of liquid biopsy at population scale. ARK's reading: trial design, lead-time bias, and follow-up duration confound the read-out. Secondary signals on stage shift and high-specificity cancers remain constructive. Separately, AI-assisted mammography is showing sensitivity gains over radiologist-only reads in prospective trials — a cleaner proof point for the AI-in-diagnostics thesis, independent of Grail's stumble.</p>
+    <div class="card-byline">
+      <span>ARK Invest Weekly</span>
+      <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+    </div>
+  </div>
+
+  <div class="card card-full">
+    <div class="card-tag"><span class="tag-dot dot-invest"></span>ARK · Innovation Equities</div>
+    <h3>ARKK's most underappreciated stocks of 2025 — and five names moving now: LUNR, CRCL, BFLY, CRWV, XYZ</h3>
+    <p>ARK's recurring thesis: short-term volatility in innovation names creates long-term entry points. The underappreciated names of 2025 were those where narrative lagged fundamental progress — companies whose category leadership was real but whose share prices had been treated as risk proxies rather than business assessments. This week's stock commentary — triggered by moves above 15% intraday — covers Intuitive Machines (LUNR) on NASA contract momentum; Circle (CRCL) on its IPO trajectory; Butterfly Network (BFLY) on AI ultrasound traction; CoreWeave (CRWV) on GPU cloud demand; and XYZ. 2025 highlighted a recurring theme: short-term volatility is where long-term opportunity is priced.</p>
+    <div class="card-byline">
+      <span>ARK Invest</span>
+      <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MARKETS & MACRO ══ -->
+<div class="section-label"><span>Markets &amp; Macro</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-macro"></span>Trade Policy · SCOTUS</div>
+    <h3>The tariff ruling: narrower than the headlines suggest</h3>
+    <p>The Supreme Court struck down IEEPA as the legal basis for broad, country-specific and "reciprocal" tariffs. Sector tariffs — autos and metals — remain intact. The Court did not order refunds on duties already paid. Trump's response: invoke Section 122 of the Trade Act of 1974, which permits a non-discriminatory temporary tariff of up to 15% for balance-of-payments reasons. A 10% global tariff is implemented; 15% is signalled. Section 122 cannot be country-customised — blunter, but legally more defensible. Net implication: less tail risk than feared, but persistent uncertainty until midterm politics clarify re-escalation appetite. India has already postponed its Washington trade delegation.</p>
+    <div class="card-byline">
+      <span>LEO Investment Insight</span>
+      <a href="https://leowealth.com" target="_blank">↗ leowealth.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-macro"></span>Markets · Goldman Sachs</div>
+    <h3>An 'unstable' stock market — Japan in focus</h3>
+    <p>Goldman Briefings flags equities in an unstable equilibrium: multiple expansion has run ahead of earnings delivery in several markets, while rate-cut expectations continue to oscillate. Japan's equity boom faces a specific test — whether wage growth and yen normalisation erode the corporate earnings upgrade cycle that drove the Nikkei's rerating. The structural case (corporate governance reform, shareholder returns) remains intact; the cyclical tailwind is more uncertain. Berkshire Q4 operating earnings fell 29% YoY to $10.2bn on insurance underwriting pressure — Buffett's final quarter as CEO punctuated by a cyclical turn.</p>
+    <div class="card-byline">
+      <span>Goldman Sachs Briefings</span>
+      <a href="https://goldmansachs.com" target="_blank">↗ goldmansachs.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ INDIA & EMERGING MARKETS ══ -->
+<div class="section-label"><span>India &amp; Emerging Markets</span></div>
+
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-india"></span>Infrastructure · Energy</div>
+    <h3>America's D+ grid is the real AI bottleneck</h3>
+    <p>Every AI capex forecast assumes abundant, cheap electricity. American engineers rate the US grid a D+. It is the largest interconnected machine on earth — and the country's most consequential national security vulnerability. GPU availability is a solved problem by comparison. The grid upgrade cycle — transmission, distributed generation, demand response — is a decade-long capital deployment story that remains systematically under-owned in most portfolios, despite being the physical precondition for every digital bet made today.</p>
+    <div class="card-byline">
+      <span>Chamath / Social Capital</span>
+      <a href="https://chamath.substack.com" target="_blank">↗ chamath.substack.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-india"></span>India · Consumer Tech</div>
+    <h3>Urban Company's InstaHelp and the formalisation of home services</h3>
+    <p>Urban Company's InstaHelp is gaining traction in India's on-demand home services market — instant booking for cleaning, repairs, and beauty with trained, background-checked professionals. The model benefits from urban income growth and the structural formalisation of domestic service demand. Separately, Groww unveiled an AI investing assistant that reads markets, tracks news sentiment, and provides personalised portfolio insights — alongside Groww Prime for mutual fund management. Indian fintech is moving up the value chain, from payments to wealth.</p>
+    <div class="card-byline">
+      <span>The Ken</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-india"></span>India · Agri-Tech &amp; Philanthropy</div>
+    <h3>AI reshapes Indian agriculture — philanthropy cannot keep up</h3>
+    <p>AI applications in Indian agriculture — precision irrigation, pest detection, yield optimisation — are reaching smallholder farms, enabled by the infrastructure buildout from NVIDIA and hyperscalers. Separately, private philanthropy in India is expected to reach Rs 1.43 lakh crore in FY25, growing at 9–11% CAGR through FY30. A Bain/Dasra report concludes even that pace is insufficient: bridging the social sector funding gap requires 25%+ annual growth. First-generation wealth creators and diaspora capital are the growth vectors; institutional giving has not scaled to match.</p>
+    <div class="card-byline">
+      <span>The Ken</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-tag"><span class="tag-dot dot-geo"></span>Asia · BCI</div>
+    <h3>China's brain-computer interface industry moves from lab to scale</h3>
+    <p>China's BCI industry is transitioning from research to commercialisation, with startups racing to scale both invasive and non-invasive brain implants as the policy framework strengthens. The competitive dynamic mirrors EVs and solar: policy-driven acceleration and domestic manufacturing depth compress the cost curve faster than Western peers. While Neuralink commands the Western narrative, Chinese players are building the volume manufacturing base that will define unit economics within a decade.</p>
+    <div class="card-byline">
+      <span>The Ken</span>
+      <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ QUICK HITS ══ -->
+<div class="section-label"><span>Quick Hits</span></div>
+
+<div class="quick-wrap">
+  <ul class="quick-list">
+
+    <li class="quick-item">
+      <div class="quick-source">
+        OpenAI / DoW
+        <a href="https://openai.com" target="_blank">↗ openai.com</a>
+      </div>
+      <div class="quick-text"><strong>AI on classified networks.</strong> OpenAI reached an agreement with the US Department of War to deploy its models on classified cloud infrastructure. Government AI procurement is bifurcating: security-cleared providers (OpenAI, Palantir) on one side, civilian-facing platforms on the other. The moat is accreditation, not capability.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        Anthropic / Politics
+        <a href="https://anthropic.com" target="_blank">↗ anthropic.com</a>
+      </div>
+      <div class="quick-text"><strong>Anthropic in political crossfire.</strong> Trump directed federal agencies to stop using Anthropic products after the company declined full military access to its AI tools. Anthropic also acquired Vercept, a startup enabling agents that execute multi-step tasks across platforms — a move from chat toward autonomous software operation at the exact moment its government business faces a headwind.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        India · Trade
+        <a href="https://the-ken.com" target="_blank">↗ the-ken.com</a>
+      </div>
+      <div class="quick-text"><strong>India delays Washington trade delegation.</strong> Following the SCOTUS tariff ruling, India postponed its trade delegation to Washington — one of the first concrete Asian reactions. Section 122 tariffs cannot be country-customised, complicating bilateral deal structures India had been preparing to negotiate on electronics, pharma, and agriculture.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        ARK · VC Access
+        <a href="https://research.ark-invest.com" target="_blank">↗ research.ark-invest.com</a>
+      </div>
+      <div class="quick-text"><strong>Venture capital for IRAs.</strong> ARK argues that VC and IRAs share the same time horizon and that exposure to pre-IPO companies (SpaceX, Anthropic, Epic Games) should not be restricted to accredited investors. The most significant value creation in technology now happens before public markets arrive.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        Paramount / Media
+        <a href="https://variety.com" target="_blank">↗ variety.com</a>
+      </div>
+      <div class="quick-text"><strong>Ellison acquires Paramount.</strong> After a multibillion-dollar bidding war, Skydance — led by David Ellison — closes on Paramount. The deal signals continued conviction in premium content IP as a durable asset class, even as streaming unit economics remain under structural pressure across the industry.</div>
+    </li>
+
+    <li class="quick-item">
+      <div class="quick-source">
+        Temple / Wearables
+        <a href="https://temple.io" target="_blank">↗ temple.io</a>
+      </div>
+      <div class="quick-text"><strong>$54m for elite athlete biometrics.</strong> Temple, targeting elite athletes with physiological metrics that consumer wearables miss, raised $54m at a $190m valuation in its first round. Hyper-precise, data-driven performance technology is moving from labs to professional sport — the mass-consumer trickle-down is the longer-term trade.</div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Singular Intelligence</div>
+  <div class="footer-meta">
+    singularfinance.com &nbsp;·&nbsp; Issue #2 &nbsp;·&nbsp; 1 Mar 2026<br>
+    Curated by Laurent Le Moal
+  </div>
+</footer>
+
+</body>
+</html>
