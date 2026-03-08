@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — 8 March 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --teal:    #0f9b82;
+      --teal-lt: #e6f5f2;
+      --green:   #2a9d4e;
+      --yellow:  #c8960a;
+      --blue:    #1a6fa8;
+      --purple:  #6b3fa0;
+      --orange:  #d4621a;
+      --bitcoin: #f7931a;
+      --ink:     #111827;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #ffffff;
+      --card-bg: #f9fafb;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      background: #f3f4f6;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── WRAPPER ── */
+    .wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--bg);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: var(--ink);
+    }
+    .logo-text span { color: var(--teal); }
+    .header-meta {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 40px 32px 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .issue-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.22;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #374151;
+      max-width: 580px;
+    }
+
+    /* ── OPENER ── */
+    .opener {
+      padding: 28px 32px;
+      border-bottom: 3px solid var(--teal);
+      background: var(--teal-lt);
+    }
+    .opener p {
+      font-size: 14.5px;
+      line-height: 1.72;
+      color: #1f2937;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      padding: 22px 32px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label-text {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FEATURED CARD ── */
+    .featured-card {
+      margin: 0 32px 6px;
+      padding: 24px 24px 22px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      background: radial-gradient(ellipse at top left, #edfaf6 0%, #ffffff 70%);
+    }
+    .featured-card .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .featured-card .tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+    .featured-card h2 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .featured-card p {
+      font-size: 13.5px;
+      line-height: 1.68;
+      color: #374151;
+    }
+    .source-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.2px;
+    }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      margin: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .card {
+      background: var(--bg);
+      padding: 18px 18px 16px;
+    }
+    .card-full {
+      margin: 0 32px 6px;
+      padding: 18px 20px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .tag::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+    .tag-ai    { color: var(--teal);   } .tag-ai::before    { background: var(--teal);   }
+    .tag-fin   { color: var(--blue);   } .tag-fin::before   { background: var(--blue);   }
+    .tag-inv   { color: var(--green);  } .tag-inv::before   { background: var(--green);  }
+    .tag-geo   { color: var(--purple); } .tag-geo::before   { background: var(--purple); }
+    .tag-india { color: var(--orange); } .tag-india::before { background: var(--orange); }
+    .tag-crypto{ color: var(--bitcoin);} .tag-crypto::before{ background: var(--bitcoin);}
+
+    .card h3, .card-full h3 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+      color: var(--ink);
+      margin-bottom: 7px;
+    }
+    .card p, .card-full p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: #4b5563;
+    }
+
+    /* ── QUICK HITS ── */
+    .quick-hits {
+      margin: 0 32px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits-header {
+      background: var(--ink);
+      padding: 12px 20px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+    .qh-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .qh-item:last-child { border-bottom: none; }
+    .qh-source {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding-top: 1px;
+    }
+    .qh-text {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #374151;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .footer-sub {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-right {
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .spacer-sm { height: 8px; }
+    .spacer-md { height: 20px; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15.5" stroke="#0f9b82" stroke-width="1"/>
+        <path d="M16 8C11.6 8 8 11.2 8 15.2C8 17.4 9.1 19.4 10.8 20.7C10.8 20.7 10.4 22.4 10 24C11.6 23.2 13.4 22.1 13.4 22.1C14.2 22.3 15.1 22.4 16 22.4C20.4 22.4 24 19.2 24 15.2C24 11.2 20.4 8 16 8Z" fill="#0f9b82" fill-opacity="0.15" stroke="#0f9b82" stroke-width="1.2"/>
+        <circle cx="12.5" cy="15.2" r="1.4" fill="#0f9b82"/>
+        <circle cx="16" cy="15.2" r="1.4" fill="#0f9b82"/>
+        <circle cx="19.5" cy="15.2" r="1.4" fill="#0f9b82"/>
+      </svg>
+      <div class="logo-text">Singular<span>Intelligence</span></div>
+    </div>
+    <div class="header-meta">
+      Issue #3 &nbsp;·&nbsp; 8 March 2026<br/>
+      singularfinance.com
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="issue-label">Weekly Briefing · Finance &amp; Technology</div>
+    <h1>War premium, stablecoin politics,<br/>and the <em>digital labour</em> inflection</h1>
+    <p class="hero-body">
+      The week geopolitics gatecrashed digital finance. U.S. and Israeli strikes on Iran sent Bitcoin to $63k before a short-squeeze recovered most of the loss. Meanwhile, Washington's stablecoin debate turned partisan, equity tokenisation crossed a conceptual threshold, and the evidence that AI is restructuring corporate headcounts moved from anecdote to earnings call.
+    </p>
+  </div>
+
+  <!-- OPENER -->
+  <div class="opener">
+    <p>
+      Three forces converged this week. First, the Hormuz closure reminded markets that geopolitical tail risk can materialise fast — crypto proved its 24/7 venue advantage when TradFi was dark; prediction markets drew scrutiny for front-running the strikes. Second, the stablecoin CLARITY Act fracas at the White House clarified that payments rails are now explicitly political infrastructure. Third, Block's announcement of a 40% workforce reduction — explicitly attributed to AI — confirmed that the productivity dividend is arriving as a cost story before it shows up as a revenue story. Each trend alone is significant; their simultaneity is the signal.
+    </p>
+  </div>
+
+  <!-- ── COVER STORY ── -->
+  <div class="section-label">
+    <span class="section-label-text">Cover Story</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="featured-card">
+    <div class="tag">Fintech · AI</div>
+    <h2>Block cuts 40% of staff and names AI as the architect</h2>
+    <p>
+      Jack Dorsey's payments group announced it would eliminate roughly 3,300 roles — the most explicit acknowledgment yet from a major fintech that AI-driven automation is replacing knowledge workers, not merely augmenting them. ARK frames this as the leading edge of a broader "digital worker" wave: autonomous agents that execute complex multi-step tasks without human supervision. Perplexity's launch of a model-agnostic "chief of staff" agent — which acts as a general contractor across AI models rather than staying vertically integrated — illustrates the architectural direction. The implications for financial services are acute: compliance, reconciliation, customer onboarding, and fraud review are all high-volume, rule-governed workflows ripe for displacement. Boards should expect more announcements of this kind in H1 2026.
+    </p>
+    <a class="source-link" href="#">↗ ARK Invest · YourStory</a>
+  </div>
+
+  <div class="spacer-md"></div>
+
+  <!-- ── FINTECH & PAYMENTS ── -->
+  <div class="section-label">
+    <span class="section-label-text">Fintech &amp; Payments</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="featured-card">
+    <div class="tag">Fintech</div>
+    <h2>Stablecoins enter the payments mainstream — and Washington blinks</h2>
+    <p>
+      Trump sided publicly with the crypto industry over banks in the CLARITY Act dispute, endorsing stablecoin yield — a direct rebuke of the banking lobby. The SEC simultaneously eased net capital treatment for "payment stablecoins," nudging them closer to cash status on bank balance sheets. Tokenised U.S. Treasuries crossed $11 billion, up 22% year-to-date. Circle's post-IPO momentum (+22% in a week, $770M Q4 revenue, +77% YoY) reflects the market's conviction that stablecoin infrastructure is becoming regulated commodity plumbing. The regulatory direction of travel — federal charter, stablecoin yield, qualified custodian status — is now clearer than at any point since 2022.
+    </p>
+    <a class="source-link" href="#">↗ Artemis Analytics · Fintech Wrap Up</a>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fin">Payments</div>
+      <h3>Agentic commerce creates a silent fraud vector for merchants</h3>
+      <p>Fintech Wrap Up flags the structural risk: when AI agents execute purchases autonomously, traditional fraud signals (device fingerprint, behavioural biometrics, velocity checks) are invalidated. Merchants face disputes with no human on the other side of the transaction.</p>
+      <a class="source-link" href="#">↗ Fintech Wrap Up</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-fin">Regulation</div>
+      <h3>Fintechs race for bank charters — sovereignty over speed</h3>
+      <p>The calculus is shifting: federal preemption, insured deposit funding, and direct rail access justify the regulatory burden. Post-2025 stablecoin frameworks make national trust bank charters especially valuable for custody and reserve management.</p>
+      <a class="source-link" href="#">↗ Fintech Wrap Up</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-fin">Infrastructure</div>
+      <h3>NVIDIA's Georgios Kolovos on AI in payments</h3>
+      <p>Advanced AI teams are pivoting to payments as a priority vertical: higher data volumes, faster decision requirements, and fraud scale make it an ideal deployment environment for GPU-accelerated inference at the edge.</p>
+      <a class="source-link" href="#">↗ Fintech Wrap Up</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">Crypto</div>
+      <h3>BitGo files for NYSE debut; Arbitrum partners Robinhood</h3>
+      <p>Pantera's portfolio spotlight highlights two crypto-equity milestones: BitGo's IPO positions institutional custody infrastructure in public markets; Arbitrum's Robinhood integration brings L2 rails into retail brokerage.</p>
+      <a class="source-link" href="#">↗ Pantera Capital</a>
+    </div>
+  </div>
+
+  <div class="spacer-md"></div>
+
+  <!-- ── ARTIFICIAL INTELLIGENCE ── -->
+  <div class="section-label">
+    <span class="section-label-text">Artificial Intelligence</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="featured-card">
+    <div class="tag">AI · Markets</div>
+    <h2>The Citrini doom-loop memo: positioning over fundamentals</h2>
+    <p>
+      A viral Substack from Citrini Research sketched a scenario where AI-driven productivity gains trigger a demand shock — mass labour displacement collapsing consumption and margin-compressing "AI beneficiary" stocks. The memo named specific companies, causing an immediate correlated selloff across payments rails, delivery, ITSM, and alternative asset managers. Artemis dissects the episode as a reflexivity event: the argument was less about fundamentals than about where crowded longs were concentrated. The counter-read (Ed Zitron et al.) questions the empirical base. What matters for portfolio positioning: correlation between "AI beneficiary" stocks has increased, meaning factor diversification within that basket provides less protection than investors assume.
+    </p>
+    <a class="source-link" href="#">↗ Artemis Analytics</a>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-ai">AI · Hardware</div>
+      <h3>NVIDIA pledges $4B to optical interconnects for AI data centres</h3>
+      <p>Split between Lumentum and Coherent, the investment targets the bandwidth bottleneck in next-generation AI infrastructure. Optical interconnects are becoming the limiting constraint as GPU cluster scale grows.</p>
+      <a class="source-link" href="#">↗ YourStory</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">AI · Robotics</div>
+      <h3>Xiaomi humanoids handle 90% of EV assembly tasks</h3>
+      <p>Two robots completing the majority of assembly work in three hours at line pace — a car every 76 seconds. This is no longer a research milestone; it is production data. The displacement curve in manufacturing is moving faster than consensus expects.</p>
+      <a class="source-link" href="#">↗ YourStory</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">AI · Models</div>
+      <h3>ARK: AI fears disrupting software are overblown near-term</h3>
+      <p>Cathie Wood's February mARKet update argues that DeepSeek-driven anxiety conflates inference cost compression with demand destruction. Lower costs historically expand AI adoption rather than shrinking the revenue pool for incumbent model providers.</p>
+      <a class="source-link" href="#">↗ ARK Invest</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Digital Workers</div>
+      <h3>Perplexity's model-agnostic agent: the general contractor thesis</h3>
+      <p>Rather than vertical integration into proprietary models, Perplexity's autonomous agent acts as an orchestration layer — selecting best-in-class tools per task. This architecture may prove more durable than single-model wrappers as frontier model quality converges.</p>
+      <a class="source-link" href="#">↗ YourStory</a>
+    </div>
+  </div>
+
+  <div class="spacer-md"></div>
+
+  <!-- ── MARKETS & MACRO ── -->
+  <div class="section-label">
+    <span class="section-label-text">Markets &amp; Macro</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="featured-card">
+    <div class="tag">Macro · Geopolitics</div>
+    <h2>Iran strikes: a real shock absorbed by resilient fundamentals</h2>
+    <p>
+      The U.S.-Israeli operation — confirmed with Khamenei's death per Iranian state TV — closed the Strait of Hormuz and sent oil prices sharply higher. Yet equity markets absorbed the news with relative calm. LEO Wealth's analysis frames this resilience correctly: the U.S. economy's energy intensity has fallen dramatically since the 1970s oil shocks, inflation expectations remain anchored, and private domestic demand is solid. A short-lived conflict could perversely remove a geopolitical overhang and ease conditions in Europe and China. The risk scenario — prolonged Hormuz closure, sustained $100+ oil — remains non-trivial but is not the base case. The Supreme Court's simultaneous ruling striking down broad tariffs further reduces inflationary pressure, improving the rate-cut trajectory.
+    </p>
+    <a class="source-link" href="#">↗ LEO Wealth · Goldman Sachs Briefings</a>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-inv">Crypto Markets</div>
+      <h3>Bitcoin: $63k floor, $73k recovery, Polymarket under scrutiny</h3>
+      <p>BTC's war-weekend drop and midweek squeeze demonstrated the 24/7 venue advantage of onchain markets. More notable: wallets netting $1.2M from pre-strike bets on the exact date of the attack drew commodity trading law questions.</p>
+      <a class="source-link" href="#">↗ Artemis Analytics</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-inv">Crypto Factor</div>
+      <h3>Artemis factor model: Momentum and Value survive the drawdown</h3>
+      <p>Despite the broad crypto market falling 23.5% in February, long-short Momentum (+11.3%), Value (+10.9%), and Growth (+2.7%) all posted positive returns — validating the case for factor construction over long-only exposure in bear conditions.</p>
+      <a class="source-link" href="#">↗ Artemis Analytics</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-inv">Rotation</div>
+      <h3>A quiet growth-to-value rotation gathers pace</h3>
+      <p>LEO Wealth's monthly view identifies a meaningful sector rotation — from growth stocks into value — occurring without a broad market drawdown. Historically, this pattern signals a healthier, more durable phase of the cycle rather than a speculative top.</p>
+      <a class="source-link" href="#">↗ LEO Wealth</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-inv">Space Economy</div>
+      <h3>Reusable rockets: the cost curve that changes everything</h3>
+      <p>ARK frames launch cost deflation as one of the largest technology buildouts in history. SpaceX's reusability model has compressed per-kg-to-orbit costs by ~90% since 2010. The downstream economic surface area — satellite internet, Earth observation, in-orbit compute — scales with each new cost floor.</p>
+      <a class="source-link" href="#">↗ ARK Invest</a>
+    </div>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <div class="card-full">
+    <div class="tag tag-inv">Capital Markets</div>
+    <h3>Equity tokenisation crosses a structural threshold</h3>
+    <p>Chamath's analysis lays out the case precisely: global equity markets exceed $150 trillion yet remain constrained by T+1/T+2 settlement, limited hours, and intermediary layers. Since early 2025, equity token market cap has risen 3.5x. NYSE, Nasdaq, and DTCC are all building tokenised infrastructure. The three structural wins — 24/7 trading, programmable collateral, direct ownership ledgers — are not incremental improvements; they change the physics of capital allocation. The parallel with stablecoin adoption (10x in five years) is instructive: when tokenised instruments deliver clear infrastructure advantages, institutional adoption follows. The question for traditional exchanges and custodians is not whether this arrives, but at what speed.</p>
+    <a class="source-link" href="#">↗ Chamath Palihapitiya / Social Capital</a>
+  </div>
+
+  <div class="spacer-md"></div>
+
+  <!-- ── INDIA & EMERGING MARKETS ── -->
+  <div class="section-label">
+    <span class="section-label-text">India &amp; Emerging Markets</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="featured-card">
+    <div class="tag">India · Venture</div>
+    <h2>Indian startups: $1.4B in February, but Neysa is doing the heavy lifting</h2>
+    <p>
+      February VC inflows hit $1.4 billion — a 110% year-on-year increase and 52% above January. The headline flatters the underlying: strip out Neysa's $600M raise and the ecosystem raised $800–900M, a healthy but less dramatic number. Stellaris Venture Partners' AI playbook is instructive for the next layer: the firm is deploying $100–150M into AI and deeptech with a founder-first, thesis-flexible approach, targeting application enablers and agent infrastructure rather than foundation model bets. India's AI investment cycle is in early innings; the convergence of a large engineering talent base, state GCC expansion, and improving cloud infrastructure creates a credible compounding story.
+    </p>
+    <a class="source-link" href="#">↗ YourStory</a>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-india">India · EdTech</div>
+      <h3>Madhi Foundation: policy-to-classroom at 37,000 schools</h3>
+      <p>Tamil Nadu's Ennum Ezhuthum Mission, built with Madhi Foundation, demonstrates that foundational learning reform at state scale is achievable. The model — long-term government partnership, teacher coaching, curriculum alignment — is replicable and quietly influential on India's EdTech investment thesis.</p>
+      <a class="source-link" href="#">↗ YourStory</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-india">India · Gender Finance</div>
+      <h3>Rs 40 lakh crore GDP opportunity if women's wealth creation scales</h3>
+      <p>An EY/Lxme report quantifies the gap: women earn less, invest later, and are underserved by policy. Closing structural barriers — financial literacy, workforce participation, investment access — unlocks a significant GDP multiplier. The fintech implication: products built for women's financial journeys remain underpenetrated.</p>
+      <a class="source-link" href="#">↗ YourStory</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-geo">China</div>
+      <h3>China's 4.5–5% growth target: the lowest since 1991</h3>
+      <p>Beijing's restrained ambition reflects structural headwinds — weak consumption, demographic drag, trade tension. For emerging market investors, this recalibration matters: a slower Chinese growth engine reduces the tide-lifts-all-boats dynamic for Asia ex-China.</p>
+      <a class="source-link" href="#">↗ YourStory</a>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">RWA</div>
+      <h3>Tokenised Treasuries at $11B: the institutional on-ramp is open</h3>
+      <p>A 22% YTD increase in tokenised U.S. Treasury holdings confirms that real-world asset tokenisation has cleared the proof-of-concept stage. The on-chain yield products are now attracting institutional capital that previously had no incentive to hold assets on public ledgers.</p>
+      <a class="source-link" href="#">↗ Artemis Analytics</a>
+    </div>
+  </div>
+
+  <div class="spacer-md"></div>
+
+  <!-- ── QUICK HITS ── -->
+  <div class="section-label">
+    <span class="section-label-text">Quick Hits</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="quick-hits">
+    <div class="quick-hits-header">Six things worth knowing</div>
+    <div class="qh-item">
+      <div class="qh-source">Artemis</div>
+      <div class="qh-text">HYPE processed $9.6B in 24h perpetuals volume during the Iran conflict weekend — up 37% WoW — as the always-on onchain venue proved its utility when TradFi was dark.</div>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">Artemis</div>
+      <div class="qh-text">Core Scientific (CORZ) secured a $500M–$1B Morgan Stanley facility to convert mining sites into AI data centres, liquidating its entire BTC portfolio to fund the pivot — joining Bitdeer and MARA in the miner-to-compute exodus.</div>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">Pantera</div>
+      <div class="qh-text">Novig raised $75M to build a sports betting exchange with institutional-grade market-making — one of the cleaner applications of onchain prediction market infrastructure to regulated wagering.</div>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">LEO Wealth</div>
+      <div class="qh-text">Leveraged ETFs' daily reset mechanic causes volatility decay that turns negative expected return above ~26% annualised index volatility — structurally unsuitable for multi-week retail holding periods, yet widely held that way.</div>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">ARK Invest</div>
+      <div class="qh-text">Figure Technology Solutions ($FIGR) fell 67% from highs despite 91% revenue growth and 426% EBITDA growth — a BofA price-target cut and a GAAP EPS miss (driven by one-time SBC) overwhelmed strong underlying fundamentals.</div>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">YourStory</div>
+      <div class="qh-text">Apple unveiled the iPhone 17e, iPad Air M4, and entry-level iPad this week; Honor showcased a "Robot Phone" with humanoid tease at MWC Barcelona — the smartphone-to-robotics convergence theme is now a product category, not a concept.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Singular Intelligence</div>
+        <div class="footer-sub">
+          Weekly briefing from SingularFinance.com<br/>
+          Curated by Laurent Le Moal<br/>
+          Sources: ARK Invest · Artemis Analytics · Goldman Sachs · Chamath/Social Capital · Fintech Wrap Up · YourStory · LEO Wealth · Pantera Capital
+        </div>
+      </div>
+      <div class="footer-right">
+        Issue #3<br/>
+        8 March 2026<br/>
+        <a href="https://singularfinance.com" style="color:var(--teal);">singularfinance.com</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
