@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 23 March 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --teal: #0f9b82; --teal-light: #e6f5f2; --ink: #111827;
+      --muted: #6b7280; --border: #e5e7eb; --surface: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.65; color: var(--ink); background: #ffffff; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border); }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 42px; height: 42px; flex-shrink: 0; }
+    .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-top { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+    .logo-main { font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .hero { padding: 44px 28px 36px; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+    .hero-title { font-size: 38px; font-weight: 700; line-height: 1.12; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--teal); }
+    .brief-block { background: var(--surface); border-left: 3px solid var(--teal); padding: 18px 20px; border-radius: 0 6px 6px 0; }
+    .brief-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+    .brief-block p { font-size: 14px; line-height: 1.7; color: #374151; }
+    .opener { padding: 28px 28px 24px; border-bottom: 1px solid var(--border); }
+    .opener p { font-size: 15px; line-height: 1.75; color: #374151; }
+    .section-wrap { padding: 28px 28px 8px; }
+    .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .section-label-text { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .section-label-line { flex: 1; height: 1px; background: var(--border); }
+    .card-featured { background: radial-gradient(ellipse at top left, #f0fdf9 0%, #ffffff 60%); border: 1px solid #b6e5da; border-left: 4px solid var(--teal); border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+    .card-featured h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; margin: 10px 0 12px; color: var(--ink); }
+    .card-featured p { font-size: 14px; line-height: 1.75; color: #374151; margin-bottom: 10px; }
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+    .card { background: #ffffff; padding: 20px; }
+    .card-full { background: #ffffff; padding: 20px; grid-column: 1 / -1; border-top: 1px solid var(--border); }
+    .card h3 { font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; margin: 8px 0 9px; color: var(--ink); }
+    .card-full h3 { font-size: 16px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; margin: 8px 0 9px; color: var(--ink); }
+    .card p, .card-full p { font-size: 13px; line-height: 1.7; color: #4b5563; }
+    .card-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .card-tag::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .tag-ai { color: #0f9b82; } .tag-fintech { color: #2563eb; } .tag-invest { color: #2a9d4e; }
+    .tag-geo { color: #7c3aed; } .tag-india { color: #ea580c; } .tag-macro { color: #b45309; }
+    .source-link { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 500; color: var(--teal); text-decoration: none; letter-spacing: 0.02em; }
+    .quick-hits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .qh-item { background: #ffffff; padding: 16px 18px; }
+    .qh-source { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .qh-item p { font-size: 13px; line-height: 1.6; color: #374151; }
+    .qh-item p strong { color: var(--ink); font-weight: 600; }
+    footer { padding: 28px; border-top: 1px solid var(--border); background: var(--surface); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+    .footer-brand { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .footer-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .footer-right { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20.5" stroke="#0f9b82" stroke-width="1"/>
+        <path d="M21 9C14.4 9 9 14.1 9 20.5C9 23.3 10.1 25.8 11.9 27.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <path d="M21 12C16.0 12 12 15.8 12 20.5C12 23.0 13.0 25.2 14.7 26.8" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <path d="M21 15C17.7 15 15 17.5 15 20.5C15 22.2 15.8 23.7 17 24.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <path d="M21 9C27.6 9 33 14.1 33 20.5C33 23.3 31.9 25.8 30.1 27.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M21 12C26.0 12 30 15.8 30 20.5C30 23.0 29.0 25.2 27.3 26.8" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M21 15C24.3 15 27 17.5 27 20.5C27 22.2 26.2 23.7 25 24.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <circle cx="21" cy="20.5" r="2" fill="#0f9b82"/>
+      </svg>
+      <div class="logo-names">
+        <span class="logo-top">Singular</span>
+        <span class="logo-main">Singular Intelligence</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      Week of 23 March 2026&nbsp;·&nbsp;Issue #4<br/>
+      singularfinance.com
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">weekly intelligence briefing</div>
+    <h1 class="hero-title">the signal <em>&amp; the noise</em></h1>
+    <div class="brief-block">
+      <div class="brief-label">This week in brief</div>
+      <p>Markets digested a $200bn Pentagon war budget request as Middle East escalation pushed the S&amp;P 500 down 2.5% and gold off its highs. NVIDIA's Jensen Huang reset the AI infrastructure thesis — $1 trillion in Blackwell/Rubin revenue through 2027, computing demand up one million times in two years. The acquirer stack is bifurcating structurally: firms treating authorisation rate as a product are widening their margin lead by 5–12 percentage points. And prediction markets reached $6bn in weekly volume, up 100× in 24 months, with Polymarket now CFTC-licensed.</p>
+    </div>
+  </section>
+
+  <section class="opener">
+    <p>Three narratives dominated the week. First, NVIDIA's GTC keynote confirmed the infrastructure buildout is not slowing — it is accelerating and diversifying from training toward inference and agentic workloads; the power bottleneck is real but is a supply problem, not a demand one. Second, the payments stack continued its quiet bifurcation: acquirers who built intelligence layers are pulling away from those who built throughput — a structural divergence with direct implications for merchant services competitive positioning. Third, prediction markets crossed from curiosity to regulated financial infrastructure, completing the institutional legitimacy cycle. Each development compounds the others: smarter infrastructure, smarter payments rails, smarter price discovery.</p>
+  </section>
+
+  <!-- COVER STORY -->
+  <div class="section-wrap">
+    <div class="section-label"><span class="section-label-text">Cover Story</span><div class="section-label-line"></div></div>
+    <div class="card-featured">
+      <span class="card-tag tag-ai">AI · Infrastructure</span>
+      <h2>Jensen's $1 Trillion Bet: NVIDIA Rewrites the Agent Era Thesis</h2>
+      <p>At GTC on March 16, NVIDIA's CEO told the audience that computing demand has risen one million times in two years and that inference — not training — is now the inflection point. The Vera Rubin platform integrates seven specialised chips in a unified rack, delivering 10× the inference efficiency of Blackwell. Revenue guidance rose to $1 trillion from Blackwell and Rubin combined through 2027, up from the $500bn forecast issued a year ago.</p>
+      <p>The strategic shift matters beyond the numbers. NVIDIA is repositioning from chip vendor to full-stack provider for autonomous software systems. NemoClaw allows single-command deployment of self-evolving AI agents in isolated sandboxes. Huang's articulated vision — 75,000 employees working alongside 7.5 million AI agents — is a product roadmap. The Groq 3 LPX rack, handling latency-sensitive inference alongside Vera Rubin, suggests a two-tier architecture: brute-force training capacity plus real-time inference fabric. Power remains the binding constraint: the US disclosed data centre pipeline hit 241 GW but only a third is under active development, constrained by grid capacity, not capital.</p>
+      <a class="source-link" href="https://chamath.substack.com/p/what-i-read-this-week-176">Source: Chamath / Social Capital →</a>
+    </div>
+  </div>
+
+  <!-- FINTECH & PAYMENTS -->
+  <div class="section-wrap">
+    <div class="section-label"><span class="section-label-text">Fintech &amp; Payments</span><div class="section-label-line"></div></div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag tag-fintech">Acquiring · Strategy</span>
+        <h3>The Acquirer Divergence: 5–12 Points and Widening</h3>
+        <p>A merchant switching acquirers — same cards, same customers — can see authorisation rates jump five points overnight. On €1bn volume, that is €50m in recovered revenue. Adyen treats authorisation rate as "the key competitive metric" and closed 2025 with a 53% EBITDA margin. Stripe's Payments Foundation Model runs self-supervised learning across tens of billions of transactions. Infrastructure providers who built throughput instead delivered −17% total shareholder return.</p>
+        <a class="source-link" href="https://dwaynegefferie.substack.com/p/the-acquirer-divergence">Source: Payments Strategy Breakdown →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-fintech">Agentic Commerce · Trust</span>
+        <h3>Visa vs Mastercard: Two Trust Architectures for Agent Payments</h3>
+        <p>Agentic commerce breaks the foundational assumption of online payments: a human was here. Mastercard's Verifiable Intent and Visa's Trusted Agent Protocol both address the same three failures — merchant fraud detection, issuer audit trails, and portable agent authority — but sit in different parts of the stack. The race to become the default trust layer for autonomous transactions is the network battle of the decade.</p>
+        <a class="source-link" href="https://www.fintechwrapup.com/p/understanding-bnpl-landscape-and">Source: Fintech Wrap Up →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-fintech">AML · Compliance</span>
+        <h3>Financial Crime Industrialised: The $4.4 Trillion Compliance Trap</h3>
+        <p>Global illicit financial activity reached $4.4 trillion in 2025, up $1.3 trillion in two years. Banks allocate 10–15% of headcount to KYC/AML and detect ~2% of flows. Traditional rule-based systems generate 95% false-positive alerts; a single SAR takes 4+ days. Agentic AI — which plans and executes autonomously — is the only architecture that changes this arithmetic. Unit21's 2026 platform relaunch signals the transition from rules engine to agentic investigator.</p>
+        <a class="source-link" href="https://www.fintechwrapup.com/p/deep-dive-agentic-ai-in-financial">Source: Fintech Wrap Up →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-fintech">AI · Finance Ops</span>
+        <h3>AI Coworkers in Finance: From Efficiency to Autonomous Execution</h3>
+        <p>Stuut COO Ben Winter draws the distinction most AI-in-finance framing misses: the shift is not from slow to fast — it is from human-directed software to software that executes independently. In finance teams, this is most visible in credit assessment, covenant monitoring, and regulatory filing. The implication is fewer finance headcount, not just faster finance headcount.</p>
+        <a class="source-link" href="https://www.fintechwrapup.com/p/ben-winter-coo-stuut-ai-coworkers">Source: Fintech Wrap Up →</a>
+      </div>
+      <div class="card-full">
+        <span class="card-tag tag-fintech">Digital Finance · 2030</span>
+        <h3>The Artemis 2030 Manifesto: Stablecoins, Agents, and the End of Card Economics</h3>
+        <p>Artemis — data partner to McKinsey, Visa, and Sequoia — published its 2030 scenario anchored by Tempo Mainnet's March 18 launch. The picture: AI agents deploying capital via Hyperliquid's HIP-3 markets, S&amp;P 500 perpetual futures trading 24/7 onchain, and stablecoins on Solana/Ethereum L2s as the default settlement layer at fractions of a cent per transaction. HYPE's 50% move reflects a re-rating of revenue quality — commodities and equities now constitute over 80% of HIP-3 volume, making it structurally less correlated to Bitcoin cycles. The manifesto's central argument: card economics do not survive a world where agents choose settlement rails on cost.</p>
+        <a class="source-link" href="https://research.artemisanalytics.com/p/the-2030-artemis-digital-finance">Source: Artemis Analytics →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTIFICIAL INTELLIGENCE -->
+  <div class="section-wrap">
+    <div class="section-label"><span class="section-label-text">Artificial Intelligence</span><div class="section-label-line"></div></div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag tag-ai">AI · Enterprise</span>
+        <h3>The Dark Matter of Work: Capturing Tacit Knowledge</h3>
+        <p>The durable AI product strategy is not better reasoning — it is expanding what the AI can observe. A new class of tools is encoding tacit organisational knowledge into structured data layers: vision models tracking how users operate applications, language models extracting intent from Slack and email, code provenance tools tracing AI-generated functions to developer corrections. Products built on novel inputs survive model upgrades; products that merely improve on model capabilities do not.</p>
+        <a class="source-link" href="https://www.thetimes.blog/p/the-dark-matter-of-work">Source: Timespan VC →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-ai">AI · Education</span>
+        <h3>Generative AI in Education: Productivity Tool or Pedagogical Disruption?</h3>
+        <p>Polytechnique Insights frames the tension: generative AI makes students faster at producing outputs but may undermine the cognitive struggle that produces learning. Regulators are responding unevenly — some treating AI use as academic dishonesty, others mandating AI literacy. Institutions designing curricula around AI co-production rather than prohibition will produce graduates better matched to actual knowledge-work environments.</p>
+        <a class="source-link" href="https://polytechnique-insights.com">Source: Polytechnique Insights →</a>
+      </div>
+      <div class="card-full">
+        <span class="card-tag tag-ai">AI · Big Ideas 2026</span>
+        <h3>ARK's Five Convergences: The Investment Thesis for the Next Cycle</h3>
+        <p>ARK's Big Ideas 2026 report identifies five converging platforms: artificial intelligence, autonomous tech and robotics, biotech and multiomics, space and defence, and blockchain and fintech. The multiomics thread is structurally compelling: sequencing costs projected to fall ~10× by 2030 while molecular test data volumes rise 10×, feeding an AI flywheel that accelerates diagnostics and drug development. ARK estimates ~one-third of FDA-approved diagnostics could be AI-powered by 2030. The macro frame — advances in one platform unlocking capabilities in others faster than any prior cycle — is the thesis behind the infrastructure capex acceleration visible in NVIDIA's numbers.</p>
+        <a class="source-link" href="https://ark-invest.com">Source: ARK Invest →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETS & MACRO -->
+  <div class="section-wrap">
+    <div class="section-label"><span class="section-label-text">Markets &amp; Macro</span><div class="section-label-line"></div></div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag tag-macro">Macro · Geopolitics</span>
+        <h3>$200bn Pentagon Budget, −2.5% S&amp;P: The War Premium Embeds</h3>
+        <p>The S&amp;P 500 fell 2.52% on the week — a −1.5% move Friday following Pentagon reporting of a $200bn war budget request and possible troop deployment. Gold and silver retreated from prior highs as 2-year Treasury yields spiked to 3.9%, repricing Fed optionality. Crypto showed dispersion: HYPE +36%, CRLC +100% over the past month, while the mean was flat. The conflict premium is now a structural variable in asset allocation, not a transient tail risk.</p>
+        <a class="source-link" href="https://research.artemisanalytics.com/p/artemis-weekly-digital-finance-fundamentals-28f">Source: Artemis Analytics →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-invest">Prediction Markets</span>
+        <h3>$6bn Weekly Volume: Prediction Markets Are Financial Infrastructure</h3>
+        <p>From $50m weekly volume pre-2024 election to $6bn now — a 100× move in under 24 months. Polymarket's acquisition of CFTC-licensed QCEX in July 2025 completed the institutional access cycle. Both Kalshi and Polymarket are now accessible via Robinhood, Coinbase, and DraftKings. The liquidity network effect has kicked in. Polymarket's Middle East conflict odds have become a leading macro indicator in their own right.</p>
+        <a class="source-link" href="https://chamath.substack.com/p/prediction-markets">Source: Chamath / Social Capital →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-macro">Goldman · CEO Letter</span>
+        <h3>David Solomon: Europe's AI Edge and the Productivity Dividend</h3>
+        <p>Goldman's CEO letter highlighted Europe's regulatory environment as a potential AI competitive advantage — GDPR-compliant data governance as differentiator rather than brake. The broader Goldman frame: the productivity dividend from AI is real but will manifest unevenly, concentrated in firms that restructure workflows rather than layer AI onto legacy processes.</p>
+        <a class="source-link" href="https://newsletter.mail.gs.com">Source: Goldman Sachs Briefings →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-invest">Biotech · ARK</span>
+        <h3>Absci +21% on ABS-201 Milestones; Elbit Systems Moves on Defence</h3>
+        <p>ARK's weekly commentary flagged two moves above the 15% threshold. Absci (ABSI) rose 21% after management outlined specific clinical milestones for ABS-201, its antibody therapeutic for hair loss — preliminary safety data H1 2026, proof-of-concept data at week 13 H2 2026. Elbit Systems (ESLT) moved on the Middle East defence budget announcements, consistent with the re-rating of defence contractors as war premium embeds structurally.</p>
+        <a class="source-link" href="https://ark-invest.com">Source: ARK Invest →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDIA & EMERGING MARKETS -->
+  <div class="section-wrap">
+    <div class="section-label"><span class="section-label-text">India &amp; Emerging Markets</span><div class="section-label-line"></div></div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag tag-india">India · AI</span>
+        <h3>Accel + Google Back Five AI Startups; India's AI Flywheel Accelerates</h3>
+        <p>Accel and Google's 2026 Atoms AI Cohort provides up to $2m and cloud compute credits to five early-stage startups spanning scientific discovery, enterprise software, voice automation, and manufacturing. Global capital continues to flow into India's AI layer — a structural confirmation that the country is moving from IT services provider to AI-native product originator.</p>
+        <a class="source-link" href="https://yourstory.com">Source: YourStory →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-india">India · Healthtech</span>
+        <h3>MicrobioTx: Gut Microbiome Profiling via Finger-Prick Blood Test</h3>
+        <p>Bengaluru-based MicrobioTx has commercialised a gut health test replacing stool samples with a finger-prick blood analysis of metabolites circulating from gut microbes. The approach addresses the main adoption barrier for microbiome testing and delivers personalised nutrition recommendations via AI. The company sits at the intersection of two ARK Big Ideas themes: multiomics cost reduction and AI-native diagnostics.</p>
+        <a class="source-link" href="https://yourstory.com">Source: YourStory →</a>
+      </div>
+      <div class="card-full">
+        <span class="card-tag tag-india">India · Fintech · Housing</span>
+        <h3>Weaver Services Raises ₹1,450 Crore for Inclusive Housing Finance</h3>
+        <p>Housing finance platform Weaver Services closed ₹1,450 crore (~$175m) across two rounds led by Premji Invest and Lightspeed Venture Partners, targeting underserved borrowers — self-employed individuals, small business owners, and first-time homebuyers in Tier II and III cities. This segment is largely absent from formal credit, making it a large addressable market with a strong financial inclusion narrative. Rising oil prices and a more cautious Fed are macro headwinds, but domestic Indian credit demand for housing remains structurally intact given urbanisation rates and housing stock deficits.</p>
+        <a class="source-link" href="https://yourstory.com">Source: YourStory →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK HITS -->
+  <div class="section-wrap">
+    <div class="section-label"><span class="section-label-text">Quick Hits</span><div class="section-label-line"></div></div>
+    <div class="quick-hits-grid">
+      <div class="qh-item">
+        <div class="qh-source">Polytechnique Insights</div>
+        <p><strong>EU Electric Dependency:</strong> CNRS researcher Gilles Lepesant maps Europe's energy sovereignty exposure as AI data centre power demand compounds existing grid vulnerabilities. The EU's electric dependency strategy is now inseparable from its AI industrial policy.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">AVC / Fred Wilson</div>
+        <p><strong>QSBS &amp; New York State:</strong> Fred Wilson revisits Qualified Small Business Stock rules and New York's non-conformity with federal QSBS exclusions — a structural tax disadvantage for NY-based startup founders that continues to drive capital formation toward other states.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">YourStory</div>
+        <p><strong>Microsoft vs OpenAI / Amazon:</strong> Microsoft is reportedly weighing legal action over a $50bn OpenAI–Amazon deal naming AWS as exclusive cloud for Frontier, OpenAI's enterprise agent platform — a direct challenge to Microsoft's Azure exclusivity. The cloud war for AI workloads has become explicitly litigious.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">Polytechnique Insights</div>
+        <p><strong>Social Media Addiction:</strong> Regulatory framing is shifting from content moderation to platform architecture — scrutinising algorithmic design for addictiveness. Structural implications for engagement-maximising business models are coming into view.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">Polytechnique Insights</div>
+        <p><strong>Drone Warfare Redefines Military Balance:</strong> Ukraine experience: 5 million drones per year restructure battlefield economics. French generals note it is "virtually impossible to defend against drones" — a procurement insight with direct implications for the space and defence investment thesis.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">Artemis / Hyperliquid</div>
+        <p><strong>S&amp;P 500 Perpetual Futures Go Onchain:</strong> trade[XYZ] and S&amp;P Global launched the first official S&amp;P 500 perpetual contract on Hyperliquid's HIP-3 market — 24/7 onchain access to the world's most iconic benchmark. Commodities and equities now represent over 80% of HIP-3 volume, making the protocol structurally less correlated to crypto cycles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 32px;"></div>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Singular Intelligence</div>
+      <div class="footer-sub">singularfinance.com<br/>Curated by Laurent Le Moal</div>
+    </div>
+    <div class="footer-right">
+      Issue #4 · Week of 23 March 2026<br/>
+      ARK Invest · Artemis Analytics · Chamath/Social Capital<br/>
+      Fintech Wrap Up · Goldman Sachs · YourStory · Polytechnique Insights
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
