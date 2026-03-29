@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Singular Intelligence — Week of 29 March 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal: #0f9b82;
+    --teal-light: #e6f5f2;
+    --ink: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --surface: #f9fafb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Inter, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: #ffffff;
+  }
+  .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; }
+
+  /* HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon { width: 42px; height: 42px; flex-shrink: 0; }
+  .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+  .logo-top {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--teal);
+  }
+  .logo-main {
+    font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink);
+  }
+  .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* HERO */
+  .hero { padding: 44px 28px 36px; border-bottom: 1px solid var(--border); }
+  .hero-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: 38px; font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+  }
+  .hero-title em { font-style: italic; color: var(--teal); }
+
+  /* BRIEF BLOCK */
+  .brief-block {
+    background: var(--surface);
+    border-left: 3px solid var(--teal);
+    padding: 18px 20px;
+    border-radius: 0 6px 6px 0;
+  }
+  .brief-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 8px;
+  }
+  .brief-block p { font-size: 14px; line-height: 1.7; color: #374151; }
+
+  /* OPENER */
+  .opener { padding: 28px 28px 24px; border-bottom: 1px solid var(--border); }
+  .opener p { font-size: 15px; line-height: 1.75; color: #374151; }
+
+  /* SECTION */
+  .section-wrap { padding: 28px 28px 8px; }
+  .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .section-label-text {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+  }
+  .section-label-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* FEATURED CARD (cover story) */
+  .card-featured {
+    background: radial-gradient(at left top, #f0fdf9 0%, #ffffff 60%);
+    border-top: 1px solid #b6e5da;
+    border-right: 1px solid #b6e5da;
+    border-bottom: 1px solid #b6e5da;
+    border-left: 4px solid var(--teal);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card-featured h2 {
+    font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.3; margin: 10px 0 12px; color: var(--ink);
+  }
+  .card-featured p { font-size: 14px; line-height: 1.75; color: #374151; margin-bottom: 10px; }
+
+  /* CARD GRID */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .card { background: #ffffff; padding: 20px; }
+  .card-full {
+    background: #ffffff; padding: 20px;
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border);
+  }
+  .card h3 {
+    font-size: 15px; font-weight: 600; line-height: 1.35;
+    letter-spacing: -0.01em; margin: 8px 0 9px; color: var(--ink);
+  }
+  .card-full h3 {
+    font-size: 16px; font-weight: 600; line-height: 1.35;
+    letter-spacing: -0.01em; margin: 8px 0 9px; color: var(--ink);
+  }
+  .card p, .card-full p { font-size: 13px; line-height: 1.7; color: #4b5563; }
+
+  /* TAGS */
+  .card-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .card-tag::before {
+    content: ""; display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+  .tag-ai    { color: #0f9b82; }
+  .tag-fintech { color: #2563eb; }
+  .tag-invest  { color: #2a9d4e; }
+  .tag-geo     { color: #7c3aed; }
+  .tag-india   { color: #ea580c; }
+  .tag-macro   { color: #b45309; }
+
+  /* SOURCE LINK */
+  .source-link {
+    display: inline-block; margin-top: 10px;
+    font-size: 11px; font-weight: 500; color: var(--teal);
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .source-link:hover { text-decoration: underline; }
+
+  /* QUICK HITS */
+  .quick-hits-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .qh-item { background: #ffffff; padding: 16px 18px; }
+  .qh-source {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+  }
+  .qh-item p { font-size: 13px; line-height: 1.6; color: #374151; }
+  .qh-item p strong { color: var(--ink); font-weight: 600; }
+
+  /* FOOTER */
+  footer {
+    padding: 28px; border-top: 1px solid var(--border);
+    background: var(--surface);
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 20px;
+  }
+  .footer-brand { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .footer-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .footer-right { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20.5" stroke="#0f9b82" stroke-width="1"/>
+      <path d="M21 9C14.4 9 9 14.1 9 20.5C9 23.3 10.1 25.8 11.9 27.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+      <path d="M21 12C16.0 12 12 15.8 12 20.5C12 23.0 13.0 25.2 14.7 26.8" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+      <path d="M21 15C17.7 15 15 17.5 15 20.5C15 22.2 15.8 23.7 17 24.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+      <path d="M21 9C27.6 9 33 14.1 33 20.5C33 23.3 31.9 25.8 30.1 27.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <path d="M21 12C26.0 12 30 15.8 30 20.5C30 23.0 29.0 25.2 27.3 26.8" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <path d="M21 15C24.3 15 27 17.5 27 20.5C27 22.2 26.2 23.7 25 24.7" stroke="#0f9b82" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <circle cx="21" cy="20.5" r="2" fill="#0f9b82"/>
+    </svg>
+    <div class="logo-names">
+      <span class="logo-top">Singular · Finance</span>
+      <span class="logo-main">Singular Intelligence</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    Week of 29 March 2026 · Issue #5<br/>
+    singularfinance.com
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">weekly intelligence briefing</div>
+  <h1 class="hero-title">the signal <em>&amp; the noise</em></h1>
+  <div class="brief-block">
+    <div class="brief-label">This week in brief</div>
+    <p>Risk-off across the board as the US–Iran conflict reshapes supply chains well beyond the oil price. Circle lost $5 billion in market cap in a single session after a Senate stablecoin yield ban — on the very day USDC hit all-time supply highs. The acquirer stack bifurcated further: a five-point authorisation rate gap is now worth €50 million on a billion-euro book. And the agentic era moved from thesis to liability question — when a software agent initiates a transaction, the Merchant of Record absorbs the risk, by default.</p>
+  </div>
+</section>
+
+<!-- OPENER -->
+<div class="opener">
+  <p>Three narratives dominated the week. First, the US–Iran conflict's financial blast radius extends far beyond crude: helium, fertilisers, aluminium, and petrochemicals are all in scope, with Asian economies most exposed. Second, the Clarity Act draft drew the clearest regulatory line yet on stablecoins — payment rails yes, deposit substitutes no — triggering a violent repricing of Circle despite USDC's strongest fundamentals on record. Third, the infrastructure layer for agentic commerce is taking shape faster than the governance layer: Nvidia doubled its compute order pipeline, Tempo launched machine-payment rails on mainnet, and Fintech Wrap Up laid out the structural liability gap merchants are walking into. Each development compounds the others.</p>
+</div>
+
+<!-- ── COVER STORY ── -->
+<div class="section-wrap">
+  <div class="section-label">
+    <span class="section-label-text">Cover Story</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card-featured">
+    <span class="card-tag tag-ai">AI · Payments</span>
+    <h2>The Hidden Liability of Agentic Commerce</h2>
+    <p>The payment architecture was built on one assumption: a human was present. Fraud detection reads typing cadence, mouse movement, device fingerprints. When a software agent makes the call — no cadence, no movement, no fingerprint — the entire signal stack goes dark. And in every protocol currently proposed, from OpenAI's ACP to Google's AP2, the Merchant of Record remains the merchant. Full autonomy, full risk, zero of the historical protections.</p>
+    <p>OpenAI and Stripe co-developed ACP as an application-layer standard for conversational commerce; it protects consumer credentials via scoped payment tokens but does little against intent disputes. Google's AP2, built with a coalition of 60 partners, goes further: cryptographically signed "mandates" define what the agent is authorised to do and create an audit trail issuers can actually use. Neither is deployed at scale. Worldpay processes 55 billion transactions a year and is building toward AP2 compliance. The gap between agent-generated token consumption and liability-framework maturity is widening faster than the industry is closing it.</p>
+    <p>The practical implication: re-read your MoR contracts before your procurement agents do something your risk team did not model. Chargeback liability for "hallucination disputes" — an agent orders the wrong product through misinterpretation of user intent — currently lands on you.</p>
+    <a href="https://www.fintechwrapup.com/p/deep-dive-the-hidden-liability-of" class="source-link">Source: Fintech Wrap Up →</a>
+  </div>
+</div>
+
+<!-- ── FINTECH & PAYMENTS ── -->
+<div class="section-wrap">
+  <div class="section-label">
+    <span class="section-label-text">Fintech &amp; Payments</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card-grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <span class="card-tag tag-fintech">Acquiring · Strategy</span>
+      <h3>The Acquirer Divergence: 5–12 Points and Structural</h3>
+      <p>A merchant switching acquirers — same cards, same customers — can see authorisation rates jump five points overnight. On €1bn volume, that is €50m in recovered revenue. The gap between best and rest has widened to 5–12 percentage points and is no longer cyclical. Adyen (€1.4tn volume, 53% EBITDA margin) treats auth rate as "the key competitive metric" and built its entire architecture on that. Stripe's Payments Foundation Model runs self-supervised learning across tens of billions of transactions. Infrastructure providers who built throughput instead generated −17% total shareholder return. The four levers: routing (a local-vs-cross-border switch alone delivered a 13-point lift for one Brazilian marketplace), retry logic (80–90% of declines are soft), message enrichment, and real-time issuer data sharing.</p>
+      <a href="https://dwaynegefferie.substack.com/p/the-acquirer-divergence" class="source-link">Source: Payments Strategy Breakdown →</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <span class="card-tag tag-fintech">Stablecoins · Regulation</span>
+      <h3>Circle's Worst Day: The Clarity Act Reprices the Stablecoin Trade</h3>
+      <p>CRCL fell 20% on 24 March — $5bn in market cap gone in one session on 4× average volume. The catalyst: a Senate draft banning passive stablecoin yield. The problem is structural: 95.5% of Circle's revenue is interest on USDC reserves. Less yield-sharing → less incentive to hold USDC → smaller reserve base → less income. The paradox: USDC's fundamentals have never been stronger. Circulating supply: $81bn. Onchain volume: $6.8tn adjusted in Q4 2025. Market share vs USDT: >80% of volume since August 2025. Q4 earnings beat by 23%. ARK bought $16m of CRCL on the dip, arguing the bill bans retail passthrough but leaves Circle's $900m annual Coinbase revenue-share untouched. Committee markup expected post-Easter.</p>
+      <a href="https://research.artemisanalytics.com/p/why-circle-had-its-worst-day-ever" class="source-link">Source: Artemis Analytics →</a>
+    </div>
+
+    <!-- Card full-width -->
+    <div class="card-full">
+      <span class="card-tag tag-fintech">Tokenisation · Infrastructure</span>
+      <h3>The Tokenised Money Framework: Why No Taxonomy Means No Policy Progress</h3>
+      <p>No widely accepted taxonomy governs tokenised money, which is precisely why policymakers, banks, and crypto-native actors keep talking past each other. Fintech Wrap Up's two-layer framework — classifying instruments by underlying claim, then by design features — is a practical starting point. Separately: Mastercard acquired BVNK for $1.8bn, the clearest signal yet that card networks are buying their way into stablecoin rails rather than building. And European banks are moving seriously on tokenised finance infrastructure for the first time. Also worth noting: Artemis's on-chain factor model ("Fundamentals 1") delivers a 1.73 Sharpe ratio over four years — effectively market-neutral (beta 0.05) — by systematically going long tokens with growing user bases, stable revenue, and reasonable fee valuations. The breakeven transaction cost: 138 bps.</p>
+      <a href="https://www.fintechwrapup.com/p/the-stablecoin-infrastructure-framework" class="source-link">Source: Fintech Wrap Up / Artemis Analytics →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTIFICIAL INTELLIGENCE ── -->
+<div class="section-wrap">
+  <div class="section-label">
+    <span class="section-label-text">Artificial Intelligence</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card-grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <span class="card-tag tag-ai">AI · Infrastructure</span>
+      <h3>Nvidia's $1 Trillion Pipeline and the Agentic Utility Layer</h3>
+      <p>At GTC, Jensen Huang disclosed cumulative Blackwell/Rubin orders have reached $1 trillion through 2027 — double the figure from months ago. New announcements (NemoClaw for enterprise agent deployment, dedicated Vera CPU servers for tool calls, long-context storage architecture) all point at one thing: Nvidia is building infrastructure for a world where agents, not humans, are the primary compute consumers. Citrini Research frames the investment corollary as "Agentic Utilities" — bandwidth, CDN, and compute carriers that benefit from dramatically higher token consumption regardless of which model wins. Current Citrini longs: AKAM, FSLY, NET, CRCL — all purchased before the market recognised an AI angle. Huang's benchmark: engineers should consume at least half their salary in tokens annually.</p>
+      <a href="https://research.ark-invest.com" class="source-link">Source: ARK Invest / Citrini Research →</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <span class="card-tag tag-ai">AI · Enterprise</span>
+      <h3>The OpenAI vs. Anthropic Enterprise Race: Distribution Wins</h3>
+      <p>Anthropic's annual revenue run rate reportedly jumped from $9bn to $19bn in under three months, almost entirely on agentic demand. OpenClaw — the self-hosted agentic framework — is now the most-starred project on GitHub, surpassing React and Linux. Yet the enterprise distribution race may be decided on commercial terms, not model benchmarks. OpenAI is pitching PE firms a guaranteed 17.5% return plus early model access to deploy AI across portfolio companies; Anthropic is not offering financial guarantees. USV's Fred Wilson this week described appointing a dedicated AI transformation lead — a signal that even 20-person firms are treating this as a C-suite appointment. Goldman Sachs estimates 300 million jobs globally are exposed to AI automation, while its small-business survey shows adoption accelerating outside the enterprise tier.</p>
+      <a href="https://research.ark-invest.com" class="source-link">Source: ARK Invest / Goldman Sachs Briefings →</a>
+    </div>
+
+    <!-- Card full -->
+    <div class="card-full">
+      <span class="card-tag tag-ai">AI · Machine Payments</span>
+      <h3>Tempo Mainnet and the Machine Payments Protocol: Infrastructure for Agent Commerce</h3>
+      <p>On 18 March, Tempo — the payments-focused Layer 1 incubated by Stripe and Paradigm — launched its mainnet. First 8 days: $6.3m in stablecoin supply, $14.3m in cumulative transfer volume, ~2.6× velocity. Modest vs. DeFi launches (Monad hit $242m in week one) by design — Tempo is payments infrastructure, not an AMM. Launching alongside it: the Machine Payments Protocol (MPP), a universal checkout layer for AI agents handling API calls, compute jobs, and data queries. 100+ services integrated at launch including Alchemy and Dune Analytics. Early usage: ~49,000 transactions, 1,156 buyers, 61 sellers. Dollar volume is tiny (~$7,300) because these are microtransactions by design. Separately, Bittensor's Covenant-72B — a 72bn-parameter LLM fully pre-trained on decentralised commodity hardware across 70+ contributors — was confirmed in a March 2026 arXiv paper as the largest decentralised training run on record. TAO surged +19.7% on a Jensen Huang endorsement.</p>
+      <a href="https://research.artemisanalytics.com/p/artemis-weekly-digital-finance-fundamentals-b6a" class="source-link">Source: Artemis Analytics →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MARKETS & MACRO ── -->
+<div class="section-wrap">
+  <div class="section-label">
+    <span class="section-label-text">Markets &amp; Macro</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card-grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <span class="card-tag tag-geo">Geopolitics · Supply Chains</span>
+      <h3>Beyond the Oil Price: The Hidden Supply Chain Risks from US–Iran</h3>
+      <p>Markets focused on crude. The more durable risks are downstream. The Middle East supplies 16% of global fertiliser trade, $15bn in aluminium, and $26bn in petrochemicals annually. Energy costs are 30–40% of aluminium smelting; the Strait of Hormuz handles 8% of global aluminium shipments. Qatar supplies one-third of the world's helium — a critical semiconductor input — and over 60% of Taiwan's helium imports. Japan, South Korea, India, and Taiwan each source 40–50% of crude and LNG from the region. The historical precedent: manufacturing in developed markets fell sharply after Russia/Ukraine in February 2022 and has not fully recovered four years later. Inflation effects from sustained supply disruption persist for years, not months.</p>
+      <a href="https://leowealth.com/insights/beyond-the-barrel-the-lesser-known-risks-from-the-u-s-iran-conflict/" class="source-link">Source: LEO Investment Insight →</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <span class="card-tag tag-macro">Markets · Weekly</span>
+      <h3>Risk-Off: The Week in Numbers</h3>
+      <p>S&amp;P 500 −1.7%. Nasdaq −2.4%. 2-year Treasury rose to 4.02% as the Fed dot plot shifted to zero cuts for 2026. Oil &amp; Gas remains the YTD leader at +40%. Gold ~$4,430; silver ~$68 (down 44% from its January ATH). Private markets: Kalshi raised $1bn at a $22bn valuation; Mastercard acquired BVNK for $1.8bn. Crypto followed equities lower: Bitcoin −5.8% to ~$66,500; Ethereum −7.5% to ~$1,987; Solana −7.5% to ~$83. AAVE −9.2%, MNT −10.6%. Clear outliers: TAO +19.7% on Covenant-72B milestone and Huang endorsement; STG +46.7% on technical rather than fundamental drivers. David Sacks' 130-day term as US crypto czar ended 26 March — he transitions to co-chair PCAST, moving meaningfully further from direct crypto policy influence mid-Clarity Act negotiations.</p>
+      <a href="https://research.artemisanalytics.com/p/artemis-weekly-digital-finance-fundamentals-b6a" class="source-link">Source: Artemis Analytics →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── INDIA & EMERGING MARKETS ── -->
+<div class="section-wrap">
+  <div class="section-label">
+    <span class="section-label-text">India &amp; Emerging Markets</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card-grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <span class="card-tag tag-india">India · AI</span>
+      <h3>Swiggy × Sarvam: Vernacular Voice as the Next Commerce Layer</h3>
+      <p>Swiggy has partnered with Sarvam AI to deploy multilingual voice commerce across food delivery, Instamart, and Dineout. Orders placed via simple voice commands — a meaningful test of whether vernacular voice can unlock the next 200 million e-commerce users who are not keyboard-native. Separately, Zomato and Swiggy raised per-order platform fees within days of each other — the latest in a series of increases that have lifted the charge nearly nine-fold since its introduction three years ago.</p>
+      <a href="https://yourstory.com" class="source-link">Source: The Ken / YourStory →</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <span class="card-tag tag-india">India · Venture</span>
+      <h3>Accel + Prosus Atoms X: Frontier Science Gets Patient Capital</h3>
+      <p>Accel and Prosus have selected six startups for the first cohort of their Atoms X programme — drawn from 2,000+ applications, focused on "LeapTech" requiring longer gestation and deeper scientific innovation. Prosus matches Accel's ticket in each company, providing capital certainty for complex bets. IBM Research India's CTO meanwhile argues India has the potential to become a top-four quantum computing player globally — infrastructure gaps remain but the ambition is real. Curefoods, heading toward IPO, is sharpening its playbook: Krispy Kreme India, deeper cloud kitchen density beyond metros, hybrid online-offline. Betting on category depth over the 10-minute delivery race.</p>
+      <a href="https://yourstory.com" class="source-link">Source: The Ken / YourStory →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── INFRASTRUCTURE WATCH ── -->
+<div class="section-wrap">
+  <div class="section-label">
+    <span class="section-label-text">Infrastructure Watch</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card-full">
+      <span class="card-tag tag-ai">Healthcare · Technology</span>
+      <h3>The 60-Year-Old Code Behind $5 Trillion in Healthcare</h3>
+      <p>MUMPS — written in 1966 for a PDP-7 with 4KB of RAM — remains the architectural foundation of most Electronic Health Record systems including Epic (42% hospital market share, approaching 70% at hospitals with 500+ beds) and Change Healthcare (40% of all US claims). The 2024 ransomware breach exposed 192.7 million Americans' medical records through a portal with no multi-factor authentication and cost $2.45bn. Up to 50% of patient records fail to match when exchanged between systems. The US spends ~$1 trillion annually on healthcare administration — 3.5× Canada's per-capita rate — largely because 185,000 medical coders manually translate clinical language across 70,000+ diagnosis codes. Six major interoperability attempts over 40 years have each made partial progress and failed systemically. The LLM distinction: unlike prior reform attempts, LLMs can interpret clinical language on top of existing architecture without requiring a rebuild. OpenAI and Anthropic both launched healthcare products within days of each other at J.P. Morgan Healthcare Conference in January 2026. The window is open.</p>
+      <a href="https://chamath.substack.com/p/healthcare-it" class="source-link">Source: Chamath / Social Capital →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── QUICK HITS ── -->
+<div class="section-wrap" style="padding-bottom: 28px;">
+  <div class="section-label">
+    <span class="section-label-text">Quick Hits</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="quick-hits-grid">
+    <div class="qh-item">
+      <div class="qh-source">Artemis Analytics</div>
+      <p><strong>Crypto factor alpha is real.</strong> Artemis's "Fundamentals 1" long-short model: 1.73 Sharpe, −10.9% max drawdown, market beta of 0.05, +51.7% annualised alpha over 4+ years. Four signals: DAU growth, inverted active revenue share, revenue stability, MC/fees mean reversion. Breakeven transaction cost: 138 bps.</p>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">Google / The Ken</div>
+      <p><strong>Quantum encryption threat is a board-level timeline.</strong> Google warns quantum computers could break most existing encryption by as early as 2029 — well within typical board planning horizons. Banks and data-sensitive organisations need quantum-safe cryptography on their roadmaps now.</p>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">AVC / Fred Wilson</div>
+      <p><strong>QSBS and New York State.</strong> Federal QSBS exclusions shelter up to $10m in startup gains from capital gains tax. New York does not conform to federal treatment — a structural tax disadvantage for NY-based founders that continues to drive capital formation toward other states.</p>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">ARK Invest / The Ken</div>
+      <p><strong>Tesla Semi commercial launch incoming.</strong> WSJ reported early pilot driver feedback ahead of the commercial launch later this year. Drivers highlighted the vehicle's capability; ARK frames it alongside autonomous trucking as the next leg of the autonomous technology thesis.</p>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">The Ken</div>
+      <p><strong>AI models going rogue "in the wild."</strong> A new study and Guardian reporting document AI chatbots deviating from instructions in real-world conditions, not just simulated labs. The phenomenon of autonomous misbehaviour compounds the agentic liability question — agents acting outside user intent is the norm case, not the edge case.</p>
+    </div>
+    <div class="qh-item">
+      <div class="qh-source">Goldman Sachs Briefings</div>
+      <p><strong>Private credit stable despite AI disruption fears.</strong> Concern about AI displacing software companies is rippling through corporate bond markets. Goldman's analysis: not all software borrowers face equivalent displacement risk, and private credit markets remain relatively stable despite the headlines. Small business AI adoption is accelerating.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Singular Intelligence</div>
+    <div class="footer-sub">
+      singularfinance.com<br/>
+      Curated by Laurent Le Moal
+    </div>
+  </div>
+  <div class="footer-right">
+    Issue #5 · Week of 29 March 2026<br/>
+    ARK Invest · Artemis Analytics · Chamath / Social Capital<br/>
+    Fintech Wrap Up · Goldman Sachs · LEO Investment Insight<br/>
+    The Ken · Citrini Research
+  </div>
+</footer>
+
+</div><!-- /wrapper -->
+</body>
+</html>
