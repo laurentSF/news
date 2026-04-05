@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 5 April 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --teal:       #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink:        #111827;
+      --ink2:       #374151;
+      --muted:      #6b7280;
+      --border:     #e5e7eb;
+      --border2:    #d1d5db;
+      --surface:    #f9fafb;
+      --green:      #598a5a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    .outer {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-svg { width: 40px; height: 40px; flex-shrink: 0; }
+    .logo-wordmark {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .logo-wordmark .dot-green { color: var(--green); }
+    .header-right {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── OPENER ── */
+    .opener {
+      padding: 0 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+    .issue-label {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+    .opener h1 {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .opener p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--ink2);
+      font-weight: 300;
+      max-width: 660px;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 60px; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FEATURED CARD ── */
+    .card-featured {
+      background: var(--surface);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .card-featured h2 {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .card-featured p {
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: #444444;
+      font-weight: 300;
+    }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 18px 20px;
+    }
+    .card h3 {
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--ink2);
+      font-weight: 300;
+    }
+
+    /* ── CARD FULL ── */
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .card-full h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 9px;
+    }
+    .card-full p {
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: #444444;
+      font-weight: 300;
+    }
+
+    /* ── SOURCE LINE ── */
+    .card-source {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .dot-ai      { background: #0f9b82; }
+    .dot-fin     { background: #2563eb; }
+    .dot-macro   { background: #b45309; }
+    .dot-geo     { background: #7c3aed; }
+    .dot-india   { background: #ea580c; }
+    .dot-invest  { background: #2a9d4e; }
+
+    .card-link {
+      font-size: 10px;
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      margin-left: auto;
+    }
+
+    /* ── QUICK HITS ── */
+    .quick-hits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .qh-item {
+      background: #ffffff;
+      padding: 16px 18px;
+    }
+    .qh-source {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .qh-item p {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--ink2);
+      font-weight: 300;
+    }
+    .qh-item strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── DIVIDER ── */
+    .divider { margin: 48px 0; border: none; border-top: 1px solid var(--border); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 0 56px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .footer-sub {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .footer-right {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+      text-align: right;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header">
+    <div class="logo-group">
+      <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#0f9b82" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="13" stroke="#0f9b82" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="6" fill="#0f9b82"/>
+        <line x1="21" y1="1" x2="21" y2="8" stroke="#0f9b82" stroke-width="1.5"/>
+        <line x1="21" y1="34" x2="21" y2="41" stroke="#0f9b82" stroke-width="1.5"/>
+        <line x1="1" y1="21" x2="8" y2="21" stroke="#0f9b82" stroke-width="1.5"/>
+        <line x1="34" y1="21" x2="41" y2="21" stroke="#0f9b82" stroke-width="1.5"/>
+      </svg>
+      <span class="logo-wordmark">SINGULAR<span class="dot-green"> · </span>FINANCE</span>
+    </div>
+    <div class="header-right">
+      Singular Intelligence<br/>
+      Issue #5 · Week of 5 April 2026
+    </div>
+  </header>
+
+  <!-- ═══ OPENER ═══ -->
+  <div class="opener">
+    <div class="issue-label">Issue #5 — Week of 5 April 2026</div>
+    <h1>The Machine Economy Takes Shape</h1>
+    <p>This week's intelligence centres on a single structural shift playing out across finance, payments and computing simultaneously: the handover from human-mediated to machine-mediated economics. AI agents are acquiring the ability to transact, lend, and compute autonomously — and the infrastructure layer being built around them will determine who captures the value. Meanwhile, geopolitics intrudes: an Iran conflict reshaping energy markets and central bank calculus, a steep cooling of VC inflows, and India accelerating its sovereign tech stack. The old architecture of banking, payments and compute is being re-platformed in real time.</p>
+  </div>
+
+  <!-- ═══ AI & TECHNOLOGY ═══ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-label">AI &amp; Technology</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="card-featured">
+      <div class="card-source">
+        <span class="dot dot-ai"></span> Artemis Analytics · Machine Economy 2030 · April 2026
+        <a class="card-link" href="https://research.artemisanalytics.com">↗ artemisanalytics.com</a>
+      </div>
+      <h2>The agent economy: three chokepoints that will capture all the value</h2>
+      <p>By 2030, AI agents will be the primary interface between people and the internet — spawning subagents, transacting autonomously, and operating across data, compute and commerce without human intermediation. Artemis maps the emerging value stack into three layers where economics will concentrate: the interface layer (whoever owns the user relationship), the payments layer (whoever sits inside the money flow between agents), and the compute and hosting layer (whoever provides the infrastructure agents run on). A 24-year-old in Vermont today can access satellite imagery, earnings sentiment and automated trading that was the exclusive domain of Citadel quant funds five years ago — at a cost of under $1. The structural implication: edge in markets and business will shift from capital access to agent orchestration quality. Platforms that do not build for machine-to-machine interaction are building for a shrinking user base.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-source"><span class="dot dot-ai"></span> ARK Invest · 30 March 2026</div>
+        <h3>Terafab: Musk bets on orbital compute to escape terrestrial constraints</h3>
+        <p>Elon Musk unveiled Terafab — a proposed facility targeting 1 terawatt of AI chip output per year, roughly 50× current global available new compute from a single site, requiring ~10 GW of power (equivalent to 10 large nuclear reactors). Some 80% of output — Tesla-designed chips — is earmarked for orbital data centres delivered via Starship. ARK's analysis suggests full Starship reusability could reduce launch costs from ~$1,000/kg to ~$100/kg, making space-based compute ~25% cheaper than terrestrial alternatives. The move reveals the core constraint in AI scaling: not model architecture but physical infrastructure. Terafab is as much a pressure tactic on incumbent chip suppliers as a credible near-term production plan.</p>
+        <a class="card-link" href="https://research.ark-invest.com">↗ ark-invest.com</a>
+      </div>
+      <div class="card">
+        <div class="card-source"><span class="dot dot-ai"></span> AVC / USV · March 2026</div>
+        <h3>Tasklet's Task Computer: agents with a Linux desktop</h3>
+        <p>USV portfolio company Tasklet has launched Task Computer — a cloud-hosted Linux desktop that sits alongside an AI agent, enabling automation without API access. USV uses it internally; Fred Wilson's wife uses it to scrape Instagram collections into travel databases. The product signals a new design pattern: pairing a virtual computer with a conversational agent to close the gap between instruction and execution for non-technical users. The long-term implication is that agentic automation will not be limited to developers with API credentials — it extends to anyone who can describe a task.</p>
+        <a class="card-link" href="https://avc.com">↗ avc.com</a>
+      </div>
+    </div>
+
+    <div class="card-full">
+      <div class="card-source">
+        <span class="dot dot-ai"></span> Goldman Sachs Research · April 2026
+        <a class="card-link" href="https://www.goldmansachs.com">↗ goldmansachs.com</a>
+      </div>
+      <h3>Data centre power demand revised up to +220% by 2030 — inference burns more than expected</h3>
+      <p>Goldman Sachs Research has raised its global data centre power demand forecast to +220% by 2030 (versus 2023 levels), up from a prior estimate of +175%. The upgrade is driven by two factors: accelerating server shipments and stronger-than-modelled power intensity from AI inference workloads. By 2030, data centre power demand would represent roughly the energy consumption of the world's sixth-largest country. A parallel macro signal: credit bearishness among Goldman clients is at a ten-year high, consistent with the risk-off repricing underway across markets since the Iran conflict escalated oil above $112/bbl.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FINTECH & PAYMENTS ═══ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-label">Fintech &amp; Payments</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="card-featured">
+      <div class="card-source">
+        <span class="dot dot-fin"></span> Artemis Analytics · Bare Metal Banking · April 2026
+        <a class="card-link" href="https://research.artemisanalytics.com">↗ artemisanalytics.com</a>
+      </div>
+      <h2>Neobanks go bare metal: the rebundling of the financial stack</h2>
+      <p>Between December 2025 and March 2026, Coinbase, Nubank, PayPal, Revolut and Kraken each moved to acquire full banking charters or Fed master accounts — the same bet placed simultaneously by the world's largest fintechs. The fifteen-year story of unbundling (excelling at one product, outsourcing regulatory complexity to sponsor banks) has reversed. The driver: $33 trillion in stablecoin transfer volume in 2025 rivalling ACH and Visa; Aave crossing $1 trillion in cumulative DeFi loans; NYSE, NASDAQ and CME building tokenisation infrastructure. Neobanks that own both the legacy charter stack and the emerging blockchain rails will define the next decade of finance. The first standalone trillion-dollar neobank is now a credible near-term outcome — Artemis identifies this as one of five pillars of its 2030 digital finance thesis.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-source"><span class="dot dot-fin"></span> Fintech Wrap Up · April 2026</div>
+        <h3>Machine Payments Protocol: HTTP 402 is finally live</h3>
+        <p>The Machine Payments Protocol (MPP), co-authored by Stripe and Tempo Labs, launched on March 18 alongside the Tempo mainnet. It revives the long-dormant HTTP 402 "Payment Required" status code as a machine-readable challenge-response framework — embedding payment directly in the transport layer. For AI agents, payment becomes a programmatic variable, not a psychological event. Every prior micropayment attempt failed because the payer was human. MPP eliminates the human decision point entirely, making sub-cent transaction models viable at scale for the first time. The agentic checkout era has started.</p>
+        <a class="card-link" href="https://www.fintechwrapup.com">↗ fintechwrapup.com</a>
+      </div>
+      <div class="card">
+        <div class="card-source"><span class="dot dot-fin"></span> Payments Strategy Breakdown · April 2026</div>
+        <h3>The network advantage: Visa and Mastercard know more than the issuer does</h3>
+        <p>Visa processed 257.5 billion transactions in FY2025 across $14.2 trillion in volume; Mastercard switched 175.5 billion on $10.6 trillion. Mastercard's switched share has risen from 55% to 70% since 2020, systematically pulling volume onto its own network. The implication: the intelligence layer for fraud, risk scoring and authorisation decisions has migrated from issuers to networks. In a growing number of cases, the issuer is no longer making the call — it is executing the network's recommendation. The four-party model's formal structure conceals a de facto two-party intelligence architecture.</p>
+        <a class="card-link" href="https://dwaynegefferie.substack.com">↗ paymentsstrategy.com</a>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-source"><span class="dot dot-fin"></span> Artemis Analytics · April 2026</div>
+        <h3>Lending stack decomposition: intelligence and settlement rails are the only chokepoints</h3>
+        <p>Global debt hit $348 trillion at year-end 2025. Digital lending platforms represent less than 20 basis points of that total — yet they are restructuring the stack from below. The vertically integrated bank model (origination, underwriting, funding, infrastructure under one roof) is decomposing into a horizontal, modular architecture. The two positions that matter: the AI underwriting/intelligence layer, and the blockchain settlement rail. Companies that own neither are competing on price in a commodity market against $3.5 trillion of private credit seeking yield.</p>
+        <a class="card-link" href="https://research.artemisanalytics.com">↗ artemisanalytics.com</a>
+      </div>
+      <div class="card">
+        <div class="card-source"><span class="dot dot-fin"></span> Fintech Wrap Up · April 2026</div>
+        <h3>Polygon doubles down on payments: stablecoins and tokenised deposits as the thesis</h3>
+        <p>Polygon Labs CEO Marc Boiron argues that payments — not DeFi speculation — will define blockchain's long-term relevance. The strategic pivot: position Polygon as core settlement infrastructure for stablecoins and tokenised bank deposits rather than a general-purpose smart contract platform. The bet is that institutional money movement needs the cost and programmability of public rails without the volatility of native tokens. The direction aligns with what Coinbase, Nubank and Revolut are building toward from the banking side.</p>
+        <a class="card-link" href="https://www.fintechwrapup.com">↗ fintechwrapup.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARKETS & MACRO ═══ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-label">Markets &amp; Macro</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="card-featured">
+      <div class="card-source">
+        <span class="dot dot-macro"></span> Goldman Sachs Research · Artemis Analytics · April 2026
+        <a class="card-link" href="https://www.goldmansachs.com">↗ goldmansachs.com</a>
+      </div>
+      <h2>Iran conflict, oil at $112, and the central bank dilemma that history has already solved</h2>
+      <p>WTI crude surged above $112/bbl this week after Trump's Wednesday address offered no endgame for the Iran conflict. Equities showed resilience — S&P 500 up 0.3% to 6,583, its first weekly gain since the war began; Nasdaq snapped a five-week losing streak but remains in correction territory. Gold pulled back ~2.8% to ~$4,676/oz on de-escalation signals. Goldman Sachs research cuts through the rate debate with history: oil supply shocks produce slightly higher policy rates in the first one-to-three months, then lower rates six-to-nine months out as growth concerns dominate. Markets pricing hikes across G7 economies may be right short-term; but supply-driven shocks tend to weigh on growth faster than on inflation, and any hikes are likely to be unwound. Credit bearishness at a ten-year high suggests investors are already anticipating the growth leg of this sequence.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-source"><span class="dot dot-macro"></span> Artemis Analytics · April 2026</div>
+        <h3>The Anxiety Economy: financial stress as the primary driver of trading volume growth</h3>
+        <p>Since 2000, the S&P 500 returned ~400%; home prices rose ~230%; median US wages grew ~110%. The top 10% of households now own 87% of US equities. Artemis argues the deeper driver of trading volume growth is not better UX or lower fees — it is financial anxiety. An entire generation has done the math on passive investing and concluded it is not fast enough. Winners: Robinhood, Coinbase, IBKR. Losers: legacy brokers selling patience to a cohort that wants speed. The product-market fit is emotional, not rational.</p>
+        <a class="card-link" href="https://research.artemisanalytics.com">↗ artemisanalytics.com</a>
+      </div>
+      <div class="card">
+        <div class="card-source"><span class="dot dot-macro"></span> Chamath / Social Capital · April 2026</div>
+        <h3>Housing affordability: a policy-engineered lock-in, not a market failure</h3>
+        <p>US median home costs 5.1× median household income in 2024, up from 2.7× in 1970; 62% of middle-class wealth sits in an asset 7-in-10 households can no longer afford. Chamath's analysis traces the root to deliberate policy: FHA mortgage insurance (1934), GI Bill leverage, tax incentives that made housing a leveraged wealth store rather than shelter. The 2022 rate shock produced a lock-in: owners at 3% faced a $12,000/year penalty to move at 7%, collapsing supply and demand simultaneously. The one proven fix: permitting supply. Austin (20+ units per 1,000 residents at peak) costs 5× income; San Francisco (under 4 units) exceeds 11×. Policy will determine the outcome — not the market.</p>
+        <a class="card-link" href="https://chamath.substack.com">↗ chamath.substack.com</a>
+      </div>
+    </div>
+
+    <div class="card-full">
+      <div class="card-source">
+        <span class="dot dot-macro"></span> ARK Invest · April 2026
+        <a class="card-link" href="https://research.ark-invest.com">↗ ark-invest.com</a>
+      </div>
+      <h3>LUNR +18%, IRDM notable move: ARK's week in space infrastructure</h3>
+      <p>Intuitive Machines (LUNR) shares rose ~18% in a single session this week — ARK's commentary attributes the move to strengthening US lunar programme signals and growing commercial payload demand for near-surface lunar missions. Iridium (IRDM) also saw significant movement. Both names sit at the intersection of ARK's space, satellite connectivity and autonomous systems themes. The broader context: Starship V3's first flight is scheduled imminently, and SpaceX's confidential IPO filing (reported valuation above $1.75 trillion) is accelerating institutional interest in the orbital infrastructure stack.</p>
+    </div>
+  </section>
+
+  <!-- ═══ INDIA & EMERGING MARKETS ═══ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-label">India &amp; Emerging Markets</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="card-featured">
+      <div class="card-source">
+        <span class="dot dot-india"></span> The Ken · LEO Investment Insight · April 2026
+        <a class="card-link" href="https://the-ken.com">↗ the-ken.com</a>
+      </div>
+      <h2>India's sovereign tech stack deepens: Zoho migration signals a structural shift</h2>
+      <p>India's central government has migrated 1.668 million official email accounts to Zoho's cloud platform at a cost of ₹180.10 crore — one of the largest administrative technology transitions undertaken in recent years. The move replaces decades of NIC-managed infrastructure with a domestically owned, commercially operated alternative. The strategic read: this is not an IT upgrade but a statement of digital sovereignty, reducing dependency on US hyperscalers (Google Workspace, Microsoft 365) for sensitive government communication. For Zoho, it validates its enterprise positioning in India's expanding public sector digitisation. The broader pattern — preferential procurement for Indian technology platforms — is becoming structurally embedded in government policy. Concurrently, Indian VC inflows fell sharply in the first week of April: $117 million from 20 deals versus $328 million the prior week. The pullback is attributed to absence of high-value transactions and the shadow cast by the West Asia conflict on cross-border capital flows.</p>
+    </div>
+
+    <div class="card-full">
+      <div class="card-source">
+        <span class="dot dot-india"></span> LEO Investment Insight · April 2026
+        <a class="card-link" href="https://leowealth.com">↗ leowealth.com</a>
+      </div>
+      <h3>China as Asia's oil shock buffer: structural resilience that investors should re-price</h3>
+      <p>With ~45% of China's crude imports transiting the Strait of Hormuz, the headline exposure looks substantial — but Hormuz transit represents only ~5% of total Chinese energy consumption, versus 10% for India, 25% for Japan and 35% for South Korea. Coal (domestically produced) covers ~60% of China's total energy. Beijing's domestic fuel pricing mechanism absorbs refinery margin pressure above $80/bbl, and eliminates consumer pass-through above $130/bbl. Strategic reserves are being expanded by ~169 million barrels in 2025–26. For Asia-focused investors, LEO's analysis positions China as the region's natural portfolio buffer in an energy-shock scenario — lower structural sensitivity, more stable corporate margins, contained inflation expectations, and greater policy flexibility than peers.</p>
+    </div>
+  </section>
+
+  <!-- ═══ QUICK HITS ═══ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-label">Quick Hits</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="quick-hits-grid">
+      <div class="qh-item">
+        <div class="qh-source">Artemis Analytics</div>
+        <p><strong>Drift Protocol $285M exploit:</strong> Solana's largest-ever DeFi hack was not a smart contract bug — it combined governance failure, social engineering, and weaponisation of Solana's "durable nonces" feature over a week-long setup. DRIFT token crashed immediately. The attack vector is novel and has implications for every protocol relying on governance multisigs.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">Artemis Analytics</div>
+        <p><strong>Coinbase conditional OCC trust charter:</strong> A federally regulated crypto custodian is no longer hypothetical. The OCC's conditional approval is the first time a crypto-native firm has received bank-equivalent custodial standing at the federal level — a regulatory threshold that has been resisted for years.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">Artemis Analytics</div>
+        <p><strong>HYPE token unlock (April 6):</strong> 9.92 million HYPE tokens — approximately 2.7% of circulating supply — hit the market on April 6. Hyperliquid's first major unlock is a stress test for a protocol where S&amp;P 500 perpetual futures now represent the majority of HIP-3 volume. Market structure, not crypto cycle, is the relevant frame.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">Artemis / CLARITY Act</div>
+        <p><strong>Stablecoin yield — "99% resolved":</strong> The CLARITY Act compromise bans passive yield on stablecoins but permits activity-based rewards. The political negotiation is effectively closed. Regulatory certainty is now a matter of legislative calendar, not substantive dispute.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">ARK Invest</div>
+        <p><strong>Beam Therapeutics AATD gene-editing data:</strong> Beam reported updated Phase 1/2 trial data for a one-time intravenous gene-editing therapy for alpha-1 antitrypsin deficiency. FDA flexibility on approval pathways and improving clinical data are incrementally raising the probability of a functional cure. ARK flags this as a signal for the broader gene-editing platform thesis.</p>
+      </div>
+      <div class="qh-item">
+        <div class="qh-source">The Ken / India</div>
+        <p><strong>Indian studios lead on AI film production:</strong> While Hollywood is constrained by union rules, Indian studios are deploying AI aggressively to cut production time, reduce costs and dub films across languages — and building full AI-generated features. The structural labour cost and regulatory gap is creating a first-mover window that could persist for years.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Singular Intelligence</div>
+      <div class="footer-sub">singularfinance.com<br/>Curated by Laurent Le Moal</div>
+    </div>
+    <div class="footer-right">
+      Issue #5 · Week of 5 April 2026<br/>
+      ARK Invest · Artemis Analytics · Goldman Sachs<br/>
+      Fintech Wrap Up · Chamath/Social Capital · LEO Investment Insight<br/>
+      Payments Strategy Breakdown · AVC · The Ken
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
