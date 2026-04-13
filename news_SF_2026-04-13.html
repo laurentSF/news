@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singular · Finance — 13 April 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #3D7A5A;
+    --green-dark: #2A5940;
+    --green-pale: #EBF3EE;
+    --green-mid: #c8dfd2;
+    --ink: #1A1A1A;
+    --body: #2C2C2C;
+    --muted: #777;
+    --rule: #D8D8D8;
+    --bg: #FAFAF8;
+    --white: #FFFFFF;
+    --tag-bg: #EBF3EE;
+    --tag-color: #2A5940;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Instrument Sans', -apple-system, Helvetica, sans-serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── OUTER WRAPPER ── */
+  .wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--white);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    padding: 28px 40px 20px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .masthead-brand {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .masthead-brand .dot { color: var(--green); margin: 0 5px; }
+  .masthead-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-align: right;
+  }
+
+  /* ── HERO LABEL ── */
+  .hero {
+    padding: 32px 40px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .issue-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    background: var(--green-pale);
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 34px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--green-dark);
+  }
+  .hero-standfirst {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 560px;
+  }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-label {
+    padding: 18px 40px 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    border-top: 1px solid var(--rule);
+  }
+  .section-label:first-of-type { border-top: none; }
+
+  /* ── STORY CARDS ── */
+  .story {
+    padding: 20px 40px 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .story:last-of-type { border-bottom: none; }
+
+  .story-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .story-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 400;
+    flex: 1;
+  }
+  .story-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--rule);
+    padding-top: 4px;
+    flex-shrink: 0;
+  }
+  .story-source {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .story-source span { color: var(--green); }
+  .story-body {
+    font-size: 14.5px;
+    line-height: 1.72;
+    color: var(--body);
+  }
+  .story-body p + p { margin-top: 10px; }
+
+  /* ── SIGNAL CALLOUT ── */
+  .signal {
+    margin: 14px 0 4px;
+    padding: 12px 16px;
+    background: var(--green-pale);
+    border-left: 3px solid var(--green);
+    border-radius: 0 4px 4px 0;
+  }
+  .signal-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+  .signal-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--green-dark);
+    font-weight: 500;
+  }
+
+  /* ── DATA PILL ── */
+  .data-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background: #F4F4F2;
+    color: var(--body);
+    border: 1px solid var(--rule);
+  }
+  .pill.up { background: #E8F5EE; color: #1B6B3A; border-color: #b5d9c4; }
+  .pill.down { background: #FEF0EF; color: #9B2B2B; border-color: #f5c0bc; }
+  .pill.neutral { background: var(--green-pale); color: var(--green-dark); border-color: var(--green-mid); }
+
+  /* ── CHART AREA ── */
+  .chart-area {
+    margin: 14px 0;
+    height: 120px;
+    position: relative;
+  }
+
+  /* ── READING LIST ── */
+  .reading-list {
+    padding: 22px 40px 28px;
+    border-top: 1px solid var(--rule);
+    background: #F7F7F5;
+  }
+  .reading-list-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+  .read-item {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .read-item:last-child { border-bottom: none; }
+  .read-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--rule);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .read-content { flex: 1; }
+  .read-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+  .read-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .read-meta span { color: var(--green); }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 20px 40px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .footer-brand strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--rule);
+  }
+
+  /* ── MARKET STRIP ── */
+  .market-strip {
+    padding: 14px 40px;
+    background: var(--ink);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .market-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .market-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .market-val {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .market-val.up { color: #5DC389; }
+  .market-val.down { color: #E07070; }
+
+  @media (max-width: 680px) {
+    .masthead, .hero, .story, .reading-list, .footer { padding-left: 20px; padding-right: 20px; }
+    .section-label { padding-left: 20px; padding-right: 20px; }
+    .market-strip { padding-left: 20px; padding-right: 20px; gap: 16px; }
+    .hero-title { font-size: 26px; }
+    .masthead { flex-direction: column; gap: 4px; }
+    .masthead-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-brand">Singular<span class="dot">·</span>Finance</div>
+    <div class="masthead-meta">
+      13 April 2026<br>
+      Week 15 · Vol. 2
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="issue-tag">Weekly Signal · 13 April 2026</div>
+    <div class="hero-title">The ceasefire, the <em>false decline tax</em>,<br>and what Revolut actually built</div>
+    <div class="hero-standfirst">A Trump-Iran truce reshapes the macro. The payments industry refuses more legitimate revenue than it loses to fraud. Revolut posts a Rule of 75 number. Circle prepares to list. Five stories worth your time.</div>
+  </div>
+
+  <!-- SECTION: MACRO -->
+  <div class="section-label">Macro · Markets</div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">A fragile ceasefire cracks the risk-off trade</div>
+      <div class="story-number">01</div>
+    </div>
+    <div class="story-source">Artemis Analytics <span>· Week of 7–11 April</span></div>
+    <div class="data-row">
+      <div class="pill up">Dow +2.85% (1,325 pts)</div>
+      <div class="pill up">S&P 500 +2.51% → 6,782</div>
+      <div class="pill down">WTI −16.4% → $94.41</div>
+      <div class="pill up">BTC +9.0% → $72.7K</div>
+    </div>
+    <div class="story-body">
+      <p>Tuesday night's Trump-Iran ceasefire announcement triggered one of the sharpest single-day risk reversals in months. The S&P 500 broke its 200-day moving average for the first time since the conflict began. Crude collapsed on confirmation that Iran would allow passage through the Strait of Hormuz for a two-week truce period.</p>
+      <p>Crypto caught the bid. BTC surged from $68K to $72.7K, triggering nearly $600M in leveraged liquidations — over $400M from shorts. Equities proxies tracked the rally; CRCL and HOOD lagged on CLARITY Act uncertainty.</p>
+    </div>
+    <div class="signal">
+      <div class="signal-label">Signal</div>
+      <div class="signal-text">The truce expires 22 April. JPMorgan flagged it as a pause, not a resolution. Iran's parliament speaker briefly claimed a US violation mid-week. Clock is running — the macro relief is real but borrowed.</div>
+    </div>
+  </div>
+
+  <!-- SECTION: PAYMENTS -->
+  <div class="section-label">Payments · Strategy</div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">The false decline tax: industry refuses more than it loses to fraud</div>
+      <div class="story-number">02</div>
+    </div>
+    <div class="story-source">Dwayne Gefferie <span>· Payments Strategy Breakdown</span></div>
+    <div class="data-row">
+      <div class="pill down">$33.4B global card fraud (2024)</div>
+      <div class="pill down">$50.7B false decline losses (4 markets, 2022)</div>
+    </div>
+    <div class="story-body">
+      <p>The Nilson Report put global card fraud losses at $33.4 billion in 2024. A vendor-commissioned Oxford Economics study measured $50.7 billion in direct merchant revenue lost to false declines across just four markets in a single year. The industry has built an entire discipline around fraud. It has built almost nothing around the revenue it throws away.</p>
+      <p>The asymmetry is structural. The risk stack — identity verification, fraud scoring, authentication — was designed layer by layer, measured against its own metrics, incentivised by its own penalties. Nobody designed the layers to work together. The seams between them are where legitimate customers get turned away.</p>
+    </div>
+    <div class="signal">
+      <div class="signal-label">Board implication</div>
+      <div class="signal-text">For acquirers and PSPs: false decline is the most under-managed revenue leak in the business. Any processor not actively tracking and optimising decline-to-fraud ratios is leaving more on the table than fraud takes.</div>
+    </div>
+  </div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">The authorization chain: ISO 8583 is 39 years old and still running</div>
+      <div class="story-number">03</div>
+    </div>
+    <div class="story-source">Dwayne Gefferie <span>· Payments Strategy Breakdown</span></div>
+    <div class="story-body">
+      <p>A returning customer, recognised device, matching billing region, three prior purchases. The acquirer's ML model scores it low risk. High approval likelihood. Then the acquirer builds the ISO 8583 authorization message — a format originally built in 1987 and still reflecting implementation guides updated as recently as March 2025.</p>
+      <p>Each layer in the authorization chain — acquirer, network, issuer — sees a different slice of reality and passes on a compressed version. The basis-point gap between best-in-class and average authorization performance lives not in any single layer, but in the seams between them. The data richness that the acquirer holds never reaches the issuer.</p>
+    </div>
+    <div class="signal">
+      <div class="signal-label">Signal</div>
+      <div class="signal-text">This is why Visa and Mastercard's network tokenisation and data enrichment programmes have real commercial value. The network is the only party that can see the full chain.</div>
+    </div>
+  </div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">Forrester: Stripe, Adyen, Checkout widen the gap</div>
+      <div class="story-number">04</div>
+    </div>
+    <div class="story-source">Business of Payments <span>· April 2026</span></div>
+    <div class="story-body">
+      <p>Forrester's latest merchant payments wave confirms a growing capability gap between the three leading global processors and the rest. Nuvei remains a contender. Worldpay earns credit for relationship quality. No one else is competitive for enterprise buyers. Enterprise focus has shifted: high acceptance rates and low prices are now baseline expectations, not differentiators. The new battleground is pace of capability addition and quality of relationship.</p>
+      <p>Legacy players are under pressure. Worldline raised €392M from three French banks as part of a €500M capital round after last summer's near-collapse. ANZ is moving to unwind its JV. Nexi lost its CEO following a capital markets day that sent the stock down 16%; the company is now yielding 9% as it pivots from M&A growth to cash generation.</p>
+      <p>Neobanks are entering the acquiring market. Revolut Merchant is growing; Monzo and N26 are watching.</p>
+    </div>
+  </div>
+
+  <!-- SECTION: FINTECH -->
+  <div class="section-label">Fintech · Neobanks</div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">Revolut: £4.5B revenue, 29% net margin, Rule of 75</div>
+      <div class="story-number">05</div>
+    </div>
+    <div class="story-source">Fintech Wrap Up / Sam Boboev <span>· Deep Dive</span></div>
+    <div class="data-row">
+      <div class="pill up">Revenue £4.5B (+46% YoY)</div>
+      <div class="pill up">PBT £1.7B (+57% YoY)</div>
+      <div class="pill neutral">Net margin 29%</div>
+      <div class="pill neutral">Valuation $75B</div>
+    </div>
+    <div class="story-body">
+      <p>Revolut's 2025 results confirm it as the most valuable private technology company in Europe. The a16z "Rule of 75" — revenue growth rate plus net profit margin — puts Revolut at 75 (46% growth + 29% margin). Few financial institutions, modern or established, have reached that level.</p>
+      <p>Revenue is unusually diversified for a neobank: 76% fee-based, with no single segment above 22% of total turnover. Card payments lead at 22%, followed by interest income at 21.6%. Subscription revenue at 15.7% is the highest-quality component — recurring, predictable, expanding. Revolut enters its fifth consecutive year of net profit.</p>
+    </div>
+    <div class="signal">
+      <div class="signal-label">Signal</div>
+      <div class="signal-text">The comparison benchmark has shifted. Any neobank or SME banking platform not modelling its own Rule of 75 metric against Revolut's is flying blind on competitive position.</div>
+    </div>
+  </div>
+
+  <!-- SECTION: DIGITAL ASSETS -->
+  <div class="section-label">Digital Assets · Stablecoins</div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">Circle IPO: the market is pricing the wrong business</div>
+      <div class="story-number">06</div>
+    </div>
+    <div class="story-source">Artemis Analytics <span>· CRCL deep dive</span></div>
+    <div class="data-row">
+      <div class="pill up">USDC supply $75.3B (+72% 2025)</div>
+      <div class="pill neutral">CPN: 55 institutions, $5.7B annualised TPV</div>
+      <div class="pill neutral">2030E revenue ~$9.8B</div>
+    </div>
+    <div class="story-body">
+      <p>Markets are pricing Circle as a rate-sensitive money market fund on blockchain rails. The Artemis case is that this misses the point. USDC supply grew 72% in 2025 even as the Fed cut rates 75bps — demand is utility-driven, not yield-driven. The GENIUS Act has created a federal stablecoin framework that advantages regulated compliant issuers. Circle Payments Network has enrolled 55 financial institutions with $5.7 billion in annualised TPV.</p>
+      <p>The structural cost risk remains: Coinbase takes 100% of reserve income on USDC held on its platform, and 50% off-platform. In 2025, Coinbase received $1.35 billion — 51% of Circle's gross reserve income. Distribution costs at 60%+ of gross are the constraint, not the revenue trajectory.</p>
+    </div>
+    <div class="signal">
+      <div class="signal-label">Signal</div>
+      <div class="signal-text">CRCL's stock dropped 2.46% this week on CLARITY Act Senate uncertainty. The Act's yield-sharing provision for stablecoin holders is the swing variable — a ban would compress Circle's economics materially. Senate returns today, 13 April.</div>
+    </div>
+  </div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">Machine Payments Protocol: HTTP 402 returns for the agentic economy</div>
+      <div class="story-number">07</div>
+    </div>
+    <div class="story-source">Fintech Wrap Up <span>· Sam Boboev</span></div>
+    <div class="story-body">
+      <p>On 18 March 2026, Stripe and Tempo Labs launched the Machine Payments Protocol (MPP) and the Tempo mainnet. The core premise: AI agents do not use browsers. They do not click buttons or solve CAPTCHAs. When an agent needs a resource, payment is a programmatic prerequisite. MPP formalises this by reviving the HTTP 402 "Payment Required" status code into a standardised machine-readable challenge-response framework.</p>
+      <p>For thirty years the internet lacked a native value layer. Card rails were designed for human psychology — friction that reduces cart abandonment is an anti-feature for an agent that has no psychology to manipulate. MPP is a direct attempt to replace that friction with a protocol layer.</p>
+    </div>
+    <div class="signal">
+      <div class="signal-label">Signal</div>
+      <div class="signal-text">Early stage, but worth watching. Any payments infrastructure business that is not tracking agentic commerce is ignoring a structural shift in how value will move across the web by 2028–2030.</div>
+    </div>
+  </div>
+
+  <!-- SECTION: QUANT -->
+  <div class="section-label">Quant · Research</div>
+
+  <div class="story">
+    <div class="story-header">
+      <div class="story-title">Stablecoin flows as a market-neutral L1 return predictor</div>
+      <div class="story-number">08</div>
+    </div>
+    <div class="story-source">Artemis Analytics <span>· Crypto Factor Model</span></div>
+    <div class="data-row">
+      <div class="pill up">Sharpe 1.67 (5yr raw)</div>
+      <div class="pill up">+83.6% annualised return</div>
+      <div class="pill neutral">Market beta −0.03</div>
+      <div class="pill neutral">Alpha +73.8% annualised (t=3.31)</div>
+    </div>
+    <div class="story-body">
+      <p>Artemis published a weekly-rebalanced long-short factor built on stablecoin flows between chains. The thesis: when dollars in stablecoin form flow onto a blockchain, native token demand follows. The factor longs the top quintile by inflow and shorts the weakest. Five-year Sharpe of 1.67, annualised return of 83.6%, market beta of effectively zero.</p>
+      <p>The long leg generates 84% of returns — this is fundamentally a positive-flow detector for mid-cap L1s and L2s, not a structural short on Ethereum. Five chains (Polygon, Mantle, Optimism, BSC, Sei) account for 84% of total returns.</p>
+    </div>
+  </div>
+
+  <!-- READING LIST -->
+  <div class="reading-list">
+    <div class="reading-list-title">Further reading this week</div>
+
+    <div class="read-item">
+      <div class="read-num">A</div>
+      <div class="read-content">
+        <div class="read-title">Morgan Stanley MSBT: first US bank spot Bitcoin ETF</div>
+        <div class="read-meta">Artemis Analytics <span>· Artemis Weekly 4.11</span></div>
+      </div>
+    </div>
+    <div class="read-item">
+      <div class="read-num">B</div>
+      <div class="read-content">
+        <div class="read-title">What makes launching a card programme hard?</div>
+        <div class="read-meta">Fintech Wrap Up <span>· BIN sponsorship and programme management</span></div>
+      </div>
+    </div>
+    <div class="read-item">
+      <div class="read-num">C</div>
+      <div class="read-content">
+        <div class="read-title">Tokenised deposits vs stablecoins: rebuilding finance from first principles</div>
+        <div class="read-meta">Fintech Wrap Up <span>· Institutional tokenisation deep dive</span></div>
+      </div>
+    </div>
+    <div class="read-item">
+      <div class="read-num">D</div>
+      <div class="read-content">
+        <div class="read-title">Ramp vs Mercury: the post-Brex landscape in corporate cards</div>
+        <div class="read-meta">Fintech Wrap Up <span>· What Ramp is actually building</span></div>
+      </div>
+    </div>
+    <div class="read-item">
+      <div class="read-num">E</div>
+      <div class="read-content">
+        <div class="read-title">Crypto fraud strategies evolving in 2026</div>
+        <div class="read-meta">Fintech Wrap Up <span>· On-chain threat intelligence</span></div>
+      </div>
+    </div>
+    <div class="read-item">
+      <div class="read-num">F</div>
+      <div class="read-content">
+        <div class="read-title">Worldline's French bank rescue: €392M and a quiet JV unwind in Australia</div>
+        <div class="read-meta">Business of Payments <span>· April 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      <strong>singularfinance.com</strong> · Curated by Laurent Le Moal
+    </div>
+    <div class="footer-note">Not investment advice · Private circulation</div>
+  </div>
+
+</div>
+</body>
+</html>
