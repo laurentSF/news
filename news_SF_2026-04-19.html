@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 19 April 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --teal: #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink: #111827;
+      --ink2: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border2: #d1d5db;
+      --surface: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #f3f4f6;
+    }
+    .outer { padding: 32px 16px; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-top { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+    .logo-main { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 48px 28px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 36px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-body {
+      font-size: 15px; line-height: 1.72; color: var(--ink2);
+      font-weight: 300; max-width: 640px; margin-bottom: 28px;
+    }
+    .hero-body strong { font-weight: 600; color: var(--ink); }
+    .topics-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .topic-pill {
+      font-size: 11px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; border: 1px solid var(--border2);
+      color: var(--muted); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 44px 28px 0; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── FEATURED CARD ── */
+    .card-featured {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 24px 24px 22px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fafffe 0%, #ffffff 100%);
+    }
+    .card-featured .tag { margin-bottom: 10px; }
+    .card-featured h2 {
+      font-size: 20px; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+    }
+    .card-featured p {
+      font-size: 14px; line-height: 1.72; color: var(--ink2); font-weight: 300;
+    }
+    .card-featured p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px 22px 18px;
+    }
+    .card h3 {
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px; line-height: 1.68; color: var(--ink2); font-weight: 300;
+    }
+    .card p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── FULL-WIDTH CARD ── */
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      background: var(--surface);
+    }
+    .card-full h3 {
+      font-size: 15px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px;
+    }
+    .card-full p {
+      font-size: 13.5px; line-height: 1.72; color: #444444; font-weight: 300;
+    }
+    .card-full p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tag-ai::before        { background: #0f9b82; }
+    .tag-fintech::before   { background: #3b82f6; }
+    .tag-macro::before     { background: #f59e0b; }
+    .tag-geo::before       { background: #8b5cf6; }
+    .tag-india::before     { background: #f97316; }
+    .tag-crypto::before    { background: #f7931a; }
+    .tag-bio::before       { background: #2a9d4e; }
+
+    /* ── QUICK HITS ── */
+    .quick-hits { padding: 44px 28px 0; }
+    .quick-hits ul {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-hits li:last-child { border-bottom: none; }
+    .q-source {
+      font-size: 11px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding-top: 1px; line-height: 1.4;
+    }
+    .q-text {
+      font-size: 13px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+    }
+    .q-text strong { font-weight: 600; color: var(--ink); }
+
+    /* ── DIVIDER ── */
+    .divider { margin: 52px 28px 0; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 28px 52px;
+      text-align: center;
+    }
+    .footer-title {
+      font-size: 13px; font-weight: 500; color: var(--teal);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .footer-sep {
+      width: 32px; height: 1px; background: var(--border2);
+      margin: 0 auto 14px;
+    }
+    footer p {
+      font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="wrapper">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#0f9b82" stroke-width="1.5" fill="none"/>
+      <path d="M21 10 C14 10 10 14.5 10 20 C10 26 14.5 30 20 30 C22 30 24 29.5 25.5 28.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 14 C16.5 14 13.5 17 13.5 21 C13.5 25 16.5 27.5 20.5 27.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 18 C19 18 17.5 19.5 17.5 21.5 C17.5 23.5 19 25 21 25 C23 25 24.5 23.5 24.5 21.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 8 C12 8 7 14 7 21 C7 28.5 12 34 20 34.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 2"/>
+      <circle cx="21" cy="21.5" r="2" fill="#0f9b82"/>
+    </svg>
+    <div class="logo-names">
+      <span class="logo-top">Singular · Finance</span>
+      <span class="logo-main">Singular Intelligence</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div>Issue #6 · Week of 19 April 2026</div>
+    <div>For boards &amp; investors</div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Weekly Intelligence Briefing</div>
+  <h1 class="hero-title">When the machines <em>move money</em></h1>
+  <p class="hero-body">
+    This week's signal is coherent: AI is graduating from tool to actor. Agentic payments are being specified. DeFi governance is being rewired around token holders. Biotech M&amp;A is accelerating under patent pressure. And tech valuations — despite a brutal Q1 — are flashing a rare disconnect: earnings expectations rising, multiples compressing. <strong>The question for investors is whether this is a buying signal or a value trap.</strong>
+  </p>
+  <div class="topics-row">
+    <span class="topic-pill">AI &amp; Technology</span>
+    <span class="topic-pill">Fintech &amp; Payments</span>
+    <span class="topic-pill">Markets &amp; Macro</span>
+    <span class="topic-pill">Digital Assets</span>
+    <span class="topic-pill">Biotech</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1: AI & TECHNOLOGY ═══════════════ -->
+<div class="section">
+  <div class="section-label">AI &amp; Technology</div>
+
+  <div class="card-featured">
+    <div class="tag tag-ai">AI Strategy</div>
+    <h2>OpenAI has no moat — and no one wants to say it aloud</h2>
+    <p>
+      Benedict Evans put it plainly this week: <strong>OpenAI has no unique technology, limited stickiness, no network effect, and incumbents who have matched its capabilities while leveraging existing distribution.</strong> The enterprise deals are real, but the underlying dynamic is a commodity infrastructure race. Every large tech firm has matched the foundational model quality; the value will accrue to whoever builds the irreplaceable application layer experiences. OpenAI has not yet invented those — and it cannot invent all of them itself. The competitive window is narrower than the funding rounds imply.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-ai">Security Risk</div>
+      <h3>Anthropic's Mythos: AI finds the attack chains humans miss</h3>
+      <p>
+        Anthropic's new security model, Mythos, is designed to <strong>search across complex systems and chain together multiple weak spots</strong> to construct exploits no human analyst would find quickly. UK regulators — the Bank of England, FCA, and NCSC — are already in urgent discussions about vulnerabilities flagged by the model in critical financial infrastructure. The intern analogy applies: not smarter per task, but capable of running a million simultaneous analysis passes.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Model Release</div>
+      <h3>Anthropic ships Opus 4.7 days after Mythos preview</h3>
+      <p>
+        Claude Opus 4.7 occupies the top tier of Anthropic's generally available models. <strong>Tuned for advanced software engineering and long-running autonomous tasks</strong>, early users report it verifies its own outputs before presenting results — a meaningful shift toward self-supervised execution. The pace of release (Mythos preview, then Opus 4.7 within a week) signals Anthropic is matching OpenAI's cadence while differentiating on reliability rather than raw capability.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">AI Eating Tech</div>
+      <h3>Benedict Evans: "AI eats the world" — the macro framing</h3>
+      <p>
+        Evans's biannual macro deck carries a stark thesis: AI is not a product category but a <strong>horizontal that will restructure every software vertical</strong>. The strategic risk is not that AI disrupts incumbents — it is that incumbents absorb AI faster than startups can differentiate. The deck is the clearest articulation yet of why pure-play AI companies face structural pressure even as AI adoption accelerates.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">EdTech</div>
+      <h3>Rethinking school for an AI-disrupted labour market</h3>
+      <p>
+        Dreamtime Learning, founded post-exit by Lina Ashar, runs microschools built around <strong>competency-based progression, small cohorts, and real-world problem-solving</strong> over memorisation. The model challenges grade-locked curricula and uses interdisciplinary teaching — economics through literature, for instance. A niche bet, but directionally correct: the skills AI cannot replicate are the ones schooling has historically neglected.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: FINTECH & PAYMENTS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Fintech &amp; Payments</div>
+
+  <div class="card-featured">
+    <div class="tag tag-fintech">Structural Analysis</div>
+    <h2>The false decline tax: payments loses more to caution than to fraud</h2>
+    <p>
+      Dwayne Gefferie's forensic piece lands a damaging number: <strong>$50.7 billion in merchant revenue lost to false declines across just four markets in a single year</strong> — versus $33.4 billion lost to actual fraud globally (Nilson Report). The asymmetry is structural. The risk stack — identity verification, fraud scoring, authentication — was built layer by layer, each optimised against its own metric, with no design for interoperability. The seams are where legitimate customers are turned away and where fraud gets through. The industry has funded fraud defence obsessively while treating false declines as acceptable collateral damage. It is not. It is the larger problem.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fintech">Agentic Payments</div>
+      <h3>From click to command: AI agents take over the checkout</h3>
+      <p>
+        The Fintech Wrap Up synthesis is clear: <strong>AI agents are evolving from recommendation engines into autonomous actors</strong> that can search, negotiate, procure, and settle within defined parameters. The payments infrastructure implication is significant — authorisation frameworks, liability rails, and reconciliation systems were all designed for human-initiated transactions. None of them were built for agents operating at scale with delegated authority.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Tokenisation</div>
+      <h3>Tokenised deposits: a banking upgrade, not a crypto story</h3>
+      <p>
+        The key distinction this week: tokenised deposits are <strong>commercial bank money on a blockchain, remaining inside the regulated system</strong> — direct liabilities of banks, covered by deposit insurance. Unlike stablecoins, they are not a parallel monetary system. They enable 24/7 near-real-time settlement with programmable logic. Banks are leading this, not being disrupted by it. Stablecoins and CBDCs are developing as complementary rails, not replacements.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Neobank</div>
+      <h3>Revolut crosses £4.5bn revenue with 57% profit growth</h3>
+      <p>
+        Revolut's 2025 Annual Report marks a decade since founding and a transition from disruptor to <strong>globally systemic financial institution</strong>. Revenue up 46% year-on-year to £4.5bn; profit before tax up 57% to £1.7bn. The a16z assessment calls it an "outlier" — extreme operational leverage on a technology-first model. Return on equity now challenges fundamental assumptions of traditional consumer finance.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Prediction Markets</div>
+      <h3>Kalshi: sports volume peaks, but everything else grows faster</h3>
+      <p>
+        Kalshi hosted its first academic research conference in March. The revealing data point: <strong>sports as a share of total volume hit an all-time low even as absolute sports volume hit an all-time high</strong>. Every other category — entertainment, crypto, politics, culture — is growing faster and retaining users better. Prediction markets are not maturing into a sports-betting vertical; they are expanding into a general information-pricing infrastructure.
+      </p>
+    </div>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-fintech">Gulf Infrastructure</div>
+    <h3>Building Gulf stablecoins and CBDC rails: the 2026–2030 architecture</h3>
+    <p>
+      The Gulf is developing its own monetary stack — <strong>stablecoins and CBDCs as parallel, supervised rails</strong>, designed for regional cross-border settlement rather than global disintermediation. The strategic logic is sound: the Gulf has the sovereign wealth to anchor new instruments, the regulatory will to supervise them carefully, and the trade-flow volumes to justify the infrastructure investment. For payments players operating in MENA, understanding this architecture is not optional.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: MARKETS & MACRO ═══════════════ -->
+<div class="section">
+  <div class="section-label">Markets &amp; Macro</div>
+
+  <div class="card-featured">
+    <div class="tag tag-macro">Valuation Anomaly</div>
+    <h2>Tech earnings grow at 40% while the premium evaporates</h2>
+    <p>
+      Goldman Sachs Research this week posed the question directly: is tech cheap? The data is striking. <strong>Tech's premium to the broader market has collapsed from multi-year highs to roughly 2018 levels — a ~25% premium versus the historical norm of far higher</strong>. Meanwhile, earnings expectations for US Information Technology have climbed from 31% at the start of the year to 43.4% as of 9 April, against an 18.7% market expectation. Tech is the only sector upward-revising earnings through the selloff. Globally, the technology sector's P/E is now below consumer staples and industrials. The divergence between rising earnings and falling multiples is either a buying opportunity or a sign that the market has fundamentally repriced tech's role. The answer depends on whether tariffs and geopolitical volatility are cyclical headwinds or a structural reset.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-macro">ARK Q1 Review</div>
+      <h3>ARKK down 12% in Q1 as innovation underperforms for second year running</h3>
+      <p>
+        ARK Innovation ETF declined 12.22% in Q1 2026 versus ~4% for the S&amp;P 500 and ~6% for the Nasdaq 100. <strong>Last year it was tariff escalation; this year, the Iran war reintroduced inflation and growth fears.</strong> ARK's thesis — that innovation equities will eventually outperform incumbents — remains intact in the firm's view, but the holding period required is testing investor patience.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Digital Finance</div>
+      <h3>Crypto recovers: BTC, ETH, SOL up ~5%; AAVE, HOOD lead at 20%+</h3>
+      <p>
+        The US–Iran two-week ceasefire pulled geopolitical risk premium out of commodity and crypto markets. <strong>Spot BTC ETF flows turned net positive for the second week running.</strong> Sentiment indices sit in greed territory: 62 for crypto, 68 for equities. Robinhood leads digital finance equities ahead of its 28 April earnings. The correlation between macro risk-off events and crypto drawdowns remains tight — the ceasefire relief rally underscores the asset class's continued sensitivity to geopolitical news flow.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-bio">Biotech M&amp;A</div>
+      <h3>Patent cliffs are driving a structural bid for biotech assets</h3>
+      <p>
+        March alone saw ten biopharma acquisitions worth ~$31.5 billion, including two deals above $5 billion each. <strong>The driver is structural: large pharma faces patent cliffs on blockbuster drugs and needs pipeline replacement.</strong> ARK's analysis frames this as a sustained bid, not a cycle. Companies with clinical-stage assets in areas like multiomics and cell therapy are attractively positioned as acquisition targets.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">DeFi Governance</div>
+      <h3>Aave's "Will Win" vote: the DAO reclaims 100% of protocol revenue</h3>
+      <p>
+        The Aave DAO passed the "Aave Will Win" proposal with 75% support, <strong>redirecting all revenue from Aave-branded products back to the DAO</strong>, paying Aave Labs a one-time settlement of $25m stablecoins plus 5,000 AAVE, and consolidating brand and economic rights under the token. The Labs-vs-DAO tension — crystallised by a CoWSwap integration that routed fees away from the community — is resolved. An on-chain AIP ratification is pending. The most consequential DeFi governance event of the year so far.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: DIGITAL ASSETS & ON-CHAIN ═══════════════ -->
+<div class="section">
+  <div class="section-label">Digital Assets &amp; On-Chain</div>
+
+  <div class="card-full">
+    <div class="tag tag-crypto">Tokenisation</div>
+    <h3>A 79-year-old asset manager goes on-chain — and it matters</h3>
+    <p>
+      Pantera Capital's portfolio spotlight this week highlights four companies at the intersection of traditional finance and blockchain rails: Figure (AI-driven credit infrastructure), Ondo (tokenised real-world assets), Surf, and M0. The broader framing is the inflection point thesis: <strong>major financial institutions are now live with tokenisation, exploring 24/7 trading, and deploying decentralised identity infrastructure</strong>. When a multi-decade asset manager commits to on-chain infrastructure, it signals the technology is past the proof-of-concept phase. The strategic question for incumbents is no longer whether to engage but how quickly to migrate settlement, custody, and compliance workflows.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUICK HITS ═══════════════ -->
+<div class="quick-hits">
+  <div class="section-label" style="padding: 0 0 24px 0;">Quick Hits</div>
+  <ul>
+    <li>
+      <div class="q-source">Benedict Evans</div>
+      <div class="q-text"><strong>World ID (formerly Worldcoin) relaunches as "full-stack proof of human" infrastructure.</strong> Tools for Humanity is integrating verification into dating apps, ticketing systems, and enterprise identity. The timing — AI deepfakes proliferating — is not accidental.</div>
+    </li>
+    <li>
+      <div class="q-source">YS Buzz</div>
+      <div class="q-text"><strong>Meta to cut ~8,000 employees (10% of global workforce) in May.</strong> The Facebook parent continues to pour capital into its Superintelligence Labs even as it reduces headcount. The two moves are not contradictory — they describe the same AI-driven productivity thesis applied internally.</div>
+    </li>
+    <li>
+      <div class="q-source">ARK Invest</div>
+      <div class="q-text"><strong>Biotech M&amp;A: ten deals, $31.5bn in a single month.</strong> Two transactions exceeded $5bn each in upfront value. Patent cliff pressure on large pharma is creating a structural acquisition wave that ARK expects to persist through the decade.</div>
+    </li>
+    <li>
+      <div class="q-source">Fintech Wrap Up</div>
+      <div class="q-text"><strong>The CLARITY Act is advancing.</strong> The US legislative framework for digital asset classification would provide the regulatory certainty that has held institutional crypto adoption in suspension. Progress here is a precondition for the on-chain finance buildout described throughout this issue.</div>
+    </li>
+    <li>
+      <div class="q-source">a16z</div>
+      <div class="q-text"><strong>a16z GP Martin Casado in the FT: "It's not that hard to build AI models."</strong> The argument is that foundation model capabilities are rapidly commoditising and that the moat lies in application-layer integration, data, and distribution — not in model weights. Consistent with the OpenAI moat analysis above.</div>
+    </li>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>Robinhood leads digital finance equity performance ahead of 28 April earnings.</strong> Circle, COIN, and HOOD all returned above 20% this week. The convergence of traditional brokerage and crypto custody under one brand is beginning to show in the numbers.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="divider"><hr/></div>
+<footer>
+  <div class="footer-title">Singular Intelligence</div>
+  <div class="footer-sep"></div>
+  <p>Issue #6 · 19 April 2026</p>
+  <p>Curated by Laurent Le Moal · <a href="https://singularfinance.com" style="color:#0f9b82; text-decoration:none;">singularfinance.com</a></p>
+  <p style="margin-top:10px; font-size:11px;">For boards and investors. Not investment advice.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
