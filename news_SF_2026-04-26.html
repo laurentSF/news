@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 26 April 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --teal: #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink: #111827;
+      --ink2: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border2: #d1d5db;
+      --surface: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #f3f4f6;
+    }
+    .outer { padding: 32px 16px; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-top { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+    .logo-main { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    .hero {
+      padding: 48px 28px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 36px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-body {
+      font-size: 15px; line-height: 1.72; color: var(--ink2);
+      font-weight: 300; max-width: 640px; margin-bottom: 28px;
+    }
+    .hero-body strong { font-weight: 600; color: var(--ink); }
+    .topics-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .topic-pill {
+      font-size: 11px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; border: 1px solid var(--border2);
+      color: var(--muted); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section { padding: 44px 28px 0; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .card-featured {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 24px 24px 22px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fafffe 0%, #ffffff 100%);
+    }
+    .card-featured .tag { margin-bottom: 10px; }
+    .card-featured h2 {
+      font-size: 20px; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+    }
+    .card-featured p {
+      font-size: 14px; line-height: 1.72; color: var(--ink2); font-weight: 300;
+    }
+    .card-featured p strong { font-weight: 600; color: var(--ink); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px 22px 18px;
+    }
+    .card h3 {
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px; line-height: 1.68; color: var(--ink2); font-weight: 300;
+    }
+    .card p strong { font-weight: 600; color: var(--ink); }
+
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      background: var(--surface);
+    }
+    .card-full h3 {
+      font-size: 15px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px;
+    }
+    .card-full p {
+      font-size: 13.5px; line-height: 1.72; color: #444444; font-weight: 300;
+    }
+    .card-full p strong { font-weight: 600; color: var(--ink); }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tag-ai::before        { background: #0f9b82; }
+    .tag-fintech::before   { background: #3b82f6; }
+    .tag-macro::before     { background: #f59e0b; }
+    .tag-geo::before       { background: #8b5cf6; }
+    .tag-india::before     { background: #f97316; }
+    .tag-crypto::before    { background: #f7931a; }
+    .tag-bio::before       { background: #2a9d4e; }
+
+    .quick-hits { padding: 44px 28px 0; }
+    .quick-hits ul {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-hits li:last-child { border-bottom: none; }
+    .q-source {
+      font-size: 11px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding-top: 1px; line-height: 1.4;
+    }
+    .q-text {
+      font-size: 13px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+    }
+    .q-text strong { font-weight: 600; color: var(--ink); }
+
+    .divider { margin: 52px 28px 0; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    footer {
+      padding: 40px 28px 52px;
+      text-align: center;
+    }
+    .footer-title {
+      font-size: 13px; font-weight: 500; color: var(--teal);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .footer-sep {
+      width: 32px; height: 1px; background: var(--border2);
+      margin: 0 auto 14px;
+    }
+    footer p {
+      font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="wrapper">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#0f9b82" stroke-width="1.5" fill="none"/>
+      <path d="M21 10 C14 10 10 14.5 10 20 C10 26 14.5 30 20 30 C22 30 24 29.5 25.5 28.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 14 C16.5 14 13.5 17 13.5 21 C13.5 25 16.5 27.5 20.5 27.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 18 C19 18 17.5 19.5 17.5 21.5 C17.5 23.5 19 25 21 25 C23 25 24.5 23.5 24.5 21.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 8 C12 8 7 14 7 21 C7 28.5 12 34 20 34.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 2"/>
+      <circle cx="21" cy="21.5" r="2" fill="#0f9b82"/>
+    </svg>
+    <div class="logo-names">
+      <span class="logo-top">Singular · Finance</span>
+      <span class="logo-main">Singular Intelligence</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div>Issue #7 · Week of 26 April 2026</div>
+    <div>For boards &amp; investors</div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Weekly Intelligence Briefing</div>
+  <h1 class="hero-title">Who owns the <em>control plane</em></h1>
+  <p class="hero-body">
+    The week's signal travels across four sectors: <strong>the question is no longer who has the better front-end, but who owns the underlying control plane.</strong> Banks are realising that 90% legacy cores prevent them participating in the revenue streams fintech invented. Merchants who outsource fraud decisions to chargeback-guarantee vendors discover the threshold is now set by someone else's P&amp;L. Kraken has assembled the only full US clearing stack for digital assets — at $20bn. SpaceX has paid for the option to acquire the dominant AI coding interface — at $60bn. Goldman expects M&amp;A to hit $3.8 trillion in 2026 because CEOs need to "buy terminal value." The economics of platform ownership have rarely been clearer.
+  </p>
+  <div class="topics-row">
+    <span class="topic-pill">AI &amp; Technology</span>
+    <span class="topic-pill">Fintech &amp; Payments</span>
+    <span class="topic-pill">Markets &amp; Macro</span>
+    <span class="topic-pill">Digital Assets</span>
+    <span class="topic-pill">India &amp; EM</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1: AI & TECHNOLOGY ═══════════════ -->
+<div class="section">
+  <div class="section-label">AI &amp; Technology</div>
+
+  <div class="card-featured">
+    <div class="tag tag-ai">AI Frontier</div>
+    <h2>From text prediction to world simulation: the next AI category</h2>
+    <p>
+      Goldman Sachs' George Lee and Dan Keyserling argue that the next wave of AI may come less from bigger language models and more from systems that can <strong>simulate reality, test actions before taking them, and reason about consequences</strong>. LLMs are powerful at completing patterns, but they lack an internal sense of the world those patterns describe — a limitation that becomes acute when AI is asked to control robots, manage supply chains, or coordinate complex enterprise workflows. World models represent a quiet but decisive shift in how machines become intelligent. The strategic implication for investors: another wave of capital expenditure may be unlocked, but the architecture being built is materially different from what the current AI valuations price in.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-ai">Earnings Concentration</div>
+      <h3>Tech is no longer a cycle — it is the cycle</h3>
+      <p>
+        a16z's data is striking: <strong>since 2023, technology has been responsible for roughly 60% of total US market earnings growth</strong>. The combined market cap of the top ten S&amp;P companies is six times its 2015 level. The top ten US tech firms together exceed the combined GDP of the G7 ex-US. No sector has played this central a role in earnings growth this century — except a brief moment for energy in the early 2000s. The question for portfolio construction is no longer whether to own tech but how concentrated the bet has quietly become.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Org Disruption</div>
+      <h3>Dorsey: AI does not assist middle management — it replaces it</h3>
+      <p>
+        Jack Dorsey and Block's leadership argue the point of AI inside a company is <strong>not to give everyone a copilot, but to delegate to software the coordinating work that middle management has done since the 1850s</strong> — routing information, maintaining alignment, pre-computing decisions. Humans move to the edges, focused on customer contact and judgment. The framing is provocative but operationally consequential: if Dorsey is right, the firm of the next decade looks structurally different from the one designed by the railroads.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Software Playbook</div>
+      <h3>Goldman: cybersecurity firms model how to navigate the AI shock</h3>
+      <p>
+        Goldman analyst Gabriela Borges argues software firms should study cybersecurity incumbents, who have absorbed continuous technological disruption through <strong>disciplined M&amp;A and aggressive technical-debt reduction</strong>. US cybersecurity stocks trade at a 20%+ premium to broader software on EV-to-forward-sales — partly because their R&amp;D model is revolutionary rather than evolutionary. The recommendation: acquire innovative startups carefully, integrate them over time, and reduce poorly-integrated legacy code that undermines AI adoption.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Strategic Lock-In</div>
+      <h3>SpaceX options Cursor at $60bn — distribution as the moat</h3>
+      <p>
+        SpaceX has secured an option to acquire AI coding leader Cursor for $60bn later this year — or pay $10bn for a partnership if the acquisition does not close. Cursor was raising privately at $50bn after a $2.5bn valuation in January 2025. <strong>The strategic logic: Colossus, xAI's training cluster equivalent to one million H100s, gets a distribution channel into the highest-value AI users — software developers</strong> — while Cursor accesses compute that rivals the frontier labs. Two senior Cursor engineers recently moved to xAI. The deal frames the AI competitive question precisely: model quality is converging; distribution is what compounds.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: FINTECH & PAYMENTS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Fintech &amp; Payments</div>
+
+  <div class="card-featured">
+    <div class="tag tag-fintech">Architecture</div>
+    <h2>The Bank Operating System: from system of record to system of growth</h2>
+    <p>
+      Sam Boboev's deep dive frames the structural problem with unusual clarity: <strong>90% of US banking core software is legacy, and universal banks now allocate 70% of their IT budget to system maintenance — leaving 30% for innovation</strong>. Two decades of middleware has masked the problem without solving it. The emerging answer is the sidecar core: a real-time, ISO 20022-native, cloud-native operating system running parallel to the legacy core, gradually absorbing customer segments and products. Projections suggest 40% of global banks will pursue sidecar strategies by 2026, rising to 80% by 2028. The shift in metric matters as much as the shift in architecture: from Total Cost of Ownership to Speed to Value. The institutions that decouple the innovation cycle from the legacy core will participate in the tokenised, agentic economy. Those that remain core-centric will obsolesce.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fintech">Agentic Payments</div>
+      <h3>Three new payment flows that current rails were not built for</h3>
+      <p>
+        Fintech Wrap Up's synthesis identifies three emerging flows: <strong>human-to-agent (delegated authority within constraints), agent-to-business (autonomous procurement), and agent-to-agent (machines transacting with each other)</strong>. The authorisation, liability, and reconciliation infrastructure was designed for human-initiated transactions. Cryptographic intent and consent artefacts, trust signals to distinguish commercial agents from malicious automation, and shared protocols for cart and checkout coordination are all being defined in parallel — the interoperability question will determine whether agentic commerce fragments or scales.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Risk Transfer</div>
+      <h3>Gefferie: when the chargeback vendor owns the threshold, the merchant loses the dial</h3>
+      <p>
+        Dwayne Gefferie's analysis lands a structural insight: in the chargeback-guarantee model, <strong>the vendor's own gross margin determines approval rates by vertical</strong>. Riskified said it explicitly on its Q4 2025 call — "focused on driving gross profit growth versus optimising primarily for revenue growth," meaning tighter approvals in lower-margin categories like travel and tickets. The merchant has bought certainty and given up control. Only 64% of merchants even track their false-decline rate. The team optimising the threshold is being paid on chargebacks, not lost LTV.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">KYC Automation</div>
+      <h3>Agentic AI moves KYC from manual operation to exception management</h3>
+      <p>
+        The KYC function in banking is being restructured: <strong>AI agents now handle routine onboarding, verification, and ongoing monitoring; humans focus only on flagged exceptions</strong>. The cost-base reduction is material — analyst projections suggest 30–40% operational cost reduction by 2030 — but the strategic point is different. KYC moves from a back-office cost centre to a real-time risk decisioning capability embedded in the payment flow itself. Banks that delay this transition will be uncompetitive on customer onboarding speed within twenty-four months.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Operating Discipline</div>
+      <h3>Airwallex: most fintechs optimise the surface, few rebuild the foundation</h3>
+      <p>
+        Shannon Scott, Airwallex CPO, makes the point that separates global infrastructure plays from local features: <strong>most fintechs optimise the user-facing surface while leaving the foundation untouched</strong>. Airwallex has rebuilt licensing, reconciliation, and FX infrastructure across more than fifty markets — slower, less visible, more durable. The contrast with Revolut's neobank scale (covered last week) is instructive: two different routes to scale, both predicated on owning the layer that competitors prefer to rent.
+      </p>
+    </div>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-india">India Infrastructure</div>
+    <h3>AWS treats India as a population-scale platform, not a market</h3>
+    <p>
+      AWS's framing of India through Sandeep Dutta, President India &amp; South Asia, is strategically distinctive: India is <strong>a market in which to build "from India, for India and for the world" — anchored by partnerships on national infrastructure (DigiLocker, DigiYatra, Government e-Marketplace, National Health Authority) alongside scale-stage private clients (Zomato, Paytm, Dhan, PhonePe at ~700 million users)</strong>. The implication for global cloud and AI providers is that India is no longer an emerging-market line item. It is one of the few geographies where population-scale digital infrastructure is being built in real time, with regulatory frameworks that permit foreign operators to participate. Strategic positioning here cannot be retrofitted later.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: MARKETS & MACRO ═══════════════ -->
+<div class="section">
+  <div class="section-label">Markets &amp; Macro</div>
+
+  <div class="card-featured">
+    <div class="tag tag-macro">M&amp;A Cycle</div>
+    <h2>Goldman: M&amp;A on track for $3.8 trillion in 2026 — driven by the "tyranny of terminal value"</h2>
+    <p>
+      Tim Ingrassia, Co-Chairman of Global M&amp;A at Goldman Sachs, sees this dealmaking cycle still has room to run. Global M&amp;A activity surged in Q1 and the year is on track to hit $3.8 trillion. Cycles typically last six to seven years; this is year four. <strong>Two forces are driving the unusual depth: AI is reshaping how CEOs think about long-term value — Ingrassia calls it the "tyranny of terminal value", the sense that companies are now judged on what they will be worth years from now rather than current performance</strong>. CEOs cannot organically buy that future, so they buy it through M&amp;A. Second, deals worth more than $10 billion jumped 24% in 2025 over the prior 2021 high. Big deals historically lead small deals. The base case is sustained M&amp;A through 2026, with AI-driven strategic logic cutting across sectors that would not previously have crossed paths.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-macro">Volatility Outlook</div>
+      <h3>Goldman: volatility could rise even if the index keeps rallying</h3>
+      <p>
+        Vickie Chang of Goldman Sachs Research expects <strong>equity volatility to rise over the longer term — even if stocks continue to rally</strong>. The historical analogue is the late 1990s: rising valuations, rising leverage, and unresolved questions about whether innovation-led productivity gains justify the prices being paid. Today's market mirrors that pattern. As investors focus more attention on whether AI benefits justify the value built in, volatility should rise both beneath the surface and at the index level. Rising prices and rising volatility are not mutually exclusive.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">Stablecoin Use Case</div>
+      <h3>Stablecoins shift from transfers to commerce — $350–550bn in payments</h3>
+      <p>
+        a16z's data this week strips out trading, treasury flows, and exchange mechanics from stablecoin volumes — <strong>leaving an estimated $350–550bn in payments between different parties last year</strong>. B2B dominates by volume, but B2C and C2B are growing. The framing matters: stablecoins are no longer being measured as a crypto-native curiosity but as a payments rail. For payments incumbents, the question is no longer whether to integrate stablecoin flows but how quickly the existing rails can co-exist with them.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Trust Collapse</div>
+      <h3>Mass-media trust at 28%, with a generational chasm</h3>
+      <p>
+        Trust in mass media has collapsed from 72% in 1975 to <strong>28% in 2025</strong>. The aggregate number understates the story: the generational gap is structural. 76% of US adults under 30 get news from social media at least sometimes; among the 65-and-older cohort, it is 28%. Martin Gurri's argument in <em>The Revolt of the Public</em> applies: when information monopolies broke, authority that had never been fully earned was exposed. For media, marketing, and political communications businesses, the implication is that <strong>capital requirements for building new media alternatives have never been lower</strong>.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Defence Procurement</div>
+      <h3>DoW reform changes how startups can sell to the Pentagon</h3>
+      <p>
+        a16z's updated primer notes that <strong>late-2025 statutory and regulatory reforms have changed how federal acquisition works</strong>, with the full impact still manifesting in early 2026. The toolkit (SBIR, STTR, Other Transactions, APFIT, STRATFI/TACFI, prime teaming) remains complex, but the trend is clear: faster pathways from prototype to procurement. For investors with defence-tech exposure, the question is whether the reform proves incremental or genuinely shifts the buying behaviour of one of the world's largest customers.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: DIGITAL ASSETS & ON-CHAIN ═══════════════ -->
+<div class="section">
+  <div class="section-label">Digital Assets &amp; On-Chain</div>
+
+  <div class="card-full">
+    <div class="tag tag-crypto">Platform Bet</div>
+    <h3>Kraken at $20bn: bounded downside, asymmetric upside on infrastructure</h3>
+    <p>
+      Artemis's analysis frames Payward (Kraken) as the first crypto-native firm to assemble a complete US infrastructure stack: <strong>Designated Contract Market, Derivatives Clearing Organisation, and Futures Commission Merchant licences via Bitnomial; a Federal Reserve Master Account secured in March 2026; Wyoming SPDI charter; xStocks (the largest tokenised stocks product globally at $320m AUM); and Ink, an L2 where Kraken runs the only sequencer and captures 100% of gas fees</strong>. The recently announced Nasdaq partnership positions Kraken as the settlement layer connecting permissioned and permissionless markets. 2025 revenue: $2.2bn (+33% YoY), $531m EBITDA — with a revenue mix of 47% trading and 53% asset-based (custody, yield, payments). The valuation case is asymmetric: at $20bn, the downside is anchored by the exchange floor; the upside depends on execution across three independent catalysts (xStocks in the US, Bitnomial clearing scale, banking products on the Fed account). The competitive argument: any individual piece is replicable; the combination, assembled first, is the bet.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUICK HITS ═══════════════ -->
+<div class="quick-hits">
+  <div class="section-label" style="padding: 0 0 24px 0;">Quick Hits</div>
+  <ul>
+    <li>
+      <div class="q-source">Chamath</div>
+      <div class="q-text"><strong>Sony AI's Ace robot beats elite human players at table tennis</strong> — published in <em>Nature</em>, 22 April. The hard problem is not the swing; it is real-time perception and decision under sub-second adversarial conditions. A meaningful milestone for embodied AI and robotics, particularly relevant to manufacturing and logistics.</div>
+    </li>
+    <li>
+      <div class="q-source">Chamath</div>
+      <div class="q-text"><strong>Stanford-led paper in Science: bacteria can build DNA without a template.</strong> A specialised system used in defence against viruses — narrow but consequential. Synthetic biology gains a new enzyme architecture to study; bacterial immunity gains a new chapter.</div>
+    </li>
+    <li>
+      <div class="q-source">YS Buzz</div>
+      <div class="q-text"><strong>Google launches a $750m fund for global consulting firms to accelerate agentic AI deployment</strong> — backing McKinsey, Accenture, Deloitte AI for value identification, prototyping, agent build, and upskilling. The signal: hyperscalers are betting that the AI go-to-market layer runs through systems integrators, not direct enterprise sales.</div>
+    </li>
+    <li>
+      <div class="q-source">YS Buzz</div>
+      <div class="q-text"><strong>Apple succession: John Ternus succeeds Tim Cook.</strong> The strategic question is whether Apple's tightly-controlled ecosystem model — which delivered the most valuable consumer product in history — can adapt to an AI era defined by openness, fast iteration, and broad developer access.</div>
+    </li>
+    <li>
+      <div class="q-source">a16z / FT</div>
+      <div class="q-text"><strong>Cursor was preparing a $2bn private fundraise at a $50bn valuation</strong> — up roughly twentyfold from $2.5bn in January 2025. The SpaceX option then puts a $60bn ceiling on the trajectory, settling the comp question for AI coding companies.</div>
+    </li>
+    <li>
+      <div class="q-source">YS Buzz</div>
+      <div class="q-text"><strong>Lufthansa cuts 20,000 short-haul flights this summer</strong> as fuel prices make many routes "unprofitable." European short-haul economics under sustained pressure; long-haul connections preserved. A signal worth watching for travel-payments and tourism-exposed merchants.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="divider"><hr/></div>
+<footer>
+  <div class="footer-title">Singular Intelligence</div>
+  <div class="footer-sep"></div>
+  <p>Issue #7 · 26 April 2026</p>
+  <p>Curated by Laurent Le Moal · <a href="https://singularfinance.com" style="color:#0f9b82; text-decoration:none;">singularfinance.com</a></p>
+  <p style="margin-top:10px; font-size:11px;">For boards and investors. Not investment advice.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
