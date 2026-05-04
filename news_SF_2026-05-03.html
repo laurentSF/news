@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 3 May 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Sans:wght@400&display=swap');
+    :root {
+      --teal: #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink: #111827;
+      --ink2: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border2: #d1d5db;
+      --surface: #f9fafb;
+      --sage: #5a9a5a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #f3f4f6;
+    }
+    .outer { padding: 32px 16px; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    /* ── HEADER + WORDMARK LOGO ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .wordmark {
+      font-family: 'Instrument Sans', 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      line-height: 1;
+    }
+    .wordmark .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+      transform: translateY(1px);
+    }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .header-meta .pub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 48px 28px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 36px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-body {
+      font-size: 15px; line-height: 1.72; color: var(--ink2);
+      font-weight: 300; max-width: 640px; margin-bottom: 28px;
+    }
+    .hero-body strong { font-weight: 600; color: var(--ink); }
+    .topics-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .topic-pill {
+      font-size: 11px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; border: 1px solid var(--border2);
+      color: var(--muted); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 44px 28px 0; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── FEATURED CARD ── */
+    .card-featured {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 24px 24px 22px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fafffe 0%, #ffffff 100%);
+    }
+    .card-featured .tag { margin-bottom: 10px; }
+    .card-featured h2 {
+      font-size: 20px; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+    }
+    .card-featured p {
+      font-size: 14px; line-height: 1.72; color: var(--ink2); font-weight: 300;
+    }
+    .card-featured p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px 22px 18px;
+    }
+    .card h3 {
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px; line-height: 1.68; color: var(--ink2); font-weight: 300;
+    }
+    .card p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── FULL-WIDTH CARD ── */
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      background: var(--surface);
+    }
+    .card-full h3 {
+      font-size: 15px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px;
+    }
+    .card-full p {
+      font-size: 13.5px; line-height: 1.72; color: #444444; font-weight: 300;
+    }
+    .card-full p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tag-ai::before        { background: #0f9b82; }
+    .tag-fintech::before   { background: #3b82f6; }
+    .tag-macro::before     { background: #f59e0b; }
+    .tag-geo::before       { background: #8b5cf6; }
+    .tag-india::before     { background: #f97316; }
+    .tag-crypto::before    { background: #f7931a; }
+    .tag-bio::before       { background: #2a9d4e; }
+
+    /* ── QUICK HITS ── */
+    .quick-hits { padding: 44px 28px 0; }
+    .quick-hits ul {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-hits li:last-child { border-bottom: none; }
+    .q-source {
+      font-size: 11px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding-top: 1px; line-height: 1.4;
+    }
+    .q-text {
+      font-size: 13px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+    }
+    .q-text strong { font-weight: 600; color: var(--ink); }
+
+    /* ── DIVIDER ── */
+    .divider { margin: 52px 28px 0; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 28px 52px;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 10px;
+    }
+    .footer-wordmark .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sage); display: inline-block;
+    }
+    .footer-sep {
+      width: 32px; height: 1px; background: var(--border2);
+      margin: 0 auto 14px;
+    }
+    footer p {
+      font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="wrapper">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="wordmark">
+    <span>Singular</span>
+    <span class="dot" aria-hidden="true"></span>
+    <span>Finance</span>
+  </div>
+  <div class="header-meta">
+    <div class="pub">Singular Intelligence</div>
+    <div>Issue #7 · Week of 3 May 2026</div>
+    <div>For boards &amp; investors</div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Weekly Intelligence Briefing</div>
+  <h1 class="hero-title">The <em>price–data divergence</em></h1>
+  <p class="hero-body">
+    The week's signal is repeated divergence — between what the infrastructure shows and what the price reflects. The S&amp;P 500 just completed <strong>the fastest V-shaped recovery on record</strong> from the Iran shock; meanwhile Buffett sits on a $373bn cash pile, the largest in Berkshire history, and Paul Tudor Jones is calling 252% market-cap-to-GDP. AI capex pours into chips and power while software multiples have already mean-reverted. Polygon picks up Meta, Visa and Modern Treasury in the same week Polymarket signals exit. Enterprise merchants run the most informationally rich fraud check in the payments chain — and pay for being wrong twice while only getting credit for being right once. The question for capital allocators is which side of these divergences is the leading indicator.
+  </p>
+  <div class="topics-row">
+    <span class="topic-pill">AI &amp; Technology</span>
+    <span class="topic-pill">Fintech &amp; Payments</span>
+    <span class="topic-pill">Markets &amp; Macro</span>
+    <span class="topic-pill">Digital Assets</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1: AI & TECHNOLOGY ═══════════════ -->
+<div class="section">
+  <div class="section-label">AI &amp; Technology</div>
+
+  <div class="card-featured">
+    <div class="tag tag-ai">Stack Mapping</div>
+    <h2>Chamath's six-layer AI stack: where the value will actually accrue</h2>
+    <p>
+      Chamath Palihapitiya's Q1 deep dive maps the AI stack as <strong>six layers — infrastructure, chips, data, models, execution, application</strong> — each with a "fulcrum asset" through which all value above it must pass. The strategic point lands hard: the foundation is the most concentrated layer, and the concentration is global, not American. ASML in the Netherlands prints every advanced chip in the world. Four Japanese companies supply the film no chip ships without. A single mine in North Carolina sits beneath every wafer in production. NVIDIA's CUDA runs on top of all of it. At the chip layer the stack forks — software AI, where the price of running a model has dropped 1,500× in six years and intelligence is approaching free; and physical AI, where the binding constraints are energy storage and actuation. The pattern echoes Rockefeller at 90% of refining and Cisco at 85% of routing. The names that will define the next forty years are being claimed at the fulcrum points now.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-ai">Labour Markets</div>
+      <h3>Goldman: AI has cut 16,000 jobs/month off US payroll growth</h3>
+      <p>
+        Goldman Sachs Research now estimates AI has reduced monthly US payroll growth by <strong>16,000 jobs over the past year</strong>. The number is small relative to a 160-million-person workforce but directionally significant — AI is a measurable subtraction from the jobs print, not yet a replacement story. The macro consequence: Warsh's view that AI adoption will prove disinflationary now has a payrolls vector behind it.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Infrastructure Stress</div>
+      <h3>a16z: leaky abstractions and the cost of poking holes</h3>
+      <p>
+        a16z argues that critical infrastructure abstractions — paper checks, online checkout, energy markets — are not collapsing but <strong>leaking, as governments and platforms try to grab the controls underneath</strong>. The DOGE directive ending federal paper cheques is the cleanest example. The second-order consequence is rational actors hardening their defences. For incumbents: the cost of operating below the abstraction is rising, and reliable interfaces will command a premium.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Autonomous Systems</div>
+      <h3>Robotaxis: a $400bn market by 2035, per Goldman Research</h3>
+      <p>
+        Goldman Sachs Research forecasts <strong>robotaxis will reach $400bn in revenue by 2035</strong>. The number frames the addressable market for the autonomous-vehicle stack and explains why the platform aggregators (Uber positioning itself as the open layer) and the technology owners (Tesla, Waymo, the Chinese players) are now in active jostling for share. The strategic question for investors is how that pool divides between the platform and the underlying technology.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Capex vs Returns</div>
+      <h3>The infrastructure-application gap, in one chart</h3>
+      <p>
+        a16z this week reframed an old observation: <strong>semis and AI infrastructure trade at a substantial premium while the putative beneficiaries of AI trade at little-to-no premium</strong>. Software multiples on a growth-adjusted basis have already mean-reverted to the prior decade's average. The post-GFC mobile cycle ran the same pattern — semis first, software second, with a five-year lag. Reading the same script forward: the AI software re-rate has not yet started.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: FINTECH & PAYMENTS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Fintech &amp; Payments</div>
+
+  <div class="card-featured">
+    <div class="tag tag-fintech">Risk Architecture</div>
+    <h2>The merchant's decision: paying twice to be wrong, once to be right</h2>
+    <p>
+      Dwayne Gefferie's forensic piece on enterprise fraud decisioning lands a structural point. <strong>The merchant runs the most informationally rich fraud check in the payments chain</strong> — several hundred to a couple of thousand features per transaction, against the 25–60 ISO 8583 fields that reach the issuer. Identity, behavioural cadence, full device fingerprint, network reputation, deep historical velocity. Stripe states roughly 90% of cards on its network have been seen before. Yet the cost asymmetry is brutal: a wrong approval means the chargeback, the cost of goods, the shipping, the interchange, and exposure under Visa's monitoring programme. A wrong decline means a customer who never comes back. Both outcomes cost the merchant; only one appears on the dashboard. The Merchant Risk Council pegs typical false-positive rates at 2–10%, with one in five merchants above 10%. The threshold is a business decision, not a technical one — and the gap between data-science ownership of the model and ops ownership of the rule layer is where most of the value leaks.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fintech">Bank Tech</div>
+      <h3>The "Bank Operating System" emerges as a category</h3>
+      <p>
+        The Fintech Wrap Up reports converge on a thesis: a real-time, composable growth layer is forming above legacy cores. <strong>Core stays the system of record; the operating system becomes the system of growth</strong> — independent of core downtime, capable of activating new payment rails without integration friction. Twenty years of architectural accumulation (middleware, point solutions, BaaS) treated symptoms. This treats the cause. For mid-sized banks fragmented in modernisation, the OS layer is the more capital-efficient route than another core replacement.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Agentic Commerce</div>
+      <h3>Noah Levine (a16z): agentic commerce won't start with shopping</h3>
+      <p>
+        Levine's thesis runs against the grain of the agentic-checkout narrative. <strong>The substantive shift is not AI agents buying shoes — it is the rewiring of commerce infrastructure underneath</strong>: authorisation frameworks, liability rails, reconciliation, identity. Consumer agentic shopping is the surface story. The deeper story is that the rails were built for human-initiated transactions, and re-engineering them for delegated authority at scale is the unglamorous, multi-year build where the value will sit.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Stablecoin Rails</div>
+      <h3>Visa's stablecoin network: $7bn annualised, +50% QoQ</h3>
+      <p>
+        Visa added Polygon to its stablecoin settlement programme this week, alongside four other networks. The headline number from Visa: <strong>$7bn in annualised volume, growing roughly 50% quarter-on-quarter — implying a near-term run rate above $10bn</strong>. Meta also went live with USDC creator payouts via Stripe (Polygon and Solana settlement), live in Colombia and the Philippines with 160 markets planned by year-end. This is Meta's first stablecoin product since Diem was shelved in 2022; using a regulated third-party stablecoin under the GENIUS Act framework rather than building its own is the strategic shift.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Earnings Risk</div>
+      <h3>HOOD and SOFI repriced off crypto-cycle multiples</h3>
+      <p>
+        Robinhood fell 12.75% on the week and SoFi 12.12% after Q1 earnings. Both topline beats; both punished. <strong>HOOD missed on net revenue ($1.07bn vs $1.14bn) with crypto revenue down 47% YoY to $134m</strong>. SOFI delivered record adjusted revenue but Galileo platform revenue fell 27% on Chime exiting, and personal and student loan charge-offs ticked up. The market is repricing crypto-distribution names harder than the underlying assets. Coinbase's 7 May print sets the near-term ceiling.
+      </p>
+    </div>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-fintech">Agentic Banking</div>
+    <h3>From insight to action: the autonomous AI-agent banking blueprint</h3>
+    <p>
+      Two decades of bank transformation have focused on capturing data and improving digital experience. The execution layer has not moved as much. Most work still depends on manual coordination across systems, and even when insights are available, follow-up is inconsistent. <strong>Autonomous AI agents close that gap by managing outcomes within defined guardrails, not just delivering recommendations</strong>. The architectural shift is from AI as analyst to AI as operator — capable of completing defined tasks, following rules, and moving processes forward across systems. The competitive question for banks is which functions will move first (operations, treasury, compliance, servicing) and where the human-in-the-loop boundary settles. The answer determines unit economics for the next decade.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: MARKETS & MACRO ═══════════════ -->
+<div class="section">
+  <div class="section-label">Markets &amp; Macro</div>
+
+  <div class="card-featured">
+    <div class="tag tag-macro">Valuation Debate</div>
+    <h2>The fastest V-shape on record — with the smartest money sitting it out</h2>
+    <p>
+      The S&amp;P 500 sold off roughly 10% during the Iran conflict and recovered in <strong>11 trading sessions — the fastest V-shaped recovery ever on record</strong>. The index closed Friday at an all-time high of 7,165, up 30% year-on-year. Two of the most successful investors of the past fifty years are not buying it. Buffett: "this is nothing… we aren't in it to make 5% or 6%" — and Berkshire sits on $373bn of cash, the largest pile in its history. Paul Tudor Jones: the market is at 252% of GDP versus 170% in 2000 and 65% in 1929; a mean-reversion to the 25–30 year P/E implies a 30–35% decline. The structural counter-argument is that prices are higher because there is more cash to chase them — money market fund balances at $8trn, double pre-pandemic; <strong>roughly 30% of all US dollars in M2 today were created in the last five years</strong>. Profit margins are also double the 1990s average and forecast earnings growth more than double the long-term average. Either the cash dynamics have repriced equity multiples permanently, or the smart money is right about the reversion. The bond and dollar markets will adjudicate first.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-macro">Fed Leadership</div>
+      <h3>Warsh on path to confirmation: high bar for QE, less forward guidance</h3>
+      <p>
+        Kevin Warsh is expected to be confirmed as Fed Chair ahead of the June FOMC. Per Goldman's Rob Kaplan, three signals matter: <strong>a high bar for quantitative easing, scaling back the dot plot, and broader use of alternative inflation gauges</strong> (Warsh referenced the Dallas Trimmed Mean in confirmation). His personal lean is dovish — AI and Chinese overcapacity as disinflationary forces — but he needs seven votes, and the committee remains scarred by the "transitory" call. Visible inflation improvement is the gating condition for cuts.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Inflation Print</div>
+      <h3>PCE prints 3.5%, the hottest since May 2023; FOMC holds at 3.5–3.75%</h3>
+      <p>
+        Headline PCE printed <strong>3.5% YoY on 30 April — the hottest reading since May 2023</strong>. The FOMC held the policy rate at 3.5–3.75%. The macro backdrop turned hawkish into the move, and risk assets felt it: spot Bitcoin ETFs flipped to three consecutive days of net outflows totalling roughly $491m into FOMC week. The oil-price shock from the Middle East is doing real work in the inflation prints. Warsh's confirmation timeline now coincides with the question of whether the disinflation trajectory has stalled.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Private Credit</div>
+      <h3>Goldman: retail withdrawals, but the asset class fundamentals hold</h3>
+      <p>
+        Goldman Sachs Research notes <strong>some retail investors are withdrawing from private credit funds, but the underlying principles of the asset class are expected to remain intact</strong>. The retail leg was the marginal flow of the cycle, and its softening was always more likely to be a liquidity-mismatch story than a credit-quality one. For the institutional thesis — insurance balance sheets, illiquidity premium, direct-origination yields — nothing has changed. The retail outflow is a feature of the product structure, not a verdict on the asset class.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Sector Rotation</div>
+      <h3>Software's turn comes, eventually — the post-GFC mobile pattern</h3>
+      <p>
+        Pattern recognition from a16z: in the post-GFC mobile cycle, semis and infrastructure (Qualcomm, ARM) led from 2010–2012; platform layers (Apple, Samsung) carried 2013–2014; <strong>software emerged as the clear market leader only by year five</strong>. The current AI cycle is reproducing the early phase — semis and AI infrastructure ahead, software trailing. If the pattern holds, the software re-rate is a 2027–2028 story. The risk is that the analogy breaks because AI commoditises application logic faster than mobile did.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: DIGITAL ASSETS & ON-CHAIN ═══════════════ -->
+<div class="section">
+  <div class="section-label">Digital Assets &amp; On-Chain</div>
+
+  <div class="card-featured">
+    <div class="tag tag-crypto">Asset Class Maturation</div>
+    <h2>Bitcoin behaving like the asset its proponents always claimed</h2>
+    <p>
+      ARK's update this week underlines a structural shift. <strong>ETFs and public companies now hold roughly 12% of total bitcoin supply</strong>; price drawdowns across multiple time horizons have reached the shallowest levels on record; and BTC's correlation with traditional risk assets is diverging from its historical pattern. The framing has moved from "digital gold" to "potential safe haven in a shifting global landscape" — and the price action through the Iran shock corroborates it: BTC held the $76,000 zone, stalled twice at $80,000, and traded with materially less volatility than the equity selloff. The investment-committee implication is that bitcoin's portfolio role is no longer purely speculative; it is becoming an allocator question rather than a thesis question. Whether the institutional bid sustains through a genuine credit event remains the only test that matters.
+    </p>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-crypto">Network Tension</div>
+    <h3>Polygon's two-track week: Meta, Visa, Modern Treasury — and Polymarket signalling exit</h3>
+    <p>
+      In a single week Polygon picked up <strong>Meta (USDC creator payouts via Stripe), Visa (stablecoin settlement), and Modern Treasury (Payments API)</strong>. The chain ran roughly $37bn in stablecoin volume over the trailing 30 days and generated $11m in Q1 network revenue, up from $2.1m the prior quarter. In the same week, Polymarket VP of Engineering Josh Stevens publicly named "chain migration" a roadmap priority, citing block space, gas costs, and block times. Polymarket generates $2.5m–$4m in weekly fees on Polygon — 50–70% of total chain transaction-fee revenue — and occupies three of the top five gas-consuming contracts. POL closed +0.92% against a basket median of -3.70%: the market is pricing both halves of the story. Polygon is becoming an institutional payments rail at the moment it risks losing its largest crypto-native consumer application. May's question is whether it can be both at once.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUICK HITS ═══════════════ -->
+<div class="quick-hits">
+  <div class="section-label" style="padding: 0 0 24px 0;">Quick Hits</div>
+  <ul>
+    <li>
+      <div class="q-source">Strategy</div>
+      <div class="q-text"><strong>Strategy adds 3,273 BTC for $255m, fourth consecutive week of buying.</strong> Total holdings: 818,334 BTC at a $61.81bn cost basis. mNAV at 1.28×, well above the sub-1.0× readings that briefly forced an ATM pause in February. Pace meaningfully slower than the prior week's $2.54bn buy.</div>
+    </li>
+    <li>
+      <div class="q-source">Aave</div>
+      <div class="q-text"><strong>"DeFi United" proposal: Aave service providers join Lido and EtherFi to cover KelpDAO bridge losses.</strong> AAVE held up best in major DeFi at -1.55% on the week. The proposal is an early test of cross-protocol risk-sharing as a primitive — and of whether DAO treasuries will fund mutualised loss-absorption.</div>
+    </li>
+    <li>
+      <div class="q-source">ARK Invest</div>
+      <div class="q-text"><strong>Bitcoin ETFs and public-company holdings now equal ~12% of total BTC supply.</strong> Drawdowns at shallowest levels on record across multiple time horizons. The institutional adoption curve is no longer a forecast — it is a print.</div>
+    </li>
+    <li>
+      <div class="q-source">Goldman Sachs</div>
+      <div class="q-text"><strong>Goldman flags caution on the trading floor as big-tech earnings point to rising AI capex.</strong> The combination of accelerating capex and softening forward guidance creates a window where the spend is visible but the returns are not — historically a setup for multiple compression rather than expansion.</div>
+    </li>
+    <li>
+      <div class="q-source">Goldman Sachs</div>
+      <div class="q-text"><strong>30% of all US dollars in M2 today were created in the last five years.</strong> Fed balance sheet at $6.7trn — down from a $9trn peak but still 60% above pre-pandemic. Warsh has called this "fiscal policy in disguise" and "quite unhelpful." The denominator argument behind elevated multiples sits here.</div>
+    </li>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>BTC trades near $76,300, having stalled twice at $80,000 resistance.</strong> ETF flows turned to three consecutive days of outflows totalling ~$491m into FOMC week. The stall is a price-discovery question; the flow is a sentiment one. Watch the second resistance break — first attempt failed cleanly.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="divider"><hr/></div>
+<footer>
+  <div class="footer-wordmark">
+    <span>Singular</span>
+    <span class="dot" aria-hidden="true"></span>
+    <span>Finance</span>
+  </div>
+  <div class="footer-sep"></div>
+  <p>Singular Intelligence · Issue #7 · 4 May 2026</p>
+  <p>Curated by Laurent Le Moal · <a href="https://singularfinance.com" style="color:#0f9b82; text-decoration:none;">singularfinance.com</a></p>
+  <p style="margin-top:10px; font-size:11px;">For boards and investors. Not investment advice.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
