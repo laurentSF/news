@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 17 May 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --teal: #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink: #111827;
+      --ink2: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border2: #d1d5db;
+      --surface: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #f3f4f6;
+    }
+    .outer { padding: 32px 16px; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-top { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+    .logo-main { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    .hero {
+      padding: 48px 28px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 36px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-body {
+      font-size: 15px; line-height: 1.72; color: var(--ink2);
+      font-weight: 300; max-width: 640px; margin-bottom: 28px;
+    }
+    .hero-body strong { font-weight: 600; color: var(--ink); }
+    .topics-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .topic-pill {
+      font-size: 11px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; border: 1px solid var(--border2);
+      color: var(--muted); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section { padding: 44px 28px 0; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .card-featured {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 24px 24px 22px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fafffe 0%, #ffffff 100%);
+    }
+    .card-featured .tag { margin-bottom: 10px; }
+    .card-featured h2 {
+      font-size: 20px; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+    }
+    .card-featured p {
+      font-size: 14px; line-height: 1.72; color: var(--ink2); font-weight: 300;
+    }
+    .card-featured p strong { font-weight: 600; color: var(--ink); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px 22px 18px;
+    }
+    .card h3 {
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px; line-height: 1.68; color: var(--ink2); font-weight: 300;
+    }
+    .card p strong { font-weight: 600; color: var(--ink); }
+
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      background: var(--surface);
+    }
+    .card-full h3 {
+      font-size: 15px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px;
+    }
+    .card-full p {
+      font-size: 13.5px; line-height: 1.72; color: #444444; font-weight: 300;
+    }
+    .card-full p strong { font-weight: 600; color: var(--ink); }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tag-ai::before        { background: #0f9b82; }
+    .tag-fintech::before   { background: #3b82f6; }
+    .tag-macro::before     { background: #f59e0b; }
+    .tag-geo::before       { background: #8b5cf6; }
+    .tag-india::before     { background: #f97316; }
+    .tag-crypto::before    { background: #f7931a; }
+    .tag-bio::before       { background: #2a9d4e; }
+
+    .quick-hits { padding: 44px 28px 0; }
+    .quick-hits ul {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-hits li:last-child { border-bottom: none; }
+    .q-source {
+      font-size: 11px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding-top: 1px; line-height: 1.4;
+    }
+    .q-text {
+      font-size: 13px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+    }
+    .q-text strong { font-weight: 600; color: var(--ink); }
+
+    .divider { margin: 52px 28px 0; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    footer {
+      padding: 40px 28px 52px;
+      text-align: center;
+    }
+    .footer-title {
+      font-size: 13px; font-weight: 500; color: var(--teal);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .footer-sep {
+      width: 32px; height: 1px; background: var(--border2);
+      margin: 0 auto 14px;
+    }
+    footer p {
+      font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="wrapper">
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#0f9b82" stroke-width="1.5" fill="none"/>
+      <path d="M21 10 C14 10 10 14.5 10 20 C10 26 14.5 30 20 30 C22 30 24 29.5 25.5 28.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 14 C16.5 14 13.5 17 13.5 21 C13.5 25 16.5 27.5 20.5 27.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 18 C19 18 17.5 19.5 17.5 21.5 C17.5 23.5 19 25 21 25 C23 25 24.5 23.5 24.5 21.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 8 C12 8 7 14 7 21 C7 28.5 12 34 20 34.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 2"/>
+      <circle cx="21" cy="21.5" r="2" fill="#0f9b82"/>
+    </svg>
+    <div class="logo-names">
+      <span class="logo-top">Singular &middot; Finance</span>
+      <span class="logo-main">Singular Intelligence</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div>Issue #7 &middot; Week of 17 May 2026</div>
+    <div>For boards &amp; investors</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Weekly Intelligence Briefing</div>
+  <h1 class="hero-title">The agent becomes <em>the customer</em></h1>
+  <p class="hero-body">
+    Three threads converged this week, and they describe the same shift. Shopify rewired its catalogue for AI agents and saw orders from AI channels grow 13&times;. Visa, Mastercard, and Google are racing to retrofit the credential layer for transactions where no human is present. And Coinbase&rsquo;s settlement infrastructure now handles 92.8% of agentic payment volume on Base. <strong>The customer is no longer always human &mdash; and every layer of the commerce stack is being rebuilt around that assumption.</strong> Meanwhile, Goldman cut its US recession probability to 25%, Warsh was confirmed at the Fed, and the CLARITY Act cleared Senate Banking with the first material Democratic crossover.
+  </p>
+  <div class="topics-row">
+    <span class="topic-pill">AI &amp; Technology</span>
+    <span class="topic-pill">Fintech &amp; Payments</span>
+    <span class="topic-pill">Markets &amp; Macro</span>
+    <span class="topic-pill">Digital Assets</span>
+    <span class="topic-pill">Geopolitics</span>
+  </div>
+</div>
+
+<!-- SECTION 1: AI & TECHNOLOGY -->
+<div class="section">
+  <div class="section-label">AI &amp; Technology</div>
+
+  <div class="card-featured">
+    <div class="tag tag-ai">Agentic Economy</div>
+    <h2>Anthropic &pound;1B to &pound;44B in 17 months &mdash; on coding agents alone</h2>
+    <p>
+      Chamath Palihapitiya&rsquo;s 84-page deep dive frames the shift starkly. <strong>AI now generates 75% of Google&rsquo;s new code and 30% of Microsoft&rsquo;s. Daily Claude Code commits on GitHub crossed 134,000 in early 2026, from near zero at launch in March 2025.</strong> Anthropic went from $1bn to $44bn in annualised revenue in seventeen months, almost entirely on coding agents. The structural change is not that AI helps humans write software &mdash; it is that AI is the software author, and humans are increasingly the reviewers. McKinsey&rsquo;s 2025 State of AI survey finds fewer than 10% of organisations have agents at meaningful scale. The gap between technically possible and operationally deployed is the opportunity. Value will accrue to the harness layer that orchestrates models against real-world workflows &mdash; not the models themselves.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-ai">Failure Modes</div>
+      <h3>Agents move money, agents delete production</h3>
+      <p>
+        Two incidents this period quantify the operational risk. <strong>In December 2025, an Amazon coding agent autonomously deleted and recreated a live production environment, taking AWS in China offline for 13 hours. In April 2026, a Cursor agent powered by Claude deleted an entire company database in 9 seconds.</strong> The vendor pricing sheets do not list these failure modes. Boards underwriting agent deployment need to underwrite agent boundaries: scope of authority, reversibility, and circuit breakers. The asymmetry favours caution &mdash; an agent operating at machine speed compresses years of human error into seconds.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Enterprise Stack</div>
+      <h3>System of Record to System of Intelligence</h3>
+      <p>
+        Andreessen Horowitz&rsquo;s thesis this week is that the CRM &mdash; long the canonical sticky enterprise asset &mdash; is becoming infrastructure, not the application. <strong>The valuable layer is shifting from the database to the reasoning layer that orchestrates context across CRM, calendar, inbox, call recordings, Slack, billing, and product telemetry.</strong> Salesforce&rsquo;s &ldquo;headless&rdquo; launch is the acknowledgement: the UI was the moat. With agents in the loop, the database is one input among many. The next decade of enterprise software value will accrue above the SoR, not in it.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Productivity Proof</div>
+      <h3>Affirm: pull requests double, hiring plans grow</h3>
+      <p>
+        Affirm spent a week retooling engineering to be AI-first. <strong>Pull-request throughput more than doubled and two-thirds of output is now agent-written.</strong> The CEO&rsquo;s remark is the one to hold onto: &ldquo;the limiting factor for Affirm has always been engineering cycles, not ideas for what to do with them.&rdquo; The conclusion: lower cost of development expands the demand frontier rather than reducing headcount. For now, AI-augmented engineering teams hire more &mdash; not fewer &mdash; engineers.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Defensibility</div>
+      <h3>If software goes headless, where does the moat move?</h3>
+      <p>
+        The classic SoR moats &mdash; UI muscle memory, daily access frequency, human workflow lock-in &mdash; weaken when the user is software. The moats that strengthen: <strong>data models, permissioning, audit trails, compliance posture, and orchestration across siloed systems.</strong> The harder ones to build: network effects and proprietary data flywheels that incumbents largely failed to construct. Buyers now have three paths: incumbent + agents, full DIY, or AI-native replacement. Only the third disrupts the seat-licence model directly.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: FINTECH & PAYMENTS -->
+<div class="section">
+  <div class="section-label">Fintech &amp; Payments</div>
+
+  <div class="card-featured">
+    <div class="tag tag-fintech">Agentic Commerce</div>
+    <h2>Shopify positions itself as the operating system for agentic commerce</h2>
+    <p>
+      Shopify&rsquo;s Q1 print was solid &mdash; GMV up 35% to $100bn &mdash; but the more important data was traffic origin. <strong>AI-driven traffic to Shopify stores is up 8&times; year-on-year; orders originating from AI-powered search are up ~13&times;.</strong> Management notes that growth in new-customer orders from AI channels is nearly double that from traditional channels. To formalise the rail, Shopify co-developed the Universal Commerce Protocol with Google &mdash; now joined by Amazon, Meta, Microsoft, Salesforce, and Stripe &mdash; specifically because catalogue-powered AI searches convert at roughly 2&times; the rate of generic AI searches that rely on web-scraped data. With US e-commerce still under 20% of retail, agentic commerce is positioned as the next inflection. The strategic question for every payments incumbent: who owns the catalogue, who owns the credential, and who owns the rail?
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fintech">Credential Layer</div>
+      <h3>Visa TAP, Mastercard Agent Pay, Google AP2</h3>
+      <p>
+        Dwayne Gefferie&rsquo;s analysis is sharp: the card credential architecture was built for plastic and humans, and it is now under structural pressure from agents. <strong>Visa launched its Trusted Agent Protocol in October 2025 with Adyen, Stripe, Worldpay, and Shopify. Mastercard&rsquo;s Agent Pay added Agentic Tokens. Google&rsquo;s AP2 has 60+ coalition members.</strong> EMVCo formally acknowledged in November 2025 that 3DS, Tokenisation, and SRC need to be rebuilt for agentic flows. Liability allocation remains formally unresolved at scheme level. The board question: who bears loss when an agent transacts outside delegated authority?
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Asia Infrastructure</div>
+      <h3>Ant International: the converged platform</h3>
+      <p>
+        Ant International now connects <strong>2 billion consumer accounts to 150 million merchants across 220+ markets, processing 20 million transactions daily across 300+ payment methods.</strong> WorldFirst and Bettr serve 1.6 million SMEs and extend credit to 30 million underserved businesses. AI sits across the stack: AI SHIELD (95%+ precision fraud detection), Falcon TST (93% accuracy on month-ahead FX, cutting hedging cost by up to 60%), and the open-source Agentic Mobile Protocol for wearable-driven payments. This is what a vertically integrated cross-border platform looks like when AI is the operating layer.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Stablecoins</div>
+      <h3>Why every company will launch its own stablecoin</h3>
+      <p>
+        Sam Broner (ex-a16z) argues that <strong>under GENIUS and MiCA, issuing a regulated stablecoin is no longer an exotic act &mdash; it is becoming an extension of treasury operations.</strong> The economic logic: companies with material balances earn yield on the float; companies with payment flows reduce interchange. The directory of stablecoin card programme enablers has consolidated to 38 accredited EMT issuers under MiCA. The window for &ldquo;regulatory arbitrage&rdquo; is closed. The window for &ldquo;company-issued payment instruments&rdquo; is opening.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Remittance</div>
+      <h3>Western Union launches USDPT on Solana</h3>
+      <p>
+        On 4 May, Western Union launched <strong>USDPT, the first MSB-distributed regulated stablecoin built for remittance corridors</strong>, issued by Anchorage Digital Bank. The consumer product, &ldquo;Stable by Western Union,&rdquo; will roll out across 40+ countries in 2026. The strategic read: an incumbent remittance operator concedes that on-chain settlement is now cheaper than its own rails &mdash; and is choosing to own the issuance rather than be disintermediated by it.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: MARKETS & MACRO -->
+<div class="section">
+  <div class="section-label">Markets &amp; Macro</div>
+
+  <div class="card-featured">
+    <div class="tag tag-macro">Risk Repricing</div>
+    <h2>Goldman cuts recession probability to 25%; Warsh confirmed at the Fed</h2>
+    <p>
+      Jan Hatzius lowered Goldman&rsquo;s 12-month US recession probability from 30% to 25%. The argument: <strong>the 10-week Strait of Hormuz closure has had only a moderate growth impact</strong> because oil prices stayed contained on pre-war inventories and a demand response, jet-fuel shortages were absorbed through fleet rationalisation, and fiscal and AI-capex support remained intact. Brent is now forecast to ease to $90 by year-end on a gradual reopening. The week&rsquo;s second structural data point: Kevin Warsh was confirmed as the next Fed Chair on 13 May, ending the succession overhang. Goldman&rsquo;s house view remains that risks are tilted to adverse outcomes &mdash; oil shocks, supply re-stress, fiscal slippage &mdash; but the central path now points to a soft landing into 2027, with AI capex continuing to do the heavy lifting on growth.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-macro">Supply Chain</div>
+      <h3>Memory becomes the new bottleneck</h3>
+      <p>
+        DRAM contract prices more than tripled year-on-year by March; NAND roughly doubled. <strong>Samsung, SK Hynix and Micron are now forecast to sextuple operating income in 2026.</strong> Hyperscalers are signing 5-year supply agreements, up from the historical 1-year. The flow-through is real: PC and phone prices are expected to rise 10&ndash;20%. The cyclical question is whether this is a step-change or a glut-in-waiting. Manufacturing capacity takes years to bring online and HBM displaces commodity memory in the queue &mdash; both arguments favour persistence.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Capital Markets</div>
+      <h3>The vanishing US smallcap</h3>
+      <p>
+        The drop in US public-company count since 2000 is <strong>entirely concentrated in micro- and smallcaps</strong>. Large- and mid-caps have stayed roughly constant since 1990. Drivers: M&amp;A consolidation, fixed regulatory costs that are regressive at smaller scale, and a private-capital pool deep enough to fund growth without listing. The structural implication for boards considering a public listing: the public market discount to private alternatives has widened. For policymakers, public markets need to upgrade their value proposition to smaller issuers.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">AI Economics</div>
+      <h3>Will the corporate AI investment pay off?</h3>
+      <p>
+        Goldman&rsquo;s James Covello frames the central question: chip companies should thrive <em>when</em> their customers thrive, <strong>not at their expense.</strong> Most AI returns to date have accrued to semiconductors. For the economics to extend along the value chain, enterprises need to organise their data for agentic deployment and route workflows by complexity and cost. Goldman envisages an emerging &ldquo;orchestration and deployment&rdquo; layer in the AI supply chain &mdash; the same layer Anthropic, Chamath, and a16z each point to as the value-capture zone.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-geo">Defence Technology</div>
+      <h3>The $500 drone and the strategic asymmetry</h3>
+      <p>
+        A16z&rsquo;s essay on autonomous warfare lands a number worth registering: <strong>an FPV drone costs $400&ndash;500, roughly the price of a single 60mm mortar round.</strong> Operation Spiderweb (June 2025) used 117 such drones to inflict an estimated $7bn in Russian losses for an operating cost in the thousands. The investment thesis is uncomfortable but real: cheap, swarming, AI-targeted autonomy is now the dominant battlefield economics, and the country that leads on production captures strategic leverage for the next two decades.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: DIGITAL ASSETS -->
+<div class="section">
+  <div class="section-label">Digital Assets &amp; On-Chain</div>
+
+  <div class="card-featured">
+    <div class="tag tag-crypto">Regulation</div>
+    <h2>CLARITY Act clears Senate Banking 15&ndash;9 &mdash; the first material Democratic crossover</h2>
+    <p>
+      The Senate Banking Committee advanced the Digital Asset Market Clarity Act on 14 May, 15&ndash;9, with Democratic Senators Gallego (AZ) and Alsobrooks (MD) joining all Republicans. <strong>The bill formalises SEC&ndash;CFTC jurisdictional lines, with the SEC keeping issuance and primary markets and the CFTC taking secondary trading in non-security digital commodities.</strong> The 60-vote Senate threshold remains the harder barrier, and the August recess plus 2026 midterms compress the calendar. Market reaction was telling: XRP led the print before settling near $1.43; SOL and AAVE held bids better than ETH on the framing that both clear as commodities. The structural read &mdash; for the first time, altcoin beta has a regulatory rationale that does not depend on ETF approval. If the bill reaches the floor by July, the largest re-rate will land in tokens with active SEC litigation history.
+    </p>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-crypto">Settlement Infrastructure</div>
+    <h3>Coinbase becomes Hyperliquid&rsquo;s USDC deployer; Bullish buys Equiniti for $4.2bn</h3>
+    <p>
+      Two consolidating moves this week. On 14 May, <strong>Coinbase became the official USDC treasury deployer on Hyperliquid, with Circle handling minting and redemption.</strong> USDC supply on Hyperliquid has roughly doubled YoY to ~$5bn, formalising what was already de facto. Separately, Bullish (BLSH) agreed to acquire transfer agent Equiniti from Siris Capital for $4.2bn &mdash; <strong>the first crypto-native operator with a regulated transfer agent attached</strong>, bringing nearly 3,000 issuer clients, 20m shareholders, and ~$500bn in annual payments processed. The strategic logic is identical to Coinbase&rsquo;s positioning: tokenisation moves through the back-office stack first, the front-end second. If the SEC ever blesses tokenised public equities in the US, the firm that owns the transfer-agent rail captures economics from both sides of the trade. Circle&rsquo;s Q1 print on 11 May reinforces the trajectory: revenue $694m (+20% YoY), USDC supply $77bn, on-chain transaction volume up 263% YoY to $21.5 trillion.
+    </p>
+  </div>
+</div>
+
+<!-- QUICK HITS -->
+<div class="quick-hits">
+  <div class="section-label" style="padding: 0 0 24px 0;">Quick Hits</div>
+  <ul>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>Coinbase: 92.8% of agentic payment volume runs on Base, 99.8% settles in USDC, 99.8% transits x402.</strong> Since October 2025, x402 has processed 180m+ payments and $47.5m of agent spend across 5,000+ merchants. Card rails cannot economically handle sub-cent API calls; stablecoins on L2s can. McKinsey calls $3&ndash;5tn of global agentic commerce by 2030.</div>
+    </li>
+    <li>
+      <div class="q-source">a16z</div>
+      <div class="q-text"><strong>Memory makers expected to 6&times; operating income in 2026.</strong> Micron alone earned more in Q1 than in any full year before 2025. The cycle that has not yet broken: hyperscalers signing 5-year DRAM contracts, locking in supply queue.</div>
+    </li>
+    <li>
+      <div class="q-source">Chamath</div>
+      <div class="q-text"><strong>Anthropic: $1bn to $44bn annualised revenue in 17 months.</strong> Open-source agent harnesses now process tens of trillions of tokens per month. The value-capture layer is the harness, not the model.</div>
+    </li>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>Bitwise BHYP began NYSE trading on 15 May.</strong> First US spot Hyperliquid ETF, first US crypto ETF with in-house staking. 0.34% sponsor fee, waived to 0% for the first month on the first $500m AUM.</div>
+    </li>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>Circle Q1: revenue $694m (+20% YoY), USDC supply $77bn, on-chain volume +263% YoY to $21.5tn.</strong> Closed the Arc token presale at $222m on a $3bn fully diluted valuation, with a16z crypto leading.</div>
+    </li>
+    <li>
+      <div class="q-source">Goldman Sachs</div>
+      <div class="q-text"><strong>US recession probability cut to 25% from 30%; Warsh confirmed as Fed Chair.</strong> Goldman&rsquo;s financial conditions index has eased back below pre-Iran-war levels. The risk tilt remains adverse but the central path now points to soft-landing economics into 2027.</div>
+    </li>
+    <li>
+      <div class="q-source">Fintech Wrap Up</div>
+      <div class="q-text"><strong>MiCA grandfathering ends 1 July 2026.</strong> The European market is consolidating to 38 accredited EMT issuers. The US GENIUS Act has brought stablecoin issuance into the federal banking perimeter, with FDIC pass-through insurance models and reserve concentration limits capped at 40% per institution.</div>
+    </li>
+    <li>
+      <div class="q-source">a16z</div>
+      <div class="q-text"><strong>Affirm: agentic code now dominates engineering output; pull requests more than doubled.</strong> &ldquo;The limiting factor for Affirm has always been engineering cycles, not ideas for what to do with them&rdquo; &mdash; the strongest single statement this week on why AI productivity expands rather than displaces hiring.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="divider"><hr/></div>
+<footer>
+  <div class="footer-title">Singular Intelligence</div>
+  <div class="footer-sep"></div>
+  <p>Issue #7 &middot; 17 May 2026</p>
+  <p>Curated by Laurent Le Moal &middot; <a href="https://singularfinance.com" style="color:#0f9b82; text-decoration:none;">singularfinance.com</a></p>
+  <p style="margin-top:10px; font-size:11px;">For boards and investors. Not investment advice.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
