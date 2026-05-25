@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 25 May 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --teal: #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink: #111827;
+      --ink2: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border2: #d1d5db;
+      --surface: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #f3f4f6;
+    }
+    .outer { padding: 32px 16px; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-top { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+    .logo-main { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 48px 28px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 36px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-body {
+      font-size: 15px; line-height: 1.72; color: var(--ink2);
+      font-weight: 300; max-width: 640px; margin-bottom: 28px;
+    }
+    .hero-body strong { font-weight: 600; color: var(--ink); }
+    .topics-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .topic-pill {
+      font-size: 11px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; border: 1px solid var(--border2);
+      color: var(--muted); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 44px 28px 0; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── FEATURED CARD ── */
+    .card-featured {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 24px 24px 22px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fafffe 0%, #ffffff 100%);
+    }
+    .card-featured .tag { margin-bottom: 10px; }
+    .card-featured h2 {
+      font-size: 20px; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+    }
+    .card-featured p {
+      font-size: 14px; line-height: 1.72; color: var(--ink2); font-weight: 300;
+    }
+    .card-featured p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px 22px 18px;
+    }
+    .card h3 {
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px; line-height: 1.68; color: var(--ink2); font-weight: 300;
+    }
+    .card p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── FULL-WIDTH CARD ── */
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      background: var(--surface);
+    }
+    .card-full h3 {
+      font-size: 15px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px;
+    }
+    .card-full p {
+      font-size: 13.5px; line-height: 1.72; color: #444444; font-weight: 300;
+    }
+    .card-full p strong { font-weight: 600; color: var(--ink); }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tag-ai::before        { background: #0f9b82; }
+    .tag-fintech::before   { background: #3b82f6; }
+    .tag-macro::before     { background: #f59e0b; }
+    .tag-geo::before       { background: #8b5cf6; }
+    .tag-india::before     { background: #f97316; }
+    .tag-crypto::before    { background: #f7931a; }
+    .tag-bio::before       { background: #2a9d4e; }
+
+    /* ── QUICK HITS ── */
+    .quick-hits { padding: 44px 28px 0; }
+    .quick-hits ul {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-hits li:last-child { border-bottom: none; }
+    .q-source {
+      font-size: 11px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding-top: 1px; line-height: 1.4;
+    }
+    .q-text {
+      font-size: 13px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+    }
+    .q-text strong { font-weight: 600; color: var(--ink); }
+
+    /* ── DIVIDER ── */
+    .divider { margin: 52px 28px 0; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 28px 52px;
+      text-align: center;
+    }
+    .footer-title {
+      font-size: 13px; font-weight: 500; color: var(--teal);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .footer-sep {
+      width: 32px; height: 1px; background: var(--border2);
+      margin: 0 auto 14px;
+    }
+    footer p {
+      font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="wrapper">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#0f9b82" stroke-width="1.5" fill="none"/>
+      <path d="M21 10 C14 10 10 14.5 10 20 C10 26 14.5 30 20 30 C22 30 24 29.5 25.5 28.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 14 C16.5 14 13.5 17 13.5 21 C13.5 25 16.5 27.5 20.5 27.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 18 C19 18 17.5 19.5 17.5 21.5 C17.5 23.5 19 25 21 25 C23 25 24.5 23.5 24.5 21.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 8 C12 8 7 14 7 21 C7 28.5 12 34 20 34.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 2"/>
+      <circle cx="21" cy="21.5" r="2" fill="#0f9b82"/>
+    </svg>
+    <div class="logo-names">
+      <span class="logo-top">Singular · Finance</span>
+      <span class="logo-main">Singular Intelligence</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div>Issue #8 · Week of 25 May 2026</div>
+    <div>For boards &amp; investors</div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Weekly Intelligence Briefing</div>
+  <h1 class="hero-title">When the <em>bullishness</em> becomes the data</h1>
+  <p class="hero-body">
+    A year after the Sohn conference collectively missed the AI trade, Sohn ‘26 went the other way: AI was the only pitch in the room. Nvidia just delivered the print to match it — $81.6bn in quarterly revenue, with Jensen Huang reframing the company as the centre of a world about to be inhabited by <strong>billions of AI agents</strong>. Exa raised $225m to build the search layer those agents will use. Visa quietly disclosed an $11bn software business hedging the day card networks lose their monopoly. Meanwhile the institutional plumbing — fraud systems, bank infrastructure, the SEC — is visibly one cycle behind. <strong>The opportunity for boards this week is not to debate whether AI is real. It is to identify which legacy stacks are about to be repriced.</strong>
+  </p>
+  <div class="topics-row">
+    <span class="topic-pill">AI &amp; Technology</span>
+    <span class="topic-pill">Fintech &amp; Payments</span>
+    <span class="topic-pill">Markets &amp; Macro</span>
+    <span class="topic-pill">Digital Assets</span>
+    <span class="topic-pill">India &amp; Emerging Markets</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1: AI & TECHNOLOGY ═══════════════ -->
+<div class="section">
+  <div class="section-label">AI &amp; Technology</div>
+
+  <div class="card-featured">
+    <div class="tag tag-ai">Agentic Infrastructure</div>
+    <h2>Exa raises $225m on a thesis Google was never built for</h2>
+    <p>
+      Exa closed a Series C at a $2.2bn valuation, led by a16z. The thesis is unsentimental: <strong>AI agents will search the web more than humans this year, and 1,000× more within a few years</strong> — and the architecture of traditional search (keyword phrases, click-ranked, SEO-shaped) was not designed for them. Exa has built its own crawler, embedding models, and vector databases on a self-assembled GPU cluster, claiming sub-200ms latency at scale. Customers include Cursor, Cognition, HubSpot and Monday.com. CEO Will Bryk's framing is the one boards should internalise: <strong>"the bottleneck to AI is increasingly not intelligence — it is finding the right information."</strong> Read alongside Nvidia's results below, the picture clarifies: the agentic stack is being built in plain sight, the incumbents are not the natural winners, and the new layer is closer to monetisation than the AI sceptics assume.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-ai">Nvidia Earnings</div>
+      <h3>$81.6bn quarter, and a CEO framing the next decade in agent units</h3>
+      <p>
+        Nvidia beat guided revenue expectations with <strong>$81.6bn in quarterly revenue, primarily from data centres</strong>. Jensen Huang's framing matters more than the print: "the world has a billion human users — my sense is that the world is gonna have billions of agents." Capex from the hyperscalers and sovereigns is being rationalised on that basis. The implication is that AI infrastructure demand is not a 2025–26 cycle event but the foundation of a multi-year rebuild — and that incumbents anchoring their planning to human-user economics are working with the wrong unit of demand.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Sohn 2026</div>
+      <h3>A year late to the trade, the conference is now all-in on AI</h3>
+      <p>
+        a16z's Moses Sternstein observed the obvious: <strong>at Sohn ‘25, AI barely came up; at Sohn ‘26, it was the only pitch in the room</strong>. Long ideas spanned memory, semis, nuclear, EPC, even Nokia's fibre business. The single bearish AI call was Gavin Baker speculating about orbital compute disrupting terrestrial data centres. The takeaway for boards is not whether to believe the consensus, but to note that the AI thesis has fully migrated from contrarian to crowded. <strong>The asymmetric trade is now in identifying the second-order disruptions</strong> — which industries get repriced, not whether AI is real.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Education Signal</div>
+      <h3>Peak computer science: enrolments collapsing toward 2018 levels</h3>
+      <p>
+        Revelio data shows US computer science enrolment has dropped by roughly a third as a share of students, regressing to 2018 levels. Engineering and finance are rising. The proximate cause is the salary premium for CS having compressed — itself a consequence of <strong>AI eating the entry-level coding job</strong>. Students are responding to the market signal on a lag. The strategic question for any firm with a software roadmap: if the talent pipeline is reshaping itself this fast, what does that imply for hiring plans signed off in 2024?
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-ai">Operating Reality</div>
+      <h3>The compute shortage is real — and the user base hasn't even ramped</h3>
+      <p>
+        Alex Sacerdote of Whale Rock at Sohn made the point most concisely: <strong>AI power-users are currently a small fraction of one percent of total users, and the industry is already in a compute shortage</strong>. If power-user behaviour becomes mainstream — which is the explicit product direction of every major model lab — the buildout has barely started. Boards underwriting AI roadmaps on current capacity assumptions are working with stale inputs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: FINTECH & PAYMENTS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Fintech &amp; Payments</div>
+
+  <div class="card-featured">
+    <div class="tag tag-fintech">Network Strategy</div>
+    <h2>Visa's quiet $11bn software business — and the $520bn TAM behind it</h2>
+    <p>
+      Fintech Wrap Up's structural read of Visa's Value-Added Services division lands a number every payments board should hold in view: <strong>VAS generated $10.9bn in FY25 revenue, up 24% year-on-year, on a 20% CAGR since 2021</strong>. That is now 24% of net revenue, against a projected $520bn TAM — of which Visa has captured roughly 2%. The strategic logic is clear: as account-to-account rails, domestic RTP schemes and decentralised ledgers fragment transaction routing, Visa is monetising the transaction <em>regardless of which rail carries it</em>. The fastest-growing portfolio is Advisory & Other Services at a mid-thirties CAGR, indicating issuers and large merchants are now buying predictive data engines to defend operating margins under interchange compression. <strong>The implication for any payments business: the network monopoly question is being answered by Visa with a software business, not a defence of the rails.</strong>
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fintech">Fraud Stack</div>
+      <h3>Banks are fighting AI fraud with yesterday's playbook</h3>
+      <p>
+        Tyler Allen, CEO of Unit21, makes the case bluntly in Fintech Wrap Up: <strong>rules-based detection systems and conventional machine learning models are no longer sufficient as fraud becomes faster, more automated and more sophisticated</strong>. The asymmetry mirrors the false decline problem flagged in Issue #6 — fraud loss prevention has been over-engineered against a static threat model, while the threat itself has gone agentic. The board question is no longer about marginal model improvements but about whether the entire detection architecture needs replacing.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Platform Convergence</div>
+      <h3>Ant International: the platform thesis taken to its conclusion</h3>
+      <p>
+        Ant International now connects <strong>2 billion consumer accounts to 150 million merchants, processing 20 million daily transactions across 300+ payment methods in 220+ markets</strong>. Alipay+, Antom, WorldFirst and Bettr operate as a single converged infrastructure stack: payments, wallets, treasury, embedded finance and credit, all sharing identity, risk and funds-movement flows. The strategic message: the future of cross-border commerce is platform convergence, not point-solution stacking — and the gap between integrated players and the rest will widen.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">BaaS Post-Mortem</div>
+      <h3>BaaS didn't fail. It was structurally incoherent</h3>
+      <p>
+        Fintech Wrap Up's framing of the Nubank US entry is the right one: <strong>BaaS collapsed because ownership of charter, balance sheet, compliance and customer was distributed across parties that could not reconcile reality when stress hit</strong>. The Synapse failure exposed it. Co-branded models failed differently — banks underwrote risk they did not control. What survived is vertical integration. Nubank entered the US because the unstable abstractions had been filtered out before it arrived. The lesson generalises beyond banking.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Programmable Finance</div>
+      <h3>Stablecoins and blockchain settle into the bank stack</h3>
+      <p>
+        The consensus across this week's Fintech Wrap Up reports is consistent: <strong>stablecoins are evolving from crypto-native tools into foundational rails, and blockchain is being adopted as a settlement and reconciliation upgrade for banks</strong> — not as a speculative play. Africa and MENA fintech continues to expand beyond payments into lending and SME finance. The broader picture is convergence: payments, treasury, lending and settlement collapsing into unified, programmable infrastructure layers.
+      </p>
+    </div>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-fintech">Revolut Watch</div>
+    <h3>The Revolut model continues to challenge consumer banking economics</h3>
+    <p>
+      Following last issue's coverage of Revolut crossing £4.5bn revenue with 57% profit growth, the strategic implication has not changed but has hardened: <strong>extreme operational leverage on a technology-first model is no longer an outlier hypothesis</strong>. As Ant International, Nubank and Revolut all demonstrate, the consumer banking economics that traditional incumbents have anchored to for two decades — branch costs, headcount-heavy operations, slow product velocity — are being repriced. The question for traditional retail banking boards is no longer whether the model is viable but how much capital can be redirected to defend a return on equity that is structurally compressing.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: MARKETS & MACRO ═══════════════ -->
+<div class="section">
+  <div class="section-label">Markets &amp; Macro</div>
+
+  <div class="card-featured">
+    <div class="tag tag-macro">Macro Regime Shift</div>
+    <h2>Warsh at the Fed, oil at $100, US 30Y at a 19-year high</h2>
+    <p>
+      Three macro signals converged this week, and boards should hold them together rather than separately. <strong>Kevin Warsh was sworn in as Federal Reserve Chair, replacing Jerome Powell. Oil is still trading at ~$100 as the US–Iran conflict continues. US 30-year yields hit their highest level since 2007.</strong> Each on its own is significant; together they describe a regime where geopolitical risk, fiscal pressure and a new monetary leadership are repricing duration simultaneously. ARK's April factor model shows crypto recovered sharply (+17.2% on the market factor) on the Middle East optimism that has since reversed. For investors, the volatility is the regime, not the noise within it. <strong>The expectation that 2026 would be a year of normalisation has been retired.</strong>
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-macro">ARK Movers</div>
+      <h3>GENI +22%, GH +17%, FUTU −27%: regulation as the dominant variable</h3>
+      <p>
+        Three sharp moves in ARK's portfolio this week. Genius Sports rose 22% on no company-specific news. Guardant Health rose 17% on FDA approval of its G360 liquid biopsy companion diagnostic — a meaningful precision oncology signal. <strong>Futu Holdings fell 27% after China's securities regulator proposed fines for operating in mainland China without licences</strong>. Mainland China is ~13% of Futu's funded accounts. The structural read: regulatory action on offshore brokerages servicing Chinese retail investors is now a sustained pressure, not an episodic one.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Sentiment vs Fundamentals</div>
+      <h3>"Easy to spot the AI losers; harder to spot the winners"</h3>
+      <p>
+        One of the more honest observations from Sohn ‘26, attributed to a panellist: <strong>the AI infrastructure trade is clear; the AI application-layer winners are diffuse and may show up as 200bps of margin improvement across boring businesses</strong>, rather than as a small number of star names. If that framing is right, the alpha is not in the obvious AI pure-plays but in the operating leverage embedded in incumbent businesses that successfully absorb the technology. This is the inverse of the Sohn ‘25 problem: the consensus is right on direction, but identifying the names remains hard.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-bio">Biotech Validation</div>
+      <h3>Guardant FDA approval underwrites the precision oncology thesis</h3>
+      <p>
+        The G360 liquid biopsy approval is the largest FDA-approved liquid biopsy panel, with a 100× expanded footprint. <strong>Crucially, it positions the test for Advanced Diagnostic Laboratory Test status, which materially improves reimbursement economics.</strong> Read against the patent cliff bid driving structural biotech M&A (Issue #6), this is a reminder that the clinical-stage-asset thesis is being validated transaction by transaction.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-macro">Equity Indicators</div>
+      <h3>The AI trade is now consensus across institutional and retail</h3>
+      <p>
+        At Sohn, the question on AI is no longer whether but how fast and how far. The one short-seller flagged AI was a screen against companies renaming themselves to add "AI" to capture multiple expansion. <strong>The crowding signal is real</strong>: when consensus and price are this aligned, the asymmetric returns sit in either the second-order disruptions (which incumbents get hit) or in the contrarian short on the rebrands. The middle of the curve — generic AI longs — is now efficient.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: DIGITAL ASSETS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Digital Assets &amp; On-Chain</div>
+
+  <div class="card-featured">
+    <div class="tag tag-crypto">DeFi Inflection</div>
+    <h2>Hyperliquid prints ATH as Coinbase and Circle align around it</h2>
+    <p>
+      HYPE crossed $60 this week, hitting all-time highs while most major crypto assets traded down (BTC −6.57% on Artemis's reference basket). The driver is structural alignment, not narrative. <strong>Coinbase acquired the USDH brand from Native Markets; Coinbase and Circle will jointly operate USDC as Hyperliquid's first V2 Aligned Quote Asset, sharing 90% of cost-adjusted reserve yield revenue with the protocol</strong>. With ~$5bn of USDC supply already on Hyperliquid, the deal could add ~$150m in annual protocol revenue, diversifying away from pure trading fees. 21Shares and Bitwise launched HYPE ETFs the same week. Hyperliquid digital-asset treasuries now hold ~10% of HYPE supply, more than any other major token. <strong>The strategic significance: two of the most regulator-influential crypto firms have just publicly aligned their economic interests with a DeFi protocol</strong>. Whether or not HYPE holds the move, the institutional architecture of DeFi has shifted.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-crypto">SEC Reversal</div>
+      <h3>Tokenised stocks innovation exemption blocked by Wall Street pushback</h3>
+      <p>
+        The SEC under Chair Paul Atkins was preparing a lighter-touch "innovation exemption" for tokenised equities — allowing crypto-native platforms to trade tokenised versions of US public stocks without issuer consent, with 24/7 trading under guardrails. <strong>Significant pushback from stock exchanges, banks, Citadel and SIFMA forced a postponement</strong>. ONDO and CFG round-tripped on the news. No new timeline. Commissioner Hester Peirce has signalled preference for narrower, fully-backed structures. The takeaway: the on-chain equities buildout is a question of institutional resistance, not technical readiness.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">RWA Trajectory</div>
+      <h3>Tokenised RWAs hit a record $33–34bn, up 1,600% in two years</h3>
+      <p>
+        Tokenised equity market cap is now roughly $1–1.6bn, up sharply from ~$960m in March and ~$424m mid-2025. <strong>Ondo Global Markets leads with ~60% share</strong>, offering 100–260+ tokenised US stocks and ETFs. Total tokenised RWAs across all categories reached $33–34bn. The growth is from a low base but the trajectory is unmistakeable. Even with the SEC exemption postponed, the substrate continues to expand — which is itself a signal about where the institutional buildout is going regardless of regulatory timing.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 5: INDIA & EM ═══════════════ -->
+<div class="section">
+  <div class="section-label">India &amp; Emerging Markets</div>
+
+  <div class="card-full">
+    <div class="tag tag-india">Capital Markets &amp; Fintech</div>
+    <h3>Zepto's Rs 11,000-crore IPO and Scapia's $63m round signal an India fintech reset</h3>
+    <p>
+      Two India data points worth holding together. <strong>Quick-commerce platform Zepto plans an Rs 11,000-crore (~$1.3bn) IPO in July</strong>, joining Zomato and Swiggy as listed quick-commerce names; the strategic differentiation is density and operational intensity over geographic expansion. Separately, <strong>travel-fintech Scapia raised $63m led by General Catalyst</strong>, with proceeds explicitly earmarked for AI hiring and an "AI-first product approach" — a sign that even Indian neobanks are now writing AI as a top capital allocation priority. Nykaa crossed $1bn in annual revenue. Honasa (Mamaearth) reported 178% net profit growth. The 2022–24 D2C and fintech corrections appear largely metabolised; the surviving cohort is now executing at scale. <strong>For investors with India exposure, this is a reset year, not a continuation of the 2021 thesis.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUICK HITS ═══════════════ -->
+<div class="quick-hits">
+  <div class="section-label" style="padding: 0 0 24px 0;">Quick Hits</div>
+  <ul>
+    <li>
+      <div class="q-source">YS Buzz</div>
+      <div class="q-text"><strong>SpaceX's mega IPO filing reveals heavy weighting on segments not yet built</strong> — Mars colonisation, AI data centres in space. The filing is structurally an option on the long-dated capex thesis Musk has been articulating for a decade. Investors will need to price it as such.</div>
+    </li>
+    <li>
+      <div class="q-source">Fintech Wrap Up</div>
+      <div class="q-text"><strong>2026 Global AI in Financial Services Report</strong> documents accelerating AI adoption across institutions and regulators in parallel — embedding AI into operations and governance simultaneously. The combination matters: regulatory tech is keeping pace with operational tech, which has historically been the constraint.</div>
+    </li>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>Ventuals daily open interest passed $20m this week</strong> on pre-IPO equity perpetuals. The category is small but the growth curve is steep. Synthetic exposure to private market valuations is now a tradeable product class.</div>
+    </li>
+    <li>
+      <div class="q-source">a16z</div>
+      <div class="q-text"><strong>Peter Levine rejoins a16z as a full-time GP.</strong> Senior-talent moves at the top VC firms remain a leading indicator of where capital expects to deploy over the next vintage. Watch the sector focus.</div>
+    </li>
+    <li>
+      <div class="q-source">Fintech Wrap Up</div>
+      <div class="q-text"><strong>Africa's "second fintech wave"</strong> is moving beyond payments into lending, SME finance and digital infrastructure. The MENA story parallels it. Both regions are showing the platform-convergence pattern Ant International has industrialised.</div>
+    </li>
+    <li>
+      <div class="q-source">Artemis</div>
+      <div class="q-text"><strong>Privacy-coin demand exploded in April</strong>: Zcash rallied 50%+ on SEC clearance and Grayscale's first-ever privacy-coin ETF filing. The category had been written off; the institutional re-entry is worth noting even for non-crypto-focused boards as a regulatory signal.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="divider"><hr/></div>
+<footer>
+  <div class="footer-title">Singular Intelligence</div>
+  <div class="footer-sep"></div>
+  <p>Issue #8 · 25 May 2026</p>
+  <p>Curated by Laurent Le Moal · <a href="https://singularfinance.com" style="color:#0f9b82; text-decoration:none;">singularfinance.com</a></p>
+  <p style="margin-top:10px; font-size:11px;">For boards and investors. Not investment advice.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
