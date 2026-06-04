@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Singular Intelligence — Week of 1 June 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --teal: #0f9b82;
+      --teal-light: #e6f5f2;
+      --ink: #111827;
+      --ink2: #374151;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border2: #d1d5db;
+      --surface: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #f3f4f6;
+    }
+    .outer { padding: 32px 16px; }
+    .wrapper { max-width: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .logo-names { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-top { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+    .logo-main { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .header-meta { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    .hero {
+      padding: 48px 28px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 36px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-body {
+      font-size: 15px; line-height: 1.72; color: var(--ink2);
+      font-weight: 300; max-width: 640px; margin-bottom: 28px;
+    }
+    .hero-body strong { font-weight: 600; color: var(--ink); }
+    .topics-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .topic-pill {
+      font-size: 11px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; border: 1px solid var(--border2);
+      color: var(--muted); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section { padding: 44px 28px 0; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .card-featured {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 24px 24px 22px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fafffe 0%, #ffffff 100%);
+    }
+    .card-featured .tag { margin-bottom: 10px; }
+    .card-featured h2 {
+      font-size: 20px; font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+    }
+    .card-featured p {
+      font-size: 14px; line-height: 1.72; color: var(--ink2); font-weight: 300;
+    }
+    .card-featured p strong { font-weight: 600; color: var(--ink); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px 22px 18px;
+    }
+    .card h3 {
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px; line-height: 1.68; color: var(--ink2); font-weight: 300;
+    }
+    .card p strong { font-weight: 600; color: var(--ink); }
+
+    .card-full {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 24px 20px;
+      margin-bottom: 16px;
+      background: var(--surface);
+    }
+    .card-full h3 {
+      font-size: 15px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px;
+    }
+    .card-full p {
+      font-size: 13.5px; line-height: 1.72; color: #444444; font-weight: 300;
+    }
+    .card-full p strong { font-weight: 600; color: var(--ink); }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tag-ai::before        { background: #0f9b82; }
+    .tag-fintech::before   { background: #3b82f6; }
+    .tag-macro::before     { background: #f59e0b; }
+    .tag-geo::before       { background: #8b5cf6; }
+    .tag-india::before     { background: #f97316; }
+    .tag-crypto::before    { background: #f7931a; }
+    .tag-bio::before       { background: #2a9d4e; }
+
+    .quick-hits { padding: 44px 28px 0; }
+    .quick-hits ul {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quick-hits li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-hits li:last-child { border-bottom: none; }
+    .q-source {
+      font-size: 11px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding-top: 1px; line-height: 1.4;
+    }
+    .q-text {
+      font-size: 13px; line-height: 1.62; color: var(--ink2); font-weight: 300;
+    }
+    .q-text strong { font-weight: 600; color: var(--ink); }
+
+    .divider { margin: 52px 28px 0; }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    footer {
+      padding: 40px 28px 52px;
+      text-align: center;
+    }
+    .footer-title {
+      font-size: 13px; font-weight: 500; color: var(--teal);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .footer-sep {
+      width: 32px; height: 1px; background: var(--border2);
+      margin: 0 auto 14px;
+    }
+    footer p {
+      font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+<div class="wrapper">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="20" stroke="#0f9b82" stroke-width="1.5" fill="none"/>
+      <path d="M21 10 C14 10 10 14.5 10 20 C10 26 14.5 30 20 30 C22 30 24 29.5 25.5 28.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 14 C16.5 14 13.5 17 13.5 21 C13.5 25 16.5 27.5 20.5 27.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 18 C19 18 17.5 19.5 17.5 21.5 C17.5 23.5 19 25 21 25 C23 25 24.5 23.5 24.5 21.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M21 8 C12 8 7 14 7 21 C7 28.5 12 34 20 34.5" stroke="#0f9b82" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 2"/>
+      <circle cx="21" cy="21.5" r="2" fill="#0f9b82"/>
+    </svg>
+    <div class="logo-names">
+      <span class="logo-top">Singular · Finance</span>
+      <span class="logo-main">Singular Intelligence</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div>Issue #9 · Week of 1 June 2026</div>
+    <div>For boards &amp; investors</div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Weekly Intelligence Briefing</div>
+  <h1 class="hero-title">The private giants come <em>into the light</em></h1>
+  <p class="hero-body">
+    This week's signal is about disclosure. SpaceX has filed, and ARK reads it as the opening of an IPO wave that should draw OpenAI, Anthropic and Databricks into public markets. Wise has moved its primary listing to Nasdaq and is recasting itself as infrastructure, not an app. Beneath both moves sits the same question that runs through the payments and stablecoin data: <strong>where does value actually accrue once the rails are commoditised and the financials are finally on the public record?</strong>
+  </p>
+  <div class="topics-row">
+    <span class="topic-pill">AI &amp; Technology</span>
+    <span class="topic-pill">Fintech &amp; Payments</span>
+    <span class="topic-pill">Markets &amp; Macro</span>
+    <span class="topic-pill">Digital Assets</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1: MARKETS & MACRO ═══════════════ -->
+<div class="section">
+  <div class="section-label">Markets &amp; Macro</div>
+
+  <div class="card-featured">
+    <div class="tag tag-macro">IPO Wave</div>
+    <h2>SpaceX files — and ARK calls it the opening act</h2>
+    <p>
+      ARK frames the SpaceX S-1 as the start of <strong>an IPO wave unlike anything public markets have seen in years</strong>, with OpenAI, Anthropic and Databricks the names it expects to follow through 2026 into 2027. The strategic read for investors is less about any single listing than about a structural shift: the cohort of private companies that stayed private through a decade of abundant capital is now being pulled toward public disclosure. ARK's own framing — it has tracked SpaceX since the company was a fraction of its current size — is that the filing connects a long-running thesis on private-market valuations to a concrete liquidity event. For boards, the signal is that the comparables which have been theoretical are about to become priced.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: FINTECH & PAYMENTS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Fintech &amp; Payments</div>
+
+  <div class="card-featured">
+    <div class="tag tag-fintech">European Schemes</div>
+    <h2>The card scheme engine in Europe is downshifting</h2>
+    <p>
+      Business of Payments reports that Visa and Mastercard volume growth in Europe is slowing to around <strong>8%, down from the mid-teens seen until recently</strong>. The schemes remain excellent businesses — 8% volume growth still compounds profits in double digits — but the deceleration has clear implications for an entire European ecosystem built on the two international brands. The candidate explanations are worth holding apart: digital payments maturing as cash runs out to displace; local schemes such as Carte Bancaire losing share more slowly; account-to-account rails like BLIK and Vipps starting to bite into eCommerce; and softer consumer spending. The first two are structural and permanent; the latter two are the ones boards in the acquiring chain should watch most closely.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-fintech">Processors</div>
+      <h3>Nexi and Worldline turn a corner; Global Payments scales up</h3>
+      <p>
+        Even Europe's perennial strugglers showed signs of recovery. <strong>Nexi posted a 4% volume rise to €201bn in Q1 despite net revenue down 1.4%</strong>, citing SME traction in DACH and Poland and a push into ISV distribution. Meanwhile the Worldpay merger leaves Global Payments Europe larger than Nexi Group and only marginally smaller than Adyen and Worldline — a consolidation that reshapes the European merchant-services hierarchy.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Pricing</div>
+      <h3>Flatpay's surcharging model could reset European norms</h3>
+      <p>
+        Flatpay holds a single rate across card types by surcharging — <strong>1.29% in France, 1.39% in Germany, 1.49% in the UK and Italy, 0.99% at home in Denmark</strong>. Business of Payments judges there is a strong chance the European market moves to surcharging as standard for high-interchange cards. The second-order effect matters more than the first: surcharging nudges business buyers toward account-to-account rails wherever they are offered.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Open Banking</div>
+      <h3>UK open banking gets a reality check</h3>
+      <p>
+        There were <strong>37m UK open banking payments in April, up 37% year on year</strong> — but set against more than 2bn debit transactions in a typical month, the trajectory falls well short of repaying the capital invested. Banked is exiting the UK and North America after NAB secured the platform; TrueLayer has concluded there is little margin in processing and is pivoting toward adjacent capability. The hope now rests on commercial variable recurring payments.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-fintech">Listings</div>
+      <h3>Wise moves to Nasdaq, reframing as infrastructure</h3>
+      <p>
+        Wise began trading on Nasdaq under WSE on 11 May, a dual listing alongside London. Business of Payments reads the move as <strong>deliberate repositioning: Wise as financial infrastructure rather than a consumer fintech</strong> — the category institutions and regulators assess on different terms. After fifteen years building licences and rails, the listing venue is itself a strategic statement about which buyers and which multiples Wise now wants to be measured against.
+      </p>
+    </div>
+  </div>
+
+  <div class="card-full">
+    <div class="tag tag-fintech">Agentic Commerce</div>
+    <h3>Agentic payments: reports still outnumber transactions</h3>
+    <p>
+      A useful corrective from Business of Payments amid the agentic-commerce noise: <strong>for the moment, agentic research reports probably outnumber agentic transactions</strong>. Fintech Wrap Up's report round-up points the other way on direction — agentic AI is named among the shifts reshaping how commerce is discovered and executed — but the honest near-term position is that infrastructure narrative is running ahead of live volume. For boards, the discipline is to fund optionality without mistaking it for traction.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: DIGITAL ASSETS ═══════════════ -->
+<div class="section">
+  <div class="section-label">Digital Assets &amp; On-Chain</div>
+
+  <div class="card-featured">
+    <div class="tag tag-crypto">Stablecoins</div>
+    <h2>Stablecoins move into production — and reveal their concentration</h2>
+    <p>
+      Fintech Wrap Up's report round-up marks 2025 as the year stablecoins scaled and 2026 as the year they must prove utility. In 2025, <strong>Stripe, PayPal, Visa and JPMorganChase all moved from evaluating stablecoin payments to running them in production</strong>, on the back of three converging drivers: infrastructure readiness, regulatory clarity across the US, EU and Asia-Pacific, and genuine market demand. But the data underneath complicates the story. Two issuers control 94% of supply; 1.11 million WalletConnect wallets hold $36.3bn in stablecoins, yet the top 0.4% of wallets hold 98% of all value. The headline is adoption; the substance is extreme concentration, with merchant acceptance and fragmented user experience still the binding constraints.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-crypto">Beyond USD</div>
+      <h3>Where non-USD stablecoins can actually scale</h3>
+      <p>
+        Two issuers — USDT and USDC — dominate, held by 82% and 80% of survey respondents, with USDC leading globally by holder count and USDT dominant in Asia. The "Beyond Concentration" report argues future growth lies <strong>beyond USD dominance, in markets where local-currency stability and access matter more than global liquidity</strong> — a different demand curve from the dollar-denominated rails that lead today.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">Emerging vs Developed</div>
+      <h3>The real demand is in emerging markets</h3>
+      <p>
+        Business of Payments lands the demand-side point cleanly: consumers in developed markets <strong>have no problem buying with dollars or euros today and will keep using their bank accounts</strong>. It is people in emerging markets, often without easy access to the dollar-based banking system, who see the advantage. Stablecoin strategy that assumes a developed-market consumer use case is solving a problem those consumers do not have.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">Asia</div>
+      <h3>Asia as the cross-border growth region</h3>
+      <p>
+        The "Stablecoin Strategy for Asia 2026" report frames Asia as a key growth region, where stablecoins could <strong>streamline large remittance and trade flows that current cross-border rails handle inefficiently</strong>. The use case is wholesale and cross-border, not retail checkout — consistent with the concentration data showing value pooled in few, large holders.
+      </p>
+    </div>
+    <div class="card">
+      <div class="tag tag-crypto">Wholesale Tokenisation</div>
+      <h3>Project Acacia: settlement gains, coordination pain</h3>
+      <p>
+        Project Acacia, on digital money in wholesale tokenised asset markets, emphasises <strong>tokenisation's settlement-efficiency benefits but flags regulatory and coordination barriers</strong> as the gating factors. It is the recurring pattern of this space: the technical case for settlement is largely settled; the institutional coordination problem is not.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: AI & TECHNOLOGY ═══════════════ -->
+<div class="section">
+  <div class="section-label">AI &amp; Technology</div>
+
+  <div class="card-full">
+    <div class="tag tag-ai">Spatial Intelligence</div>
+    <h3>Fei-Fei Li: "the world is not made of words"</h3>
+    <p>
+      a16z published an excerpt from Fei-Fei Li on world models, and the framing is sharper than the usual AI commentary. Where language models learn the statistical structure of text, <strong>world models learn the statistical structure of space and time</strong> — how light falls on a surface, how objects respond to force. Her argument is that "world model" has become one of AI's most overloaded terms: computer vision, robotics, reinforcement learning and generative AI each claim to build them and each means something different. The strategic relevance for investors is precision. As capital flows toward "world models", the diligence question is which functional piece of the agent-action-state-observation loop a given company actually outputs — because a video model producing physically impossible flames and a physics engine that faithfully simulates combustion are not the same asset, however similar the pitch deck.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUICK HITS ═══════════════ -->
+<div class="quick-hits">
+  <div class="section-label" style="padding: 0 0 24px 0;">Quick Hits</div>
+  <ul>
+    <li>
+      <div class="q-source">ARK Invest</div>
+      <div class="q-text"><strong>SpaceX has filed its S-1.</strong> ARK positions it as the first of a wave, with OpenAI, Anthropic and Databricks the high-profile names it expects to follow through 2026 and into 2027.</div>
+    </li>
+    <li>
+      <div class="q-source">Business of Payments</div>
+      <div class="q-text"><strong>Toss FacePay has drawn nearly 5m users in South Korea</strong>, with face scanners in 330,000 retail outlets — a hit with people who find tapping a phone too much hassle. National factors apply, but the biometric-checkout signal is real.</div>
+    </li>
+    <li>
+      <div class="q-source">Business of Payments</div>
+      <div class="q-text"><strong>Greek merchant services have become a battleground.</strong> Eurobank set up a JV; Worldline, Global Payments, Nexi and Euronet have all entered the market — a reminder that European acquiring growth is now won market by market.</div>
+    </li>
+    <li>
+      <div class="q-source">Business of Payments</div>
+      <div class="q-text"><strong>cVRPs are the open-banking industry's next hope.</strong> Commercial variable recurring payments — open banking's direct-debit competitor — get a commercial model and scheme rules for the first time, though initially only for regulated financial services and charities.</div>
+    </li>
+    <li>
+      <div class="q-source">Fintech Wrap Up</div>
+      <div class="q-text"><strong>Stablecoin ownership is surging among the young.</strong> 51% of WalletConnect users aged 18–34 hold stablecoins, with the asset class surpassing Solana in that user base — a generational adoption signal beneath the concentration numbers.</div>
+    </li>
+    <li>
+      <div class="q-source">Fintech Wrap Up</div>
+      <div class="q-text"><strong>Banking is being reshaped by AI and fintech pressure.</strong> The KPMG Global AI in Finance and Global Banking Annual Review 2026 reports both point to intensifying competition, while "Five shifts powering payments" names agentic AI as a force changing how commerce is executed.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="divider"><hr/></div>
+<footer>
+  <div class="footer-title">Singular Intelligence</div>
+  <div class="footer-sep"></div>
+  <p>Issue #9 · 1 June 2026</p>
+  <p>Curated by Laurent Le Moal · <a href="https://singularfinance.com" style="color:#0f9b82; text-decoration:none;">singularfinance.com</a></p>
+  <p style="margin-top:10px; font-size:11px;">For boards and investors. Not investment advice.</p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
